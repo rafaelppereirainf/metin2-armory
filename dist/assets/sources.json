@@ -1,0 +1,2695 @@
+{
+  "zodiac-blade": "https://it-wiki.metin2.gameforge.com/images/2/2f/Icona_Lama_dello_Zodiaco.png",
+  "black-steel": "https://it-wiki.metin2.gameforge.com/images/7/75/Icona_Corazza_d%27Acciaio_Nero.png",
+  "emerald-earrings": "https://it-wiki.metin2.gameforge.com/images/1/1c/Icona_Orecchini_con_Smeraldi.png",
+  "dragon-helmet": "https://it-wiki.metin2.gameforge.com/images/f/f2/Icona_Elmo_d%27Acciaio_del_Drago.png",
+  "soul-belt": "https://it-wiki.metin2.gameforge.com/images/b/ba/Icona_Cintura_di_Anime.png",
+  "earth-talisman": "https://it-wiki.metin2.gameforge.com/images/b/bd/Icona_Talismano_Terra.png",
+  "titan-shield": "https://it-wiki.metin2.gameforge.com/images/1/11/Icona_Scudo_dei_Titani.png",
+  "fire-shoes": "https://it-wiki.metin2.gameforge.com/images/2/23/Icona_Scarpe_del_Fuoco.png",
+  "sapphire-necklace": "https://pt-wiki.metin2.gameforge.com/images/1/15/Colar_de_Safira.png",
+  "sapphire-bracelet": "https://pt-wiki.metin2.gameforge.com/images/0/0f/Pulseira_de_Safira.png",
+  "aura": "https://it-wiki.metin2.gameforge.com/images/5/51/Icona_Veste_Aura_Comune.png",
+  "sash": "https://it-wiki.metin2.gameforge.com/images/1/17/Icona_Stola_di_Shen_%28su_misura%29.png",
+  "poison-sword": "https://it-wiki.metin2.gameforge.com/images/a/a9/Icona_Spada_Velenosa.png",
+  "inventory-texture": "https://it-wiki.metin2.gameforge.com/images/d/d1/Inventario_list.png (background detail)",
+  "sapphire-earrings": "https://pt-wiki.metin2.gameforge.com/images/7/79/Brincos_de_Safira.png",
+  "devil-armor": "https://pt-wiki.metin2.gameforge.com/images/6/64/Armadura_Pata_do_Diabo.png",
+  "alchemy-ruby": "https://it-wiki.metin2.gameforge.com/images/0/06/Icona_Rubino_Mitico_Opaco.png",
+  "alchemy-diamond": "https://it-wiki.metin2.gameforge.com/images/0/00/Icona_Diamante_Mitico_Opaco.png",
+  "alchemy-jade": "https://it-wiki.metin2.gameforge.com/images/e/e3/Icona_Giada_Mitica_Opaca.png",
+  "alchemy-sapphire": "https://it-wiki.metin2.gameforge.com/images/3/37/Icona_Zaffiro_Mitico_Opaco.png",
+  "alchemy-garnet": "https://it-wiki.metin2.gameforge.com/images/9/9d/Icona_Granato_Mitico_Opaco.png",
+  "alchemy-onyx": "https://it-wiki.metin2.gameforge.com/images/1/1f/Icona_Onice_Mitico_Opaco.png",
+  "alchemy-ruby-0-0": "https://it-wiki.metin2.gameforge.com/images/5/52/Icona_Rubino_Grezzo_Opaco.png",
+  "alchemy-ruby-0-1": "https://it-wiki.metin2.gameforge.com/images/4/4e/Icona_Rubino_Grezzo_Limpido.png",
+  "alchemy-ruby-0-2": "https://it-wiki.metin2.gameforge.com/images/c/cd/Icona_Rubino_Grezzo_Perfetto.png",
+  "alchemy-ruby-0-3": "https://it-wiki.metin2.gameforge.com/images/6/6b/Icona_Rubino_Grezzo_Brillante.png",
+  "alchemy-ruby-0-4": "https://it-wiki.metin2.gameforge.com/images/6/69/Icona_Rubino_Grezzo_Eccellente.png",
+  "alchemy-ruby-1-0": "https://it-wiki.metin2.gameforge.com/images/7/72/Icona_Rubino_Tagliato_Opaco.png",
+  "alchemy-ruby-1-1": "https://it-wiki.metin2.gameforge.com/images/2/24/Icona_Rubino_Tagliato_Limpido.png",
+  "alchemy-ruby-1-2": "https://it-wiki.metin2.gameforge.com/images/8/81/Icona_Rubino_Tagliato_Perfetto.png",
+  "alchemy-ruby-1-3": "https://it-wiki.metin2.gameforge.com/images/d/dc/Icona_Rubino_Tagliato_Brillante.png",
+  "alchemy-ruby-1-4": "https://it-wiki.metin2.gameforge.com/images/f/f3/Icona_Rubino_Tagliato_Eccellente.png",
+  "alchemy-ruby-2-0": "https://it-wiki.metin2.gameforge.com/images/8/8e/Icona_Rubino_Raro_Opaco.png",
+  "alchemy-ruby-2-1": "https://it-wiki.metin2.gameforge.com/images/a/a2/Icona_Rubino_Raro_Limpido.png",
+  "alchemy-ruby-2-2": "https://it-wiki.metin2.gameforge.com/images/3/32/Icona_Rubino_Raro_Perfetto.png",
+  "alchemy-ruby-2-3": "https://it-wiki.metin2.gameforge.com/images/4/44/Icona_Rubino_Raro_Brillante.png",
+  "alchemy-ruby-2-4": "https://it-wiki.metin2.gameforge.com/images/8/8c/Icona_Rubino_Raro_Eccellente.png",
+  "alchemy-ruby-3-0": "https://it-wiki.metin2.gameforge.com/images/4/4c/Icona_Rubino_Antico_Opaco.png",
+  "alchemy-ruby-3-1": "https://it-wiki.metin2.gameforge.com/images/6/66/Icona_Rubino_Antico_Limpido.png",
+  "alchemy-ruby-3-2": "https://it-wiki.metin2.gameforge.com/images/f/fa/Icona_Rubino_Antico_Perfetto.png",
+  "alchemy-ruby-3-3": "https://it-wiki.metin2.gameforge.com/images/9/93/Icona_Rubino_Antico_Brillante.png",
+  "alchemy-ruby-3-4": "https://it-wiki.metin2.gameforge.com/images/b/b6/Icona_Rubino_Antico_Eccellente.png",
+  "alchemy-ruby-4-0": "https://it-wiki.metin2.gameforge.com/images/a/ac/Icona_Rubino_Leggendario_Opaco.png",
+  "alchemy-ruby-4-1": "https://it-wiki.metin2.gameforge.com/images/f/f2/Icona_Rubino_Leggendario_Limpido.png",
+  "alchemy-ruby-4-2": "https://it-wiki.metin2.gameforge.com/images/8/88/Icona_Rubino_Leggendario_Perfetto.png",
+  "alchemy-ruby-4-3": "https://it-wiki.metin2.gameforge.com/images/a/a8/Icona_Rubino_Leggendario_Brillante.png",
+  "alchemy-ruby-4-4": "https://it-wiki.metin2.gameforge.com/images/e/e4/Icona_Rubino_Leggendario_Eccellente.png",
+  "alchemy-ruby-5-0": "https://it-wiki.metin2.gameforge.com/images/0/06/Icona_Rubino_Mitico_Opaco.png",
+  "alchemy-ruby-5-1": "https://it-wiki.metin2.gameforge.com/images/f/f4/Icona_Rubino_Mitico_Chiaro.png",
+  "alchemy-ruby-5-2": "https://it-wiki.metin2.gameforge.com/images/b/bb/Icona_Rubino_Mitico_Limpido.png",
+  "alchemy-ruby-5-3": "https://it-wiki.metin2.gameforge.com/images/a/ad/Icona_Rubino_Mitico_Brillante.png",
+  "alchemy-ruby-5-4": "https://it-wiki.metin2.gameforge.com/images/c/ca/Icona_Rubino_Mitico_Eccellente.png",
+  "alchemy-diamond-0-0": "https://it-wiki.metin2.gameforge.com/images/7/7a/Icona_Diamante_Grezzo_Opaco.png",
+  "alchemy-diamond-0-1": "https://it-wiki.metin2.gameforge.com/images/4/43/Icona_Diamante_Grezzo_Limpido.png",
+  "alchemy-diamond-0-2": "https://it-wiki.metin2.gameforge.com/images/c/c1/Icona_Diamante_Grezzo_Perfetto.png",
+  "alchemy-diamond-0-3": "https://it-wiki.metin2.gameforge.com/images/8/8b/Icona_Diamante_Grezzo_Brillante.png",
+  "alchemy-diamond-0-4": "https://it-wiki.metin2.gameforge.com/images/7/72/Icona_Diamante_Grezzo_Eccellente.png",
+  "alchemy-diamond-1-0": "https://it-wiki.metin2.gameforge.com/images/2/23/Icona_Diamante_Tagliato_Opaco.png",
+  "alchemy-diamond-1-1": "https://it-wiki.metin2.gameforge.com/images/f/f8/Icona_Diamante_Tagliato_Limpido.png",
+  "alchemy-diamond-1-2": "https://it-wiki.metin2.gameforge.com/images/3/3c/Icona_Diamante_Tagliato_Perfetto.png",
+  "alchemy-diamond-1-3": "https://it-wiki.metin2.gameforge.com/images/f/ff/Icona_Diamante_Tagliato_Brillante.png",
+  "alchemy-diamond-1-4": "https://it-wiki.metin2.gameforge.com/images/d/de/Icona_Diamante_Tagliato_Eccellente.png",
+  "alchemy-diamond-2-0": "https://it-wiki.metin2.gameforge.com/images/0/0a/Icona_Diamante_Raro_Opaco.png",
+  "alchemy-diamond-2-1": "https://it-wiki.metin2.gameforge.com/images/6/67/Icona_Diamante_Raro_Limpido.png",
+  "alchemy-diamond-2-2": "https://it-wiki.metin2.gameforge.com/images/4/4a/Icona_Diamante_Raro_Perfetto.png",
+  "alchemy-diamond-2-3": "https://it-wiki.metin2.gameforge.com/images/1/1b/Icona_Diamante_Raro_Brillante.png",
+  "alchemy-diamond-2-4": "https://it-wiki.metin2.gameforge.com/images/c/c8/Icona_Diamante_Raro_Eccellente.png",
+  "alchemy-diamond-3-0": "https://it-wiki.metin2.gameforge.com/images/7/75/Icona_Diamante_Antico_Opaco.png",
+  "alchemy-diamond-3-1": "https://it-wiki.metin2.gameforge.com/images/c/c6/Icona_Diamante_Antico_Limpido.png",
+  "alchemy-diamond-3-2": "https://it-wiki.metin2.gameforge.com/images/a/a0/Icona_Diamante_Antico_Perfetto.png",
+  "alchemy-diamond-3-3": "https://it-wiki.metin2.gameforge.com/images/5/56/Icona_Diamante_Antico_Brillante.png",
+  "alchemy-diamond-3-4": "https://it-wiki.metin2.gameforge.com/images/3/3f/Icona_Diamante_Antico_Eccellente.png",
+  "alchemy-diamond-4-0": "https://it-wiki.metin2.gameforge.com/images/7/72/Icona_Diamante_Leggendario_Opaco.png",
+  "alchemy-diamond-4-1": "https://it-wiki.metin2.gameforge.com/images/1/1d/Icona_Diamante_Leggendario_Limpido.png",
+  "alchemy-diamond-4-2": "https://it-wiki.metin2.gameforge.com/images/f/ff/Icona_Diamante_Leggendario_Perfetto.png",
+  "alchemy-diamond-4-3": "https://it-wiki.metin2.gameforge.com/images/c/ca/Icona_Diamante_Leggendario_Brillante.png",
+  "alchemy-diamond-4-4": "https://it-wiki.metin2.gameforge.com/images/4/4e/Icona_Diamante_Leggendario_Eccellente.png",
+  "alchemy-diamond-5-0": "https://it-wiki.metin2.gameforge.com/images/0/00/Icona_Diamante_Mitico_Opaco.png",
+  "alchemy-diamond-5-1": "https://it-wiki.metin2.gameforge.com/images/7/7a/Icona_Diamante_Mitico_Chiaro.png",
+  "alchemy-diamond-5-2": "https://it-wiki.metin2.gameforge.com/images/8/80/Icona_Diamante_Mitico_Limpido.png",
+  "alchemy-diamond-5-3": "https://it-wiki.metin2.gameforge.com/images/4/4a/Icona_Diamante_Mitico_Brillante.png",
+  "alchemy-diamond-5-4": "https://it-wiki.metin2.gameforge.com/images/6/6b/Icona_Diamante_Mitico_Eccellente.png",
+  "alchemy-jade-0-0": "https://it-wiki.metin2.gameforge.com/images/a/ac/Icona_Giada_Grezza_Opaca.png",
+  "alchemy-jade-0-1": "https://it-wiki.metin2.gameforge.com/images/f/fc/Icona_Giada_Grezza_Limpida.png",
+  "alchemy-jade-0-2": "https://it-wiki.metin2.gameforge.com/images/5/5c/Icona_Giada_Grezza_Perfetta.png",
+  "alchemy-jade-0-3": "https://it-wiki.metin2.gameforge.com/images/8/84/Icona_Giada_Grezza_Brillante.png",
+  "alchemy-jade-0-4": "https://it-wiki.metin2.gameforge.com/images/5/5c/Icona_Giada_Grezza_Eccellente.png",
+  "alchemy-jade-1-0": "https://it-wiki.metin2.gameforge.com/images/f/f6/Icona_Giada_Tagliata_Opaca.png",
+  "alchemy-jade-1-1": "https://it-wiki.metin2.gameforge.com/images/7/7e/Icona_Giada_Tagliata_Limpida.png",
+  "alchemy-jade-1-2": "https://it-wiki.metin2.gameforge.com/images/5/59/Icona_Giada_Tagliata_Perfetta.png",
+  "alchemy-jade-1-3": "https://it-wiki.metin2.gameforge.com/images/9/9f/Icona_Giada_Tagliata_Brillante.png",
+  "alchemy-jade-1-4": "https://it-wiki.metin2.gameforge.com/images/0/0e/Icona_Giada_Tagliata_Eccellente.png",
+  "alchemy-jade-2-0": "https://it-wiki.metin2.gameforge.com/images/5/52/Icona_Giada_Rara_Opaca.png",
+  "alchemy-jade-2-1": "https://it-wiki.metin2.gameforge.com/images/c/c1/Icona_Giada_Rara_Limpida.png",
+  "alchemy-jade-2-2": "https://it-wiki.metin2.gameforge.com/images/6/6b/Icona_Giada_Rara_Perfetta.png",
+  "alchemy-jade-2-3": "https://it-wiki.metin2.gameforge.com/images/3/37/Icona_Giada_Rara_Brillante.png",
+  "alchemy-jade-2-4": "https://it-wiki.metin2.gameforge.com/images/a/a4/Icona_Giada_Rara_Eccellente.png",
+  "alchemy-jade-3-0": "https://it-wiki.metin2.gameforge.com/images/0/06/Icona_Giada_Antica_Opaca.png",
+  "alchemy-jade-3-1": "https://it-wiki.metin2.gameforge.com/images/d/dc/Icona_Giada_Antica_Limpida.png",
+  "alchemy-jade-3-2": "https://it-wiki.metin2.gameforge.com/images/a/af/Icona_Giada_Antica_Perfetta.png",
+  "alchemy-jade-3-3": "https://it-wiki.metin2.gameforge.com/images/c/cb/Icona_Giada_Antica_Brillante.png",
+  "alchemy-jade-3-4": "https://it-wiki.metin2.gameforge.com/images/5/5a/Icona_Giada_Antica_Eccellente.png",
+  "alchemy-jade-4-0": "https://it-wiki.metin2.gameforge.com/images/b/b1/Icona_Giada_Leggendaria_Opaca.png",
+  "alchemy-jade-4-1": "https://it-wiki.metin2.gameforge.com/images/1/19/Icona_Giada_Leggendaria_Limpida.png",
+  "alchemy-jade-4-2": "https://it-wiki.metin2.gameforge.com/images/8/80/Icona_Giada_Leggendaria_Perfetta.png",
+  "alchemy-jade-4-3": "https://it-wiki.metin2.gameforge.com/images/9/99/Icona_Giada_Leggendaria_Brillante.png",
+  "alchemy-jade-4-4": "https://it-wiki.metin2.gameforge.com/images/0/06/Icona_Giada_Leggendaria_Eccellente.png",
+  "alchemy-jade-5-0": "https://it-wiki.metin2.gameforge.com/images/e/e3/Icona_Giada_Mitica_Opaca.png",
+  "alchemy-jade-5-1": "https://it-wiki.metin2.gameforge.com/images/1/13/Icona_Giada_Mitica_Chiara.png",
+  "alchemy-jade-5-2": "https://it-wiki.metin2.gameforge.com/images/9/9e/Icona_Giada_Mitica_Limpida.png",
+  "alchemy-jade-5-3": "https://it-wiki.metin2.gameforge.com/images/b/b8/Icona_Giada_Mitica_Brillante.png",
+  "alchemy-jade-5-4": "https://it-wiki.metin2.gameforge.com/images/7/7b/Icona_Giada_Mitica_Eccellente.png",
+  "alchemy-sapphire-0-0": "https://it-wiki.metin2.gameforge.com/images/4/44/Icona_Zaffiro_Grezzo_Opaco.png",
+  "alchemy-sapphire-0-1": "https://it-wiki.metin2.gameforge.com/images/4/46/Icona_Zaffiro_Grezzo_Limpido.png",
+  "alchemy-sapphire-0-2": "https://it-wiki.metin2.gameforge.com/images/0/0d/Icona_Zaffiro_Grezzo_Perfetto.png",
+  "alchemy-sapphire-0-3": "https://it-wiki.metin2.gameforge.com/images/e/e2/Icona_Zaffiro_Grezzo_Brillante.png",
+  "alchemy-sapphire-0-4": "https://it-wiki.metin2.gameforge.com/images/e/e7/Icona_Zaffiro_Grezzo_Eccellente.png",
+  "alchemy-sapphire-1-0": "https://it-wiki.metin2.gameforge.com/images/1/1a/Icona_Zaffiro_Tagliato_Opaco.png",
+  "alchemy-sapphire-1-1": "https://it-wiki.metin2.gameforge.com/images/1/17/Icona_Zaffiro_Tagliato_Limpido.png",
+  "alchemy-sapphire-1-2": "https://it-wiki.metin2.gameforge.com/images/b/b1/Icona_Zaffiro_Tagliato_Perfetto.png",
+  "alchemy-sapphire-1-3": "https://it-wiki.metin2.gameforge.com/images/7/7e/Icona_Zaffiro_Tagliato_Brillante.png",
+  "alchemy-sapphire-1-4": "https://it-wiki.metin2.gameforge.com/images/c/c9/Icona_Zaffiro_Tagliato_Eccellente.png",
+  "alchemy-sapphire-2-0": "https://it-wiki.metin2.gameforge.com/images/4/4a/Icona_Zaffiro_Raro_Opaco.png",
+  "alchemy-sapphire-2-1": "https://it-wiki.metin2.gameforge.com/images/c/c4/Icona_Zaffiro_Raro_Limpido.png",
+  "alchemy-sapphire-2-2": "https://it-wiki.metin2.gameforge.com/images/b/bc/Icona_Zaffiro_Raro_Perfetto.png",
+  "alchemy-sapphire-2-3": "https://it-wiki.metin2.gameforge.com/images/5/54/Icona_Zaffiro_Raro_Brillante.png",
+  "alchemy-sapphire-2-4": "https://it-wiki.metin2.gameforge.com/images/a/a2/Icona_Zaffiro_Raro_Eccellente.png",
+  "alchemy-sapphire-3-0": "https://it-wiki.metin2.gameforge.com/images/0/0c/Icona_Zaffiro_Antico_Opaco.png",
+  "alchemy-sapphire-3-1": "https://it-wiki.metin2.gameforge.com/images/4/49/Icona_Zaffiro_Antico_Limpido.png",
+  "alchemy-sapphire-3-2": "https://it-wiki.metin2.gameforge.com/images/c/c6/Icona_Zaffiro_Antico_Perfetto.png",
+  "alchemy-sapphire-3-3": "https://it-wiki.metin2.gameforge.com/images/4/4d/Icona_Zaffiro_Antico_Brillante.png",
+  "alchemy-sapphire-3-4": "https://it-wiki.metin2.gameforge.com/images/9/92/Icona_Zaffiro_Antico_Eccellente.png",
+  "alchemy-sapphire-4-0": "https://it-wiki.metin2.gameforge.com/images/b/b4/Icona_Zaffiro_Leggendario_Opaco.png",
+  "alchemy-sapphire-4-1": "https://it-wiki.metin2.gameforge.com/images/7/72/Icona_Zaffiro_Leggendario_Limpido.png",
+  "alchemy-sapphire-4-2": "https://it-wiki.metin2.gameforge.com/images/7/7e/Icona_Zaffiro_Leggendario_Perfetto.png",
+  "alchemy-sapphire-4-3": "https://it-wiki.metin2.gameforge.com/images/c/cc/Icona_Zaffiro_Leggendario_Brillante.png",
+  "alchemy-sapphire-4-4": "https://it-wiki.metin2.gameforge.com/images/c/cb/Icona_Zaffiro_Leggendario_Eccellente.png",
+  "alchemy-sapphire-5-0": "https://it-wiki.metin2.gameforge.com/images/3/37/Icona_Zaffiro_Mitico_Opaco.png",
+  "alchemy-sapphire-5-1": "https://it-wiki.metin2.gameforge.com/images/9/93/Icona_Zaffiro_Mitico_Chiaro.png",
+  "alchemy-sapphire-5-2": "https://it-wiki.metin2.gameforge.com/images/c/c1/Icona_Zaffiro_Mitico_Limpido.png",
+  "alchemy-sapphire-5-3": "https://it-wiki.metin2.gameforge.com/images/4/4d/Icona_Zaffiro_Mitico_Brillante.png",
+  "alchemy-sapphire-5-4": "https://it-wiki.metin2.gameforge.com/images/5/52/Icona_Zaffiro_Mitico_Eccellente.png",
+  "alchemy-garnet-0-0": "https://it-wiki.metin2.gameforge.com/images/0/05/Icona_Granato_Grezzo_Opaco.png",
+  "alchemy-garnet-0-1": "https://it-wiki.metin2.gameforge.com/images/b/b7/Icona_Granato_Grezzo_Limpido.png",
+  "alchemy-garnet-0-2": "https://it-wiki.metin2.gameforge.com/images/3/3f/Icona_Granato_Grezzo_Perfetto.png",
+  "alchemy-garnet-0-3": "https://it-wiki.metin2.gameforge.com/images/4/47/Icona_Granato_Grezzo_Brillante.png",
+  "alchemy-garnet-0-4": "https://it-wiki.metin2.gameforge.com/images/d/d1/Icona_Granato_Grezzo_Eccellente.png",
+  "alchemy-garnet-1-0": "https://it-wiki.metin2.gameforge.com/images/9/95/Icona_Granato_Tagliato_Opaco.png",
+  "alchemy-garnet-1-1": "https://it-wiki.metin2.gameforge.com/images/a/a5/Icona_Granato_Tagliato_Limpido.png",
+  "alchemy-garnet-1-2": "https://it-wiki.metin2.gameforge.com/images/e/e8/Icona_Granato_Tagliato_Perfetto.png",
+  "alchemy-garnet-1-3": "https://it-wiki.metin2.gameforge.com/images/a/a8/Icona_Granato_Tagliato_Brillante.png",
+  "alchemy-garnet-1-4": "https://it-wiki.metin2.gameforge.com/images/6/6f/Icona_Granato_Tagliato_Eccellente.png",
+  "alchemy-garnet-2-0": "https://it-wiki.metin2.gameforge.com/images/8/89/Icona_Granato_Raro_Opaco.png",
+  "alchemy-garnet-2-1": "https://it-wiki.metin2.gameforge.com/images/c/c8/Icona_Granato_Raro_Limpido.png",
+  "alchemy-garnet-2-2": "https://it-wiki.metin2.gameforge.com/images/5/5b/Icona_Granato_Raro_Perfetto.png",
+  "alchemy-garnet-2-3": "https://it-wiki.metin2.gameforge.com/images/2/2c/Icona_Granato_Raro_Brillante.png",
+  "alchemy-garnet-2-4": "https://it-wiki.metin2.gameforge.com/images/9/99/Icona_Granato_Raro_Eccellente.png",
+  "alchemy-garnet-3-0": "https://it-wiki.metin2.gameforge.com/images/3/38/Icona_Granato_Antico_Opaco.png",
+  "alchemy-garnet-3-1": "https://it-wiki.metin2.gameforge.com/images/6/62/Icona_Granato_Antico_Limpido.png",
+  "alchemy-garnet-3-2": "https://it-wiki.metin2.gameforge.com/images/4/4a/Icona_Granato_Antico_Perfetto.png",
+  "alchemy-garnet-3-3": "https://it-wiki.metin2.gameforge.com/images/3/3d/Icona_Granato_Antico_Brillante.png",
+  "alchemy-garnet-3-4": "https://it-wiki.metin2.gameforge.com/images/e/ed/Icona_Granato_Antico_Eccellente.png",
+  "alchemy-garnet-4-0": "https://it-wiki.metin2.gameforge.com/images/7/73/Icona_Granato_Leggendario_Opaco.png",
+  "alchemy-garnet-4-1": "https://it-wiki.metin2.gameforge.com/images/7/77/Icona_Granato_Leggendario_Limpido.png",
+  "alchemy-garnet-4-2": "https://it-wiki.metin2.gameforge.com/images/9/94/Icona_Granato_Leggendario_Perfetto.png",
+  "alchemy-garnet-4-3": "https://it-wiki.metin2.gameforge.com/images/f/f2/Icona_Granato_Leggendario_Brillante.png",
+  "alchemy-garnet-4-4": "https://it-wiki.metin2.gameforge.com/images/e/e1/Icona_Granato_Leggendario_Eccellente.png",
+  "alchemy-garnet-5-0": "https://it-wiki.metin2.gameforge.com/images/9/9d/Icona_Granato_Mitico_Opaco.png",
+  "alchemy-garnet-5-1": "https://it-wiki.metin2.gameforge.com/images/0/06/Icona_Granato_Mitico_Chiaro.png",
+  "alchemy-garnet-5-2": "https://it-wiki.metin2.gameforge.com/images/9/98/Icona_Granato_Mitico_Limpido.png",
+  "alchemy-garnet-5-3": "https://it-wiki.metin2.gameforge.com/images/0/09/Icona_Granato_Mitico_Brillante.png",
+  "alchemy-garnet-5-4": "https://it-wiki.metin2.gameforge.com/images/5/57/Icona_Granato_Mitico_Eccellente.png",
+  "alchemy-onyx-0-0": "https://it-wiki.metin2.gameforge.com/images/2/2c/Icona_Onice_Grezzo_Opaco.png",
+  "alchemy-onyx-0-1": "https://it-wiki.metin2.gameforge.com/images/e/eb/Icona_Onice_Grezzo_Limpido.png",
+  "alchemy-onyx-0-2": "https://it-wiki.metin2.gameforge.com/images/f/fa/Icona_Onice_Grezzo_Perfetto.png",
+  "alchemy-onyx-0-3": "https://it-wiki.metin2.gameforge.com/images/0/0d/Icona_Onice_Grezzo_Brillante.png",
+  "alchemy-onyx-0-4": "https://it-wiki.metin2.gameforge.com/images/e/e1/Icona_Onice_Grezzo_Eccellente.png",
+  "alchemy-onyx-1-0": "https://it-wiki.metin2.gameforge.com/images/e/e2/Icona_Onice_Tagliato_Opaco.png",
+  "alchemy-onyx-1-1": "https://it-wiki.metin2.gameforge.com/images/7/77/Icona_Onice_Tagliato_Limpido.png",
+  "alchemy-onyx-1-2": "https://it-wiki.metin2.gameforge.com/images/8/8d/Icona_Onice_Tagliato_Perfetto.png",
+  "alchemy-onyx-1-3": "https://it-wiki.metin2.gameforge.com/images/8/84/Icona_Onice_Tagliato_Brillante.png",
+  "alchemy-onyx-1-4": "https://it-wiki.metin2.gameforge.com/images/f/f5/Icona_Onice_Tagliato_Eccellente.png",
+  "alchemy-onyx-2-0": "https://it-wiki.metin2.gameforge.com/images/7/74/Icona_Onice_Raro_Opaco.png",
+  "alchemy-onyx-2-1": "https://it-wiki.metin2.gameforge.com/images/6/62/Icona_Onice_Raro_Limpido.png",
+  "alchemy-onyx-2-2": "https://it-wiki.metin2.gameforge.com/images/8/81/Icona_Onice_Raro_Perfetto.png",
+  "alchemy-onyx-2-3": "https://it-wiki.metin2.gameforge.com/images/1/13/Icona_Onice_Raro_Brillante.png",
+  "alchemy-onyx-2-4": "https://it-wiki.metin2.gameforge.com/images/7/78/Icona_Onice_Raro_Eccellente.png",
+  "alchemy-onyx-3-0": "https://it-wiki.metin2.gameforge.com/images/a/ac/Icona_Onice_Antico_Opaco.png",
+  "alchemy-onyx-3-1": "https://it-wiki.metin2.gameforge.com/images/2/22/Icona_Onice_Antico_Limpido.png",
+  "alchemy-onyx-3-2": "https://it-wiki.metin2.gameforge.com/images/e/e9/Icona_Onice_Antico_Perfetto.png",
+  "alchemy-onyx-3-3": "https://it-wiki.metin2.gameforge.com/images/d/dd/Icona_Onice_Antico_Brillante.png",
+  "alchemy-onyx-3-4": "https://it-wiki.metin2.gameforge.com/images/f/fd/Icona_Onice_Antico_Eccellente.png",
+  "alchemy-onyx-4-0": "https://it-wiki.metin2.gameforge.com/images/9/96/Icona_Onice_Leggendario_Opaco.png",
+  "alchemy-onyx-4-1": "https://it-wiki.metin2.gameforge.com/images/4/4e/Icona_Onice_Leggendario_Limpido.png",
+  "alchemy-onyx-4-2": "https://it-wiki.metin2.gameforge.com/images/1/14/Icona_Onice_Leggendario_Perfetto.png",
+  "alchemy-onyx-4-3": "https://it-wiki.metin2.gameforge.com/images/2/22/Icona_Onice_Leggendario_Brillante.png",
+  "alchemy-onyx-4-4": "https://it-wiki.metin2.gameforge.com/images/2/2d/Icona_Onice_Leggendario_Eccellente.png",
+  "alchemy-onyx-5-0": "https://it-wiki.metin2.gameforge.com/images/1/1f/Icona_Onice_Mitico_Opaco.png",
+  "alchemy-onyx-5-1": "https://it-wiki.metin2.gameforge.com/images/2/2d/Icona_Onice_Mitico_Chiaro.png",
+  "alchemy-onyx-5-2": "https://it-wiki.metin2.gameforge.com/images/d/d5/Icona_Onice_Mitico_Limpido.png",
+  "alchemy-onyx-5-3": "https://it-wiki.metin2.gameforge.com/images/b/b6/Icona_Onice_Mitico_Brillante.png",
+  "alchemy-onyx-5-4": "https://it-wiki.metin2.gameforge.com/images/3/3b/Icona_Onice_Mitico_Eccellente.png",
+  "pet-1": "https://pt-wiki.metin2.gameforge.com/images/2/26/Mini_Macaco.png",
+  "pet-2": "https://pt-wiki.metin2.gameforge.com/images/d/d3/Mini_Aranha.png",
+  "pet-3": "https://pt-wiki.metin2.gameforge.com/images/9/9c/Mini_Razador.png",
+  "pet-4": "https://pt-wiki.metin2.gameforge.com/images/d/d5/Mini_Nemere.png",
+  "pet-5": "https://pt-wiki.metin2.gameforge.com/images/4/42/Dragonette.png",
+  "pet-6": "https://pt-wiki.metin2.gameforge.com/images/1/10/Baashido_Beb%C3%A9.png",
+  "pet-7": "https://pt-wiki.metin2.gameforge.com/images/f/fe/Mini_Azrael.png",
+  "pet-8": "https://pt-wiki.metin2.gameforge.com/images/9/98/Mini_Executor_Grd.png",
+  "pet-9": "https://pt-wiki.metin2.gameforge.com/images/b/b9/Nessie.png",
+  "pet-10": "https://pt-wiki.metin2.gameforge.com/images/e/eb/Prole_de_Exedyar.png",
+  "pet-11": "https://pt-wiki.metin2.gameforge.com/images/9/9f/Mini_Alastor_Zangado.png",
+  "pet-12": "https://pt-wiki.metin2.gameforge.com/images/a/a7/Aamon_Beb%C3%A9.png",
+  "spirit-1": "https://pt-wiki.metin2.gameforge.com/images/3/32/Pedra_Anti-Guerreiro.png",
+  "spirit-2": "https://pt-wiki.metin2.gameforge.com/images/f/fc/Pedra_Anti-Ninja.png",
+  "spirit-3": "https://pt-wiki.metin2.gameforge.com/images/d/d2/Pedra_Anti-Xam%C3%A3.png",
+  "spirit-4": "https://pt-wiki.metin2.gameforge.com/images/b/b9/Pedra_Anti-Sura.png",
+  "spirit-5": "https://pt-wiki.metin2.gameforge.com/images/3/3a/Pedra_Anti-Lycan.png",
+  "spirit-6": "https://pt-wiki.metin2.gameforge.com/images/3/38/Pedra_Anti-Magia.png",
+  "spirit-7": "https://pt-wiki.metin2.gameforge.com/images/4/46/Pedra_da_Repeti%C3%A7%C3%A3o.png",
+  "spirit-8": "https://pt-wiki.metin2.gameforge.com/images/7/78/Pedra_da_Penetra%C3%A7%C3%A3o.png",
+  "spirit-9": "https://pt-wiki.metin2.gameforge.com/images/4/44/Pedra_de_Golpe_Mortal.png",
+  "spirit-10": "https://pt-wiki.metin2.gameforge.com/images/e/eb/Pedra_Anti-Monstros.png",
+  "spirit-11": "https://pt-wiki.metin2.gameforge.com/images/1/1c/G._Pedra_Anti-Monstros.png",
+  "spirit-12": "https://pt-wiki.metin2.gameforge.com/images/a/af/Pedra_da_Magia.png",
+  "spirit-13": "https://pt-wiki.metin2.gameforge.com/images/9/99/Pedra_da_Vida.png",
+  "spirit-14": "https://pt-wiki.metin2.gameforge.com/images/1/1c/Pedra_da_Defesa.png",
+  "spirit-15": "https://pt-wiki.metin2.gameforge.com/images/d/df/Pedra_da_Pressa.png",
+  "spirit-16": "https://pt-wiki.metin2.gameforge.com/images/6/6d/Pedra_da_Evas%C3%A3o.png",
+  "spirit-17": "https://pt-wiki.metin2.gameforge.com/images/f/ff/Pedra_da_Agilidade.png",
+  "spirit-18": "https://pt-wiki.metin2.gameforge.com/images/0/0c/Pedra_Demon%C3%ADaca.png",
+  "spirit-19": "https://pt-wiki.metin2.gameforge.com/images/8/88/Pedra_Demon%C3%ADaca_Poder.png",
+  "spirit-20": "https://pt-wiki.metin2.gameforge.com/images/0/05/Pedra_do_Veneno.png",
+  "spirit-21": "https://pt-wiki.metin2.gameforge.com/images/0/0b/Pedra_do_Sangramento.png",
+  "spirit-22": "https://pt-wiki.metin2.gameforge.com/images/c/cb/Pedra_da_Experi%C3%AAncia.png",
+  "spirit-23": "https://pt-wiki.metin2.gameforge.com/images/c/c5/Pedra_da_Resist%C3%AAncia.png",
+  "spirit-24": "https://pt-wiki.metin2.gameforge.com/images/5/57/Pedra_do_Vigor.png",
+  "spirit-25": "https://pt-wiki.metin2.gameforge.com/images/2/2c/Pedra_da_Lua.png",
+  "spirit-26": "https://pt-wiki.metin2.gameforge.com/images/9/91/Pedra_dos_Elementos.png",
+  "pet_books": {
+    "Enfurecido": "https://pt-wiki.metin2.gameforge.com/index.php/Livro_do_Enfurecido",
+    "Perfuração": "https://pt-wiki.metin2.gameforge.com/index.php/Livro_da_Perfuração",
+    "Caçador de Monstros": "https://pt-wiki.metin2.gameforge.com/index.php/Livro_Caçador_Monstros"
+  },
+  "alchemy_attributes": [
+    "https://it-wiki.metin2.gameforge.com/index.php/Pietra_del_Drago_Rubino",
+    "https://it-wiki.metin2.gameforge.com/index.php/Pietra_del_Drago_Diamante",
+    "https://it-wiki.metin2.gameforge.com/index.php/Pietra_del_Drago_Giada",
+    "https://it-wiki.metin2.gameforge.com/index.php/Pietra_del_Drago_Zaffiro",
+    "https://it-wiki.metin2.gameforge.com/index.php/Pietra_del_Drago_Granato",
+    "https://it-wiki.metin2.gameforge.com/index.php/Pietra_del_Drago_Onice"
+  ],
+  "pet_skill_icons": {
+    "source": "https://pt-wiki.metin2.gameforge.com/index.php/Pets_Evoluíveis",
+    "files": {
+      "Enfurecido": "assets/pet-skill-0.png",
+      "Perfuração": "assets/pet-skill-1.png",
+      "Caçador de Monstros": "assets/pet-skill-2.png"
+    }
+  },
+  "equipment_catalog": {
+    "wiki-4a0c69b30be2": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada",
+      "image": "assets/wiki-4a0c69b30be2.png"
+    },
+    "wiki-b36975b70429": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_Longa",
+      "image": "assets/wiki-b36975b70429.png"
+    },
+    "wiki-24e107c18750": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_Crescente",
+      "image": "assets/wiki-24e107c18750.png"
+    },
+    "wiki-eee49c3515e4": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_de_Bambu",
+      "image": "assets/wiki-eee49c3515e4.png"
+    },
+    "wiki-2deb3840e357": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_Larga",
+      "image": "assets/wiki-2deb3840e357.png"
+    },
+    "wiki-58b76b038f1e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_de_Prata",
+      "image": "assets/wiki-58b76b038f1e.png"
+    },
+    "wiki-baaffadffb24": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_Lua_Cheia",
+      "image": "assets/wiki-baaffadffb24.png"
+    },
+    "wiki-41c1eeaa52bf": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_Orqu%C3%ADdea",
+      "image": "assets/wiki-41c1eeaa52bf.png"
+    },
+    "wiki-a447e7858c03": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_Bastarda",
+      "image": "assets/wiki-a447e7858c03.png"
+    },
+    "wiki-b0c7aea6bd58": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_B%C3%A1rbara",
+      "image": "assets/wiki-b0c7aea6bd58.png"
+    },
+    "wiki-06da8ab888fb": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_Sangrenta",
+      "image": "assets/wiki-06da8ab888fb.png"
+    },
+    "wiki-9318baa7230b": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_Grandiosa",
+      "image": "assets/wiki-9318baa7230b.png"
+    },
+    "wiki-7b7f1413d052": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_do_Mago",
+      "image": "assets/wiki-7b7f1413d052.png"
+    },
+    "wiki-0cd48d2282f2": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_Meia_Lua",
+      "image": "assets/wiki-0cd48d2282f2.png"
+    },
+    "wiki-c40f59483fb4": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_de_Batalha",
+      "image": "assets/wiki-c40f59483fb4.png"
+    },
+    "wiki-85a6e4c6fc8e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_Ninfa",
+      "image": "assets/wiki-85a6e4c6fc8e.png"
+    },
+    "wiki-b2288c7a2630": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_Ferr%C3%A3o",
+      "image": "assets/wiki-b2288c7a2630.png"
+    },
+    "wiki-cc84f2373bcf": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_S%C3%ADrius",
+      "image": "assets/wiki-cc84f2373bcf.png"
+    },
+    "wiki-90cbca605e4a": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_R%C3%BAnica",
+      "image": "assets/wiki-90cbca605e4a.png"
+    },
+    "wiki-df6e73f4068d": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_Draco-Ru%C3%ADna",
+      "image": "assets/wiki-df6e73f4068d.png"
+    },
+    "wiki-550bee3f698c": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_do_Zod%C3%ADaco",
+      "image": "assets/wiki-550bee3f698c.png"
+    },
+    "wiki-be47e2ca0fbc": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_da_Serpente",
+      "image": "assets/wiki-be47e2ca0fbc.png"
+    },
+    "wiki-272f59bf4536": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_do_Luar",
+      "image": "assets/wiki-272f59bf4536.png"
+    },
+    "wiki-7e65ab17a5ea": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_de_Exorcismo",
+      "image": "assets/wiki-7e65ab17a5ea.png"
+    },
+    "wiki-9c906833f58b": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/L%C3%A2mina_Zanna_Fantasma",
+      "image": "assets/wiki-9c906833f58b.png"
+    },
+    "wiki-05ac0c2fccd6": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/L%C3%A2mina_Demon%C3%ADaca",
+      "image": "assets/wiki-05ac0c2fccd6.png"
+    },
+    "wiki-0c901bde2669": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_Le%C3%A3o",
+      "image": "assets/wiki-0c901bde2669.png"
+    },
+    "wiki-5f328ce4671c": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/L%C3%A2mina_Cortante",
+      "image": "assets/wiki-5f328ce4671c.png"
+    },
+    "wiki-9fef8ca0bacb": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_Sagrada",
+      "image": "assets/wiki-9fef8ca0bacb.png"
+    },
+    "wiki-c05561e18c3b": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/L%C3%A2mina_Dente_de_Drag%C3%A3o",
+      "image": "assets/wiki-c05561e18c3b.png"
+    },
+    "wiki-5def4506e23e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Sabre_Draco-Ru%C3%ADna",
+      "image": "assets/wiki-5def4506e23e.png"
+    },
+    "wiki-184fbaa72b02": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_de_Kyanite",
+      "image": "assets/wiki-184fbaa72b02.png"
+    },
+    "wiki-33c9858d74f4": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/L%C3%A2mina_da_Serpente",
+      "image": "assets/wiki-33c9858d74f4.png"
+    },
+    "wiki-088c5c8244a7": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/L%C3%A2mina_do_Luar",
+      "image": "assets/wiki-088c5c8244a7.png"
+    },
+    "wiki-38a959a10b36": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Glava",
+      "image": "assets/wiki-38a959a10b36.png"
+    },
+    "wiki-b5bed84ea1d5": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Lan%C3%A7a",
+      "image": "assets/wiki-b5bed84ea1d5.png"
+    },
+    "wiki-4e51f22ac54f": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/L%C3%A2mina_Guilhotina",
+      "image": "assets/wiki-4e51f22ac54f.png"
+    },
+    "wiki-6465194beb89": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Lan%C3%A7a_Aranha",
+      "image": "assets/wiki-6465194beb89.png"
+    },
+    "wiki-70950386c294": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Guisarma",
+      "image": "assets/wiki-70950386c294.png"
+    },
+    "wiki-415f354b15d5": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Foice_de_Guerra",
+      "image": "assets/wiki-415f354b15d5.png"
+    },
+    "wiki-72fae5cd15bc": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/L%C3%A2mina_Ferro_Vermelho",
+      "image": "assets/wiki-72fae5cd15bc.png"
+    },
+    "wiki-51837d777bfd": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Forquilha_Militar",
+      "image": "assets/wiki-51837d777bfd.png"
+    },
+    "wiki-599bd272032c": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Alabarda",
+      "image": "assets/wiki-599bd272032c.png"
+    },
+    "wiki-a1bcd1ff792d": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Machado_Gigante",
+      "image": "assets/wiki-a1bcd1ff792d.png"
+    },
+    "wiki-c599bf893c8f": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Tridente_Glacial",
+      "image": "assets/wiki-c599bf893c8f.png"
+    },
+    "wiki-4f48d5d46c85": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_Doze_Esp%C3%ADritos",
+      "image": "assets/wiki-4f48d5d46c85.png"
+    },
+    "wiki-a547a50f2982": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/L%C3%A2mina_da_Salva%C3%A7%C3%A3o",
+      "image": "assets/wiki-a547a50f2982.png"
+    },
+    "wiki-74e1b0346b30": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Matador_de_Le%C3%B5es",
+      "image": "assets/wiki-74e1b0346b30.png"
+    },
+    "wiki-28e66b80fa55": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Partid%C3%A1rio",
+      "image": "assets/wiki-28e66b80fa55.png"
+    },
+    "wiki-4ad7e08f47c5": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/L%C3%A2mina_Magn%C3%A9tica",
+      "image": "assets/wiki-4ad7e08f47c5.png"
+    },
+    "wiki-f107eca72776": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/L%C3%A2mina_Ladr%C3%A3o_de_Almas",
+      "image": "assets/wiki-f107eca72776.png"
+    },
+    "wiki-a4b3502a3e1c": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_do_%C3%93dio",
+      "image": "assets/wiki-a4b3502a3e1c.png"
+    },
+    "wiki-3a2808903fd5": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/L%C3%A2mina_Solar",
+      "image": "assets/wiki-3a2808903fd5.png"
+    },
+    "wiki-a6550afb9923": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/L%C3%A2mina_Draco-Ru%C3%ADna",
+      "image": "assets/wiki-a6550afb9923.png"
+    },
+    "wiki-e9839c4c13c4": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Glava_do_Zod%C3%ADaco",
+      "image": "assets/wiki-e9839c4c13c4.png"
+    },
+    "wiki-4e99672a64ac": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/L%C3%A2mina_de_Kyanite",
+      "image": "assets/wiki-4e99672a64ac.png"
+    },
+    "wiki-c870edfa4658": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_Larga_Serpente",
+      "image": "assets/wiki-c870edfa4658.png"
+    },
+    "wiki-be5eb6ccda5b": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Glava_do_Luar",
+      "image": "assets/wiki-be5eb6ccda5b.png"
+    },
+    "wiki-e1b9f09d487b": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Adaga",
+      "image": "assets/wiki-e1b9f09d487b.png"
+    },
+    "wiki-2c55bfefdbdf": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Amija",
+      "image": "assets/wiki-2c55bfefdbdf.png"
+    },
+    "wiki-1e39dff1ebe9": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Adaga_Cobra",
+      "image": "assets/wiki-1e39dff1ebe9.png"
+    },
+    "wiki-f4ed2933c386": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Nove_L%C3%A2minas",
+      "image": "assets/wiki-f4ed2933c386.png"
+    },
+    "wiki-cba38259515f": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Adaga_de_Tesoura",
+      "image": "assets/wiki-cba38259515f.png"
+    },
+    "wiki-a21a5c32ab25": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faca_Curta",
+      "image": "assets/wiki-a21a5c32ab25.png"
+    },
+    "wiki-0862ffbc59e4": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Adaga_Folha_Negra",
+      "image": "assets/wiki-0862ffbc59e4.png"
+    },
+    "wiki-b9c0490e9dc7": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faca_da_Sorte",
+      "image": "assets/wiki-b9c0490e9dc7.png"
+    },
+    "wiki-34bfd7544108": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faca_Gato",
+      "image": "assets/wiki-34bfd7544108.png"
+    },
+    "wiki-29bb66e135e5": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Adaga_Diab%C3%B3lica",
+      "image": "assets/wiki-29bb66e135e5.png"
+    },
+    "wiki-5f5e7c8ac73a": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Adaga_Punho_do_Diabo",
+      "image": "assets/wiki-5f5e7c8ac73a.png"
+    },
+    "wiki-7b6178f3b6a8": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Adaga_Sangrenta",
+      "image": "assets/wiki-7b6178f3b6a8.png"
+    },
+    "wiki-954722fb5bad": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faca_Costela",
+      "image": "assets/wiki-954722fb5bad.png"
+    },
+    "wiki-f22822e49b15": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Chakram",
+      "image": "assets/wiki-f22822e49b15.png"
+    },
+    "wiki-173fbd4403f7": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faca_Drag%C3%A3o",
+      "image": "assets/wiki-173fbd4403f7.png"
+    },
+    "wiki-2653021bd0a7": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faca_Rel%C3%A2mpago",
+      "image": "assets/wiki-2653021bd0a7.png"
+    },
+    "wiki-df29bacf1645": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Facas_Siamesas",
+      "image": "assets/wiki-df29bacf1645.png"
+    },
+    "wiki-de5b29e4dc1c": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Chakram_Asa_do_Diabo",
+      "image": "assets/wiki-de5b29e4dc1c.png"
+    },
+    "wiki-ddcc3a10de10": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faca_Cruel",
+      "image": "assets/wiki-ddcc3a10de10.png"
+    },
+    "wiki-2e919467cd62": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/L%C3%A2mina_Cinco_Elementos",
+      "image": "assets/wiki-2e919467cd62.png"
+    },
+    "wiki-17597a954806": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Adaga_Draco-Ru%C3%ADna",
+      "image": "assets/wiki-17597a954806.png"
+    },
+    "wiki-1294fafb6921": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Adaga_do_Zod%C3%ADaco",
+      "image": "assets/wiki-1294fafb6921.png"
+    },
+    "wiki-f6924544c3a1": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Adaga_de_Kyanite",
+      "image": "assets/wiki-f6924544c3a1.png"
+    },
+    "wiki-47f53f1b49d4": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Adaga_da_Serpente",
+      "image": "assets/wiki-47f53f1b49d4.png"
+    },
+    "wiki-c082d4ddd4d5": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Adaga_do_Luar",
+      "image": "assets/wiki-c082d4ddd4d5.png"
+    },
+    "wiki-d015701f48ee": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arco",
+      "image": "assets/wiki-d015701f48ee.png"
+    },
+    "wiki-8e0475c48251": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arco_Longo",
+      "image": "assets/wiki-8e0475c48251.png"
+    },
+    "wiki-4f991de1d21f": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arco_Composto",
+      "image": "assets/wiki-4f991de1d21f.png"
+    },
+    "wiki-8106d62f6be9": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arco_de_Batalha",
+      "image": "assets/wiki-8106d62f6be9.png"
+    },
+    "wiki-f86f0d14a528": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arco_de_Montada",
+      "image": "assets/wiki-f86f0d14a528.png"
+    },
+    "wiki-5d3e81ce1e67": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arco_de_Ca%C3%A7a",
+      "image": "assets/wiki-5d3e81ce1e67.png"
+    },
+    "wiki-017aa8607b92": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arco_de_Arma%C3%A7%C3%A3o",
+      "image": "assets/wiki-017aa8607b92.png"
+    },
+    "wiki-ae4692d26ac1": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arco_de_Cobre",
+      "image": "assets/wiki-ae4692d26ac1.png"
+    },
+    "wiki-e289a8c209ce": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arco_Ru%C3%ADna_Negra",
+      "image": "assets/wiki-e289a8c209ce.png"
+    },
+    "wiki-b97cdf8eb154": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arco_Olho_Rubi",
+      "image": "assets/wiki-b97cdf8eb154.png"
+    },
+    "wiki-22dd09ed8bd4": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arco_Aguilh%C3%A3o",
+      "image": "assets/wiki-22dd09ed8bd4.png"
+    },
+    "wiki-68dbbc8d5ed0": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arco_Corno_de_Touro",
+      "image": "assets/wiki-68dbbc8d5ed0.png"
+    },
+    "wiki-4cf87e9dc52e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arco_do_Unic%C3%B3rnio",
+      "image": "assets/wiki-4cf87e9dc52e.png"
+    },
+    "wiki-7cf6a2e3de22": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arco_Asa_Gigante",
+      "image": "assets/wiki-7cf6a2e3de22.png"
+    },
+    "wiki-afcb62bdd57e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arco_Damasco_Divino",
+      "image": "assets/wiki-afcb62bdd57e.png"
+    },
+    "wiki-7c8021da1b79": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arco_Drag%C3%A3o_Amarelo",
+      "image": "assets/wiki-7c8021da1b79.png"
+    },
+    "wiki-4c159b3389e7": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arco_Drag%C3%A3o_Azul",
+      "image": "assets/wiki-4c159b3389e7.png"
+    },
+    "wiki-072dfec5ddba": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arco_Corvo_Negro",
+      "image": "assets/wiki-072dfec5ddba.png"
+    },
+    "wiki-422b064def57": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arco_Gigante_Diab%C3%B3lico",
+      "image": "assets/wiki-422b064def57.png"
+    },
+    "wiki-56af16e77c89": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arco_de_F%C3%A9nix",
+      "image": "assets/wiki-56af16e77c89.png"
+    },
+    "wiki-04a65d53be24": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arco_Draco-Ru%C3%ADna",
+      "image": "assets/wiki-04a65d53be24.png"
+    },
+    "wiki-e8fde3144baa": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arco_do_Zod%C3%ADaco",
+      "image": "assets/wiki-e8fde3144baa.png"
+    },
+    "wiki-411cbd16d464": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arco_de_Kyanite",
+      "image": "assets/wiki-411cbd16d464.png"
+    },
+    "wiki-32405b4ffa35": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arco_da_Serpente",
+      "image": "assets/wiki-32405b4ffa35.png"
+    },
+    "wiki-94b13a223e78": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arco_do_Luar",
+      "image": "assets/wiki-94b13a223e78.png"
+    },
+    "wiki-75075cbe3d22": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Campainha_de_Cobre",
+      "image": "assets/wiki-75075cbe3d22.png"
+    },
+    "wiki-6b55dd7b3f57": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Campainha_de_Prata",
+      "image": "assets/wiki-6b55dd7b3f57.png"
+    },
+    "wiki-f6ed5ac5e6e0": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Campainha_Dourada",
+      "image": "assets/wiki-f6ed5ac5e6e0.png"
+    },
+    "wiki-ba7957f8f73e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Campainha_Antiga",
+      "image": "assets/wiki-ba7957f8f73e.png"
+    },
+    "wiki-e7ccd0d3f140": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Campainha_de_Jade",
+      "image": "assets/wiki-e7ccd0d3f140.png"
+    },
+    "wiki-1f8786bc494a": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Campainha_da_Fonte",
+      "image": "assets/wiki-1f8786bc494a.png"
+    },
+    "wiki-af4d72f60004": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Campainha_Damasco",
+      "image": "assets/wiki-af4d72f60004.png"
+    },
+    "wiki-9e634e4e9dd9": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Campainha_M%C3%A1gica",
+      "image": "assets/wiki-9e634e4e9dd9.png"
+    },
+    "wiki-55af3769bf83": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Campainha_Libelinha",
+      "image": "assets/wiki-55af3769bf83.png"
+    },
+    "wiki-f22e16c1daea": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Campainha_Louva-A-Deus",
+      "image": "assets/wiki-f22e16c1daea.png"
+    },
+    "wiki-c8851cc154a2": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Campainha_Trov%C3%A3o",
+      "image": "assets/wiki-c8851cc154a2.png"
+    },
+    "wiki-0145968880c8": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Campainha_C%C3%A9u_e_Terra",
+      "image": "assets/wiki-0145968880c8.png"
+    },
+    "wiki-b73f01674451": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Campainha_de_Bambu",
+      "image": "assets/wiki-b73f01674451.png"
+    },
+    "wiki-5e4a37737c61": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Campainha_do_Drag%C3%A3o",
+      "image": "assets/wiki-5e4a37737c61.png"
+    },
+    "wiki-992c2d3ecc0b": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Campainha_Drac%C3%B3nica",
+      "image": "assets/wiki-992c2d3ecc0b.png"
+    },
+    "wiki-0591e3f68b6a": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Campainha_Draco-Ru%C3%ADna",
+      "image": "assets/wiki-0591e3f68b6a.png"
+    },
+    "wiki-970173ee02a1": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Campainha_do_Zod%C3%ADaco",
+      "image": "assets/wiki-970173ee02a1.png"
+    },
+    "wiki-6e0fe412e0d2": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Campainha_de_Kyanite",
+      "image": "assets/wiki-6e0fe412e0d2.png"
+    },
+    "wiki-2d622bba1b9b": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Campainha_da_Serpente",
+      "image": "assets/wiki-2d622bba1b9b.png"
+    },
+    "wiki-df4d9de29d40": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Campainha_do_Luar",
+      "image": "assets/wiki-df4d9de29d40.png"
+    },
+    "wiki-ed8f248db9a2": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Leque",
+      "image": "assets/wiki-ed8f248db9a2.png"
+    },
+    "wiki-cce76b66eed7": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Leque_de_Ferro",
+      "image": "assets/wiki-cce76b66eed7.png"
+    },
+    "wiki-ea3949a8c47c": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Leque_Tigre_Preto",
+      "image": "assets/wiki-ea3949a8c47c.png"
+    },
+    "wiki-f3b727f7d2be": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Leque_Asa_de_Grou",
+      "image": "assets/wiki-f3b727f7d2be.png"
+    },
+    "wiki-fdabaa451733": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Leque_de_Pav%C3%A3o",
+      "image": "assets/wiki-fdabaa451733.png"
+    },
+    "wiki-2fd66a4ed293": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Leque_Aqu%C3%A1tico",
+      "image": "assets/wiki-2fd66a4ed293.png"
+    },
+    "wiki-1e9e4bb69f9f": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Leque_Vento_de_Outono",
+      "image": "assets/wiki-1e9e4bb69f9f.png"
+    },
+    "wiki-93a8acf0c3c5": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Leque_de_Pedra",
+      "image": "assets/wiki-93a8acf0c3c5.png"
+    },
+    "wiki-408367ddd9b5": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Leque_Oce%C3%A2nico",
+      "image": "assets/wiki-408367ddd9b5.png"
+    },
+    "wiki-5eec8bf36906": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Leque_Ferr%C3%A3o",
+      "image": "assets/wiki-5eec8bf36906.png"
+    },
+    "wiki-2f5ff7243bb3": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Leque_de_F%C3%A9nix",
+      "image": "assets/wiki-2f5ff7243bb3.png"
+    },
+    "wiki-6bab090512e9": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Leque_Triplo",
+      "image": "assets/wiki-6bab090512e9.png"
+    },
+    "wiki-a81563c54c7e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Leque_Sobrancelhas",
+      "image": "assets/wiki-a81563c54c7e.png"
+    },
+    "wiki-6922557c9ab3": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Leque_Solar",
+      "image": "assets/wiki-6922557c9ab3.png"
+    },
+    "wiki-f7f224ba3e8b": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Leque_Ave_do_Para%C3%ADso",
+      "image": "assets/wiki-f7f224ba3e8b.png"
+    },
+    "wiki-3cf9ac7ee409": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Leque_da_Salva%C3%A7%C3%A3o",
+      "image": "assets/wiki-3cf9ac7ee409.png"
+    },
+    "wiki-f0b5785aef68": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Leque_Est%C3%A1tico",
+      "image": "assets/wiki-f0b5785aef68.png"
+    },
+    "wiki-3f3ddd89f884": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Leque_do_Dem%C3%B3nio",
+      "image": "assets/wiki-3f3ddd89f884.png"
+    },
+    "wiki-be0e0dae7197": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Leque_Drag%C3%A3o",
+      "image": "assets/wiki-be0e0dae7197.png"
+    },
+    "wiki-b6f048268e19": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Leque_Draco-Ru%C3%ADna",
+      "image": "assets/wiki-b6f048268e19.png"
+    },
+    "wiki-f450259d9b5d": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Leque_do_Zod%C3%ADaco",
+      "image": "assets/wiki-f450259d9b5d.png"
+    },
+    "wiki-758e5810ab4d": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Leque_de_Kyanite",
+      "image": "assets/wiki-758e5810ab4d.png"
+    },
+    "wiki-8e0e069f6e36": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Leque_da_Serpente",
+      "image": "assets/wiki-8e0e069f6e36.png"
+    },
+    "wiki-446ed1a4a83b": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Leque_do_Luar",
+      "image": "assets/wiki-446ed1a4a83b.png"
+    },
+    "wiki-dd0d0b4865bf": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Tocha_de_A%C3%A7o",
+      "image": "assets/wiki-dd0d0b4865bf.png"
+    },
+    "wiki-f350d931325d": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Lan%C3%A7a_F%C3%A9nix",
+      "image": "assets/wiki-f350d931325d.png"
+    },
+    "wiki-39c581708c1a": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Garra_de_Ferro",
+      "image": "assets/wiki-39c581708c1a.png"
+    },
+    "wiki-79ffc628b947": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Garra_de_A%C3%A7o",
+      "image": "assets/wiki-79ffc628b947.png"
+    },
+    "wiki-8a2f8367434b": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Garra_de_Grifo",
+      "image": "assets/wiki-8a2f8367434b.png"
+    },
+    "wiki-bbd56c8eb0f7": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Garra_de_Escaravelho",
+      "image": "assets/wiki-bbd56c8eb0f7.png"
+    },
+    "wiki-e3e1b063e674": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Garra_de_Falc%C3%A3o",
+      "image": "assets/wiki-e3e1b063e674.png"
+    },
+    "wiki-3a0c5abdb549": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Garra_de_Espinhos",
+      "image": "assets/wiki-3a0c5abdb549.png"
+    },
+    "wiki-6e18dee9dad9": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Presa_do_Lobo_Verde",
+      "image": "assets/wiki-6e18dee9dad9.png"
+    },
+    "wiki-89f847154a9a": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Lorde_Drag%C3%A3o",
+      "image": "assets/wiki-89f847154a9a.png"
+    },
+    "wiki-4da75c3626aa": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Garras_Draco-Ru%C3%ADna",
+      "image": "assets/wiki-4da75c3626aa.png"
+    },
+    "wiki-95afa87763fe": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Garra_do_Zod%C3%ADaco",
+      "image": "assets/wiki-95afa87763fe.png"
+    },
+    "wiki-94ee4954ef45": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Garra_de_Kyanite",
+      "image": "assets/wiki-94ee4954ef45.png"
+    },
+    "wiki-ed774242b7ed": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Garra_da_Serpente",
+      "image": "assets/wiki-ed774242b7ed.png"
+    },
+    "wiki-a2db582d7b35": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Garra_do_Luar",
+      "image": "assets/wiki-a2db582d7b35.png"
+    },
+    "wiki-cb0ef6d86e08": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_de_Monge",
+      "image": "assets/wiki-cb0ef6d86e08.png"
+    },
+    "wiki-0d3cb978534c": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_de_Ferro",
+      "image": "assets/wiki-0d3cb978534c.png"
+    },
+    "wiki-57cc3735d74a": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Tigre",
+      "image": "assets/wiki-57cc3735d74a.png"
+    },
+    "wiki-d18be98ee7c7": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Le%C3%A3o",
+      "image": "assets/wiki-d18be98ee7c7.png"
+    },
+    "wiki-ff3ac4a7a2da": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Mortal",
+      "image": "assets/wiki-ff3ac4a7a2da.png"
+    },
+    "wiki-d2abac3d7973": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Drag%C3%A3o",
+      "image": "assets/wiki-d2abac3d7973.png"
+    },
+    "wiki-71e66bb23968": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Escamas_Azuis",
+      "image": "assets/wiki-71e66bb23968.png"
+    },
+    "wiki-f4dd54630c73": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_de_Brigantina",
+      "image": "assets/wiki-f4dd54630c73.png"
+    },
+    "wiki-72abba57a570": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Deus_Drag%C3%A3o",
+      "image": "assets/wiki-72abba57a570.png"
+    },
+    "wiki-7eff1b44f84a": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_de_A%C3%A7o_Preto",
+      "image": "assets/wiki-7eff1b44f84a.png"
+    },
+    "wiki-e8a1ca053983": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Drag%C3%A3o_Azul",
+      "image": "assets/wiki-e8a1ca053983.png"
+    },
+    "wiki-7ff26df26f92": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_do_Diabo",
+      "image": "assets/wiki-7ff26df26f92.png"
+    },
+    "wiki-b12679048d47": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Draco-Ru%C3%ADna",
+      "image": "assets/wiki-b12679048d47.png"
+    },
+    "wiki-47fd8a66b180": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_do_Zod%C3%ADaco",
+      "image": "assets/wiki-47fd8a66b180.png"
+    },
+    "wiki-e8e91a720ea1": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Aurora",
+      "image": "assets/wiki-e8e91a720ea1.png"
+    },
+    "wiki-9e5289784212": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Osso_Cet%C3%A1ceo",
+      "image": "assets/wiki-9e5289784212.png"
+    },
+    "wiki-c1d3a706254e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Magma_Ardente",
+      "image": "assets/wiki-c1d3a706254e.png"
+    },
+    "wiki-bfea0c1b1b88": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_das_Cinzas",
+      "image": "assets/wiki-bfea0c1b1b88.png"
+    },
+    "wiki-402444853250": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Kyanite",
+      "image": "assets/wiki-402444853250.png"
+    },
+    "wiki-32983092b2ff": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Casaco_da_Serpente",
+      "image": "assets/wiki-32983092b2ff.png"
+    },
+    "wiki-0634c9359ef7": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Rubi",
+      "image": "assets/wiki-0634c9359ef7.png"
+    },
+    "wiki-059821354ef2": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Hwang",
+      "image": "assets/wiki-059821354ef2.png"
+    },
+    "wiki-192db1d77048": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Elmo_Tradicional",
+      "image": "assets/wiki-192db1d77048.png"
+    },
+    "wiki-43c6071a3140": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Elmo_de_Ferro",
+      "image": "assets/wiki-43c6071a3140.png"
+    },
+    "wiki-eae33be9e463": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Elmo_M%C3%A1scara_Fantasma",
+      "image": "assets/wiki-eae33be9e463.png"
+    },
+    "wiki-b26c3e73c492": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/M%C3%A1scara_de_Gladiador",
+      "image": "assets/wiki-b26c3e73c492.png"
+    },
+    "wiki-61b063c01435": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Elmo_do_Condest%C3%A1vel",
+      "image": "assets/wiki-61b063c01435.png"
+    },
+    "wiki-f3ef97b12b8b": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Elmo_Draco-Ru%C3%ADna",
+      "image": "assets/wiki-f3ef97b12b8b.png"
+    },
+    "wiki-a14b21c1843b": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Elmo_A%C3%A7o_de_Drag%C3%A3o",
+      "image": "assets/wiki-a14b21c1843b.png"
+    },
+    "wiki-a99e2a1f2929": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Elmo_de_A%C3%A7o_Dragontino",
+      "image": "assets/wiki-a99e2a1f2929.png"
+    },
+    "wiki-b42912727a06": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Capuz_de_Serpente",
+      "image": "assets/wiki-b42912727a06.png"
+    },
+    "wiki-ef41e013f952": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Requiem",
+      "image": "assets/wiki-ef41e013f952.png"
+    },
+    "wiki-ac9b63418b1d": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Tempestade",
+      "image": "assets/wiki-ac9b63418b1d.png"
+    },
+    "wiki-9ddd780af233": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_da_Desgra%C3%A7a",
+      "image": "assets/wiki-9ddd780af233.png"
+    },
+    "wiki-f7c5ac1e9d1e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Fantasma",
+      "image": "assets/wiki-f7c5ac1e9d1e.png"
+    },
+    "wiki-4b6f531c90c1": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Yin_Yang",
+      "image": "assets/wiki-4b6f531c90c1.png"
+    },
+    "wiki-083fc49ea89e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_M%C3%ADstica",
+      "image": "assets/wiki-083fc49ea89e.png"
+    },
+    "wiki-08f0aa50182e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_da_N%C3%A9voa",
+      "image": "assets/wiki-08f0aa50182e.png"
+    },
+    "wiki-dede5a3e5450": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Cara_Fantasma",
+      "image": "assets/wiki-dede5a3e5450.png"
+    },
+    "wiki-317c88c9c331": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_de_Esp%C3%ADrito",
+      "image": "assets/wiki-317c88c9c331.png"
+    },
+    "wiki-15cf78afb2e7": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Magia_Negra",
+      "image": "assets/wiki-15cf78afb2e7.png"
+    },
+    "wiki-9bc6e1639a1c": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Aura_Negra",
+      "image": "assets/wiki-9bc6e1639a1c.png"
+    },
+    "wiki-c57f90752271": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_de_Ossos",
+      "image": "assets/wiki-c57f90752271.png"
+    },
+    "wiki-800feb0f685b": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Draco-Magia",
+      "image": "assets/wiki-800feb0f685b.png"
+    },
+    "wiki-2fdce3842900": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Placa_Zod%C3%ADaco",
+      "image": "assets/wiki-2fdce3842900.png"
+    },
+    "wiki-b03da5ade31b": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Luz_Fantasma",
+      "image": "assets/wiki-b03da5ade31b.png"
+    },
+    "wiki-4e2bf623b6f1": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Ser-Infernal",
+      "image": "assets/wiki-4e2bf623b6f1.png"
+    },
+    "wiki-93b8a5c1590a": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Fogo_Negro",
+      "image": "assets/wiki-93b8a5c1590a.png"
+    },
+    "wiki-a7699f511183": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Placa_Kyanite",
+      "image": "assets/wiki-a7699f511183.png"
+    },
+    "wiki-df9f36a0b38a": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Casaco_Serpente_Mal",
+      "image": "assets/wiki-df9f36a0b38a.png"
+    },
+    "wiki-cb227952292f": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Placa_Rubi",
+      "image": "assets/wiki-cb227952292f.png"
+    },
+    "wiki-b10d772be533": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Zin-Hwang",
+      "image": "assets/wiki-b10d772be533.png"
+    },
+    "wiki-5f32fadb5195": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Capacete_Sangrento",
+      "image": "assets/wiki-5f32fadb5195.png"
+    },
+    "wiki-95eccdbb2fd1": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Capacete_do_Esc%C3%A1rnio",
+      "image": "assets/wiki-95eccdbb2fd1.png"
+    },
+    "wiki-d698cb339440": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Capacete_Castelo",
+      "image": "assets/wiki-d698cb339440.png"
+    },
+    "wiki-77f685d7c1cb": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Capacete_Demon%C3%ADaco",
+      "image": "assets/wiki-77f685d7c1cb.png"
+    },
+    "wiki-e4be11dbeeb0": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Elmo_M%C3%A1gico",
+      "image": "assets/wiki-e4be11dbeeb0.png"
+    },
+    "wiki-b648a79ae00a": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Elmo_Draco-Magia",
+      "image": "assets/wiki-b648a79ae00a.png"
+    },
+    "wiki-a39e501821a3": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Elmo_Escama_Dragontina",
+      "image": "assets/wiki-a39e501821a3.png"
+    },
+    "wiki-92f842baeebb": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Quimono_Azul",
+      "image": "assets/wiki-92f842baeebb.png"
+    },
+    "wiki-bbde30a3869c": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Quimono_Marfim",
+      "image": "assets/wiki-bbde30a3869c.png"
+    },
+    "wiki-5a3b4b31649c": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Quimono_Carmim",
+      "image": "assets/wiki-5a3b4b31649c.png"
+    },
+    "wiki-0366e6cd8e1c": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Quimono_Formiga_Rubi",
+      "image": "assets/wiki-0366e6cd8e1c.png"
+    },
+    "wiki-e74343d8eae3": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Quimono_Formiga_Le%C3%A3o",
+      "image": "assets/wiki-e74343d8eae3.png"
+    },
+    "wiki-3a25121f936e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Quimono_do_Assassino",
+      "image": "assets/wiki-3a25121f936e.png"
+    },
+    "wiki-1669ec9cb38d": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Quimono_Jovem_Drag%C3%A3o",
+      "image": "assets/wiki-1669ec9cb38d.png"
+    },
+    "wiki-9446b5b0c2e8": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Quimono_Vento_Mortal",
+      "image": "assets/wiki-9446b5b0c2e8.png"
+    },
+    "wiki-015aa830b5bc": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Quimono_F%C3%BAchsia",
+      "image": "assets/wiki-015aa830b5bc.png"
+    },
+    "wiki-5a30386c942d": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Quimono_Vento_Preto",
+      "image": "assets/wiki-5a30386c942d.png"
+    },
+    "wiki-d1b71ebe2b89": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Quimono_Drag%C3%A3o_Azul",
+      "image": "assets/wiki-d1b71ebe2b89.png"
+    },
+    "wiki-6092a434bc88": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Quimono_Lorde_Drag%C3%A3o",
+      "image": "assets/wiki-6092a434bc88.png"
+    },
+    "wiki-f638cb7c88f5": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Draco-Vento",
+      "image": "assets/wiki-f638cb7c88f5.png"
+    },
+    "wiki-4cd051c3cfcf": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Quimono_do_Zod%C3%ADaco",
+      "image": "assets/wiki-4cd051c3cfcf.png"
+    },
+    "wiki-3d437c3eac4f": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Quimono_de_Emboscada",
+      "image": "assets/wiki-3d437c3eac4f.png"
+    },
+    "wiki-9b3ec54d4ac7": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Quimono_da_Metamorfose",
+      "image": "assets/wiki-9b3ec54d4ac7.png"
+    },
+    "wiki-de4af655d22a": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Quimono_Lua_Sangrenta",
+      "image": "assets/wiki-de4af655d22a.png"
+    },
+    "wiki-3ad105444f05": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Quimono_Noite_da_Morte",
+      "image": "assets/wiki-3ad105444f05.png"
+    },
+    "wiki-f3e203a8e81e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Quimono_de_Kyanite",
+      "image": "assets/wiki-f3e203a8e81e.png"
+    },
+    "wiki-71e1029b545e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Colete_da_Serpente",
+      "image": "assets/wiki-71e1029b545e.png"
+    },
+    "wiki-938e564d4955": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Quimono_Rubi",
+      "image": "assets/wiki-938e564d4955.png"
+    },
+    "wiki-90149491920a": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Hwang_Vermelha",
+      "image": "assets/wiki-90149491920a.png"
+    },
+    "wiki-2aa6032a06cf": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Capuz_em_Pele",
+      "image": "assets/wiki-2aa6032a06cf.png"
+    },
+    "wiki-68e2b504174b": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Capuz_de_Correntes",
+      "image": "assets/wiki-68e2b504174b.png"
+    },
+    "wiki-ce3643b4dd1e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Capuz_de_A%C3%A7o",
+      "image": "assets/wiki-ce3643b4dd1e.png"
+    },
+    "wiki-916dd0f0541f": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Capuz_do_Orc",
+      "image": "assets/wiki-916dd0f0541f.png"
+    },
+    "wiki-e0b77ed73a7d": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Capuz_da_Aranha",
+      "image": "assets/wiki-e0b77ed73a7d.png"
+    },
+    "wiki-398602e2b81e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Elmo_Draco-Tormenta",
+      "image": "assets/wiki-398602e2b81e.png"
+    },
+    "wiki-6b06b05ee678": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Capuz_do_Drag%C3%A3o",
+      "image": "assets/wiki-6b06b05ee678.png"
+    },
+    "wiki-b65f9a69ea61": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Capuz_Dragontino",
+      "image": "assets/wiki-b65f9a69ea61.png"
+    },
+    "wiki-67db20e388ba": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Robe_P%C3%BArpura",
+      "image": "assets/wiki-67db20e388ba.png"
+    },
+    "wiki-9ff5c6cc04f3": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Robe_Turquesa",
+      "image": "assets/wiki-9ff5c6cc04f3.png"
+    },
+    "wiki-9f33db61d83e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Robe_Cor-de-Rosa",
+      "image": "assets/wiki-9f33db61d83e.png"
+    },
+    "wiki-5e21ec37e1de": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Robe_Amoroso",
+      "image": "assets/wiki-5e21ec37e1de.png"
+    },
+    "wiki-5bf25fbcc2e3": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Robe_do_C%C3%A9u_Ocidental",
+      "image": "assets/wiki-5bf25fbcc2e3.png"
+    },
+    "wiki-19408483a382": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Robe_Solar",
+      "image": "assets/wiki-19408483a382.png"
+    },
+    "wiki-3db0342379cd": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Robe_da_Moralidade",
+      "image": "assets/wiki-3db0342379cd.png"
+    },
+    "wiki-4e7e6a0157a6": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Robe_Gato_Laranja",
+      "image": "assets/wiki-4e7e6a0157a6.png"
+    },
+    "wiki-c72dc20c07b6": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Robe_Baronesa",
+      "image": "assets/wiki-c72dc20c07b6.png"
+    },
+    "wiki-28222a219ba8": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Robe_Preto",
+      "image": "assets/wiki-28222a219ba8.png"
+    },
+    "wiki-403497f6b8ca": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Robe_do_Drag%C3%A3o",
+      "image": "assets/wiki-403497f6b8ca.png"
+    },
+    "wiki-2f17e6f2e062": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Roupas_Douradas",
+      "image": "assets/wiki-2f17e6f2e062.png"
+    },
+    "wiki-7a4b6a4e5cce": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Draco-Honra",
+      "image": "assets/wiki-7a4b6a4e5cce.png"
+    },
+    "wiki-c234927346cd": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Robe_do_Zod%C3%ADaco",
+      "image": "assets/wiki-c234927346cd.png"
+    },
+    "wiki-44433592daa6": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Robe_da_F%C3%A9",
+      "image": "assets/wiki-44433592daa6.png"
+    },
+    "wiki-5df65d60304c": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Robe_da_Harmonia",
+      "image": "assets/wiki-5df65d60304c.png"
+    },
+    "wiki-dae5b92de0ec": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Robe_do_Fogo",
+      "image": "assets/wiki-dae5b92de0ec.png"
+    },
+    "wiki-77231cae6072": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Robe_da_Lua",
+      "image": "assets/wiki-77231cae6072.png"
+    },
+    "wiki-ad1ac4b2c565": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Robe_Kyanite",
+      "image": "assets/wiki-ad1ac4b2c565.png"
+    },
+    "wiki-09ccec72b800": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Casaco_Serpente_Pura",
+      "image": "assets/wiki-09ccec72b800.png"
+    },
+    "wiki-f2d1fed1aa52": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Robe_Rubi",
+      "image": "assets/wiki-f2d1fed1aa52.png"
+    },
+    "wiki-9bbe5798a8f4": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Sang-Hwang",
+      "image": "assets/wiki-9bbe5798a8f4.png"
+    },
+    "wiki-a10a3fe56f83": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Chap%C3%A9u_de_Monge",
+      "image": "assets/wiki-a10a3fe56f83.png"
+    },
+    "wiki-29424883334b": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Chap%C3%A9u_de_F%C3%A9nix",
+      "image": "assets/wiki-29424883334b.png"
+    },
+    "wiki-7f3c6bdf2d59": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Chap%C3%A9u_da_Luz_do_Sol",
+      "image": "assets/wiki-7f3c6bdf2d59.png"
+    },
+    "wiki-0bcf82dd512a": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Chap%C3%A9u_do_Cardeal",
+      "image": "assets/wiki-0bcf82dd512a.png"
+    },
+    "wiki-8193d71ed5c0": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Chap%C3%A9u_das_Almas",
+      "image": "assets/wiki-8193d71ed5c0.png"
+    },
+    "wiki-e4966a917a0b": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Elmo_Draco-Honra",
+      "image": "assets/wiki-e4966a917a0b.png"
+    },
+    "wiki-5148b5bcebbf": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Chap%C3%A9u_do_Drag%C3%A3o",
+      "image": "assets/wiki-5148b5bcebbf.png"
+    },
+    "wiki-68a39fd63396": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Chap%C3%A9u_Dragontino",
+      "image": "assets/wiki-68a39fd63396.png"
+    },
+    "wiki-02870ed01392": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Vento_Divino",
+      "image": "assets/wiki-02870ed01392.png"
+    },
+    "wiki-20fca18ab4a9": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Furac%C3%A3o",
+      "image": "assets/wiki-20fca18ab4a9.png"
+    },
+    "wiki-2f580e84a6ba": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_de_Malaquite",
+      "image": "assets/wiki-2f580e84a6ba.png"
+    },
+    "wiki-ba20f383af46": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_da_Tormenta",
+      "image": "assets/wiki-ba20f383af46.png"
+    },
+    "wiki-ed6b7e57746f": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_de_Bronze",
+      "image": "assets/wiki-ed6b7e57746f.png"
+    },
+    "wiki-b7ca426d8a1a": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_de_Trasgo",
+      "image": "assets/wiki-b7ca426d8a1a.png"
+    },
+    "wiki-412905fe5340": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_de_Firellium",
+      "image": "assets/wiki-412905fe5340.png"
+    },
+    "wiki-0c6bbdad8df6": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Erva-Moura",
+      "image": "assets/wiki-0c6bbdad8df6.png"
+    },
+    "wiki-3df12a833583": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_de_Patrulha",
+      "image": "assets/wiki-3df12a833583.png"
+    },
+    "wiki-69bb7fb6ea85": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_de_General",
+      "image": "assets/wiki-69bb7fb6ea85.png"
+    },
+    "wiki-69c8590fa5bd": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Draco-Astral",
+      "image": "assets/wiki-69c8590fa5bd.png"
+    },
+    "wiki-37a0842f18a3": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arn%C3%AAs_do_Zod%C3%ADaco",
+      "image": "assets/wiki-37a0842f18a3.png"
+    },
+    "wiki-96c2ddcc28c7": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Luta_Sombria",
+      "image": "assets/wiki-96c2ddcc28c7.png"
+    },
+    "wiki-1f1ad075824a": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Placa_Lunar",
+      "image": "assets/wiki-1f1ad075824a.png"
+    },
+    "wiki-80a9d96943aa": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Placa_%C3%81gata",
+      "image": "assets/wiki-80a9d96943aa.png"
+    },
+    "wiki-90d158d58b8d": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Placa_%C3%93nix",
+      "image": "assets/wiki-90d158d58b8d.png"
+    },
+    "wiki-1fac8dc2d8ae": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arn%C3%AAs_de_Kyanite",
+      "image": "assets/wiki-1fac8dc2d8ae.png"
+    },
+    "wiki-27f255de12ea": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Casaco_Serpen._Divina",
+      "image": "assets/wiki-27f255de12ea.png"
+    },
+    "wiki-3dfe62e9541e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Arn%C3%AAs_Rubi",
+      "image": "assets/wiki-3dfe62e9541e.png"
+    },
+    "wiki-157176a26374": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Elmo_Esqueleto",
+      "image": "assets/wiki-157176a26374.png"
+    },
+    "wiki-eec264e3d6e3": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Elmo_Tecido_Negro",
+      "image": "assets/wiki-eec264e3d6e3.png"
+    },
+    "wiki-570970e9bd29": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Elmo_Trov%C3%A3o",
+      "image": "assets/wiki-570970e9bd29.png"
+    },
+    "wiki-db5910b2cbb8": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Elmo_do_Dom_Divino",
+      "image": "assets/wiki-db5910b2cbb8.png"
+    },
+    "wiki-42ec6ba4c852": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Elmo_de_Madeira_Verde",
+      "image": "assets/wiki-42ec6ba4c852.png"
+    },
+    "wiki-03b822b35f53": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Elmo_Draco-Astral",
+      "image": "assets/wiki-03b822b35f53.png"
+    },
+    "wiki-df02246a7370": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Elmo_Corno_do_Drag%C3%A3o",
+      "image": "assets/wiki-df02246a7370.png"
+    },
+    "wiki-7a61d71a4252": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Elmo_Corno_Dragontino",
+      "image": "assets/wiki-7a61d71a4252.png"
+    },
+    "wiki-59f69bd2ebbf": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_Madeira",
+      "image": "assets/wiki-59f69bd2ebbf.png"
+    },
+    "wiki-6c0bcdf03b5c": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_Cobre",
+      "image": "assets/wiki-6c0bcdf03b5c.png"
+    },
+    "wiki-d09cfd05e19a": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_Prata",
+      "image": "assets/wiki-d09cfd05e19a.png"
+    },
+    "wiki-d8c1f9c41420": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_Ouro",
+      "image": "assets/wiki-d8c1f9c41420.png"
+    },
+    "wiki-6690dd81aa38": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_Jade",
+      "image": "assets/wiki-6690dd81aa38.png"
+    },
+    "wiki-40ff69a12369": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_%C3%89bano",
+      "image": "assets/wiki-40ff69a12369.png"
+    },
+    "wiki-4f73d8ebb17c": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_P%C3%A9rola",
+      "image": "assets/wiki-4f73d8ebb17c.png"
+    },
+    "wiki-58f936497c2a": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_Platina",
+      "image": "assets/wiki-58f936497c2a.png"
+    },
+    "wiki-0bd01423c6c8": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_Cristal",
+      "image": "assets/wiki-0bd01423c6c8.png"
+    },
+    "wiki-bd1a1998c77e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_Ametista",
+      "image": "assets/wiki-bd1a1998c77e.png"
+    },
+    "wiki-9f702fbfe554": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_Azurite",
+      "image": "assets/wiki-9f702fbfe554.png"
+    },
+    "wiki-3f2e74c73f50": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_Rubi",
+      "image": "assets/wiki-3f2e74c73f50.png"
+    },
+    "wiki-01ec7731226c": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_Granada",
+      "image": "assets/wiki-01ec7731226c.png"
+    },
+    "wiki-e8ddb9b98ea8": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_Lazuli",
+      "image": "assets/wiki-e8ddb9b98ea8.png"
+    },
+    "wiki-85d134559680": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_Jadite_N%C3%A9voa",
+      "image": "assets/wiki-85d134559680.png"
+    },
+    "wiki-5ee389a40cb3": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_Jadite_do_Sol",
+      "image": "assets/wiki-5ee389a40cb3.png"
+    },
+    "wiki-c0eace9832c6": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_Jadite_Negra",
+      "image": "assets/wiki-c0eace9832c6.png"
+    },
+    "wiki-b0b5a0e4856e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_Jadite_de_Fumo",
+      "image": "assets/wiki-b0b5a0e4856e.png"
+    },
+    "wiki-4d49fabd652a": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Madeira",
+      "image": "assets/wiki-4d49fabd652a.png"
+    },
+    "wiki-eba04bfc1c1c": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Cobre",
+      "image": "assets/wiki-eba04bfc1c1c.png"
+    },
+    "wiki-04f0dcff72ea": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Prata",
+      "image": "assets/wiki-04f0dcff72ea.png"
+    },
+    "wiki-04582b20e5fa": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Ouro",
+      "image": "assets/wiki-04582b20e5fa.png"
+    },
+    "wiki-bb3e8d2bf0e3": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Jade",
+      "image": "assets/wiki-bb3e8d2bf0e3.png"
+    },
+    "wiki-b2e90ed08c1c": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_%C3%89bano",
+      "image": "assets/wiki-b2e90ed08c1c.png"
+    },
+    "wiki-26438ca1448e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_P%C3%A9rolas",
+      "image": "assets/wiki-26438ca1448e.png"
+    },
+    "wiki-feb063b6b6f1": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Platina",
+      "image": "assets/wiki-feb063b6b6f1.png"
+    },
+    "wiki-003b58117e80": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Cristal",
+      "image": "assets/wiki-003b58117e80.png"
+    },
+    "wiki-7bfaf3040929": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Ametista",
+      "image": "assets/wiki-7bfaf3040929.png"
+    },
+    "wiki-61783f36c428": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Azurite",
+      "image": "assets/wiki-61783f36c428.png"
+    },
+    "wiki-8956f6311b0d": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Rubi",
+      "image": "assets/wiki-8956f6311b0d.png"
+    },
+    "wiki-bf1dc37e0912": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Granada",
+      "image": "assets/wiki-bf1dc37e0912.png"
+    },
+    "wiki-7f1cf3f3f15d": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Esmeralda",
+      "image": "assets/wiki-7f1cf3f3f15d.png"
+    },
+    "wiki-270f8df4b408": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Turmalina",
+      "image": "assets/wiki-270f8df4b408.png"
+    },
+    "wiki-bb1e6f447e22": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_Lazuli",
+      "image": "assets/wiki-bb1e6f447e22.png"
+    },
+    "wiki-b8dbe9631471": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_Jadite_da_N%C3%A9voa",
+      "image": "assets/wiki-b8dbe9631471.png"
+    },
+    "wiki-48fc61a0f894": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_Jadite_do_Sol",
+      "image": "assets/wiki-48fc61a0f894.png"
+    },
+    "wiki-b9a31a2d8d6e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_Jadite_Negra",
+      "image": "assets/wiki-b9a31a2d8d6e.png"
+    },
+    "wiki-9a7797a2a14f": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_Jadite_de_Fumo",
+      "image": "assets/wiki-9a7797a2a14f.png"
+    },
+    "wiki-2a903ba5fb84": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Madeira",
+      "image": "assets/wiki-2a903ba5fb84.png"
+    },
+    "wiki-ce73fda5e837": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Cobre",
+      "image": "assets/wiki-ce73fda5e837.png"
+    },
+    "wiki-d49a9fbd718d": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Prata",
+      "image": "assets/wiki-d49a9fbd718d.png"
+    },
+    "wiki-f914d58af763": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Ouro",
+      "image": "assets/wiki-f914d58af763.png"
+    },
+    "wiki-54ad4a84fb0d": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Jade",
+      "image": "assets/wiki-54ad4a84fb0d.png"
+    },
+    "wiki-6b3bcda9e4fb": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_%C3%89bano",
+      "image": "assets/wiki-6b3bcda9e4fb.png"
+    },
+    "wiki-c84e7a0c4ee0": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_P%C3%A9rolas",
+      "image": "assets/wiki-c84e7a0c4ee0.png"
+    },
+    "wiki-6f86f729a119": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Platina",
+      "image": "assets/wiki-6f86f729a119.png"
+    },
+    "wiki-4771ca4fe60b": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Cristal",
+      "image": "assets/wiki-4771ca4fe60b.png"
+    },
+    "wiki-85400fe125d9": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Ametista",
+      "image": "assets/wiki-85400fe125d9.png"
+    },
+    "wiki-1dcc5f70d0a7": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Azurite",
+      "image": "assets/wiki-1dcc5f70d0a7.png"
+    },
+    "wiki-9f14b17fc67b": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Rubi",
+      "image": "assets/wiki-9f14b17fc67b.png"
+    },
+    "wiki-5d5f41c440d5": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Granada",
+      "image": "assets/wiki-5d5f41c440d5.png"
+    },
+    "wiki-a0ea08e391dc": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Turmalina",
+      "image": "assets/wiki-a0ea08e391dc.png"
+    },
+    "wiki-01415422a5b9": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Esmeralda",
+      "image": "assets/wiki-01415422a5b9.png"
+    },
+    "wiki-6d4a7405c2e8": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_Lazuli",
+      "image": "assets/wiki-6d4a7405c2e8.png"
+    },
+    "wiki-c42c731e76d5": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_Jadite_N%C3%A9voa",
+      "image": "assets/wiki-c42c731e76d5.png"
+    },
+    "wiki-6e9a540b46f2": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_Jadite_do_Sol",
+      "image": "assets/wiki-6e9a540b46f2.png"
+    },
+    "wiki-198b3753a127": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_Jadite_Negra",
+      "image": "assets/wiki-198b3753a127.png"
+    },
+    "wiki-21a90515d969": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_Jadite_Fumo",
+      "image": "assets/wiki-21a90515d969.png"
+    },
+    "wiki-283c18c9c2d2": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Escudo_de_Batalha",
+      "image": "assets/wiki-283c18c9c2d2.png"
+    },
+    "wiki-e917f2e02894": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Escudo_Pentagonal",
+      "image": "assets/wiki-e917f2e02894.png"
+    },
+    "wiki-9eb5bee44854": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Escudo_Redondo_Preto",
+      "image": "assets/wiki-9eb5bee44854.png"
+    },
+    "wiki-b1780542f67c": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Escudo_Falc%C3%A3o",
+      "image": "assets/wiki-b1780542f67c.png"
+    },
+    "wiki-677513e24ac1": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Escudo_Le%C3%A3o_Angular",
+      "image": "assets/wiki-677513e24ac1.png"
+    },
+    "wiki-6f26798bb498": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Escudo_Tigre_Monge",
+      "image": "assets/wiki-6f26798bb498.png"
+    },
+    "wiki-2d9bd883ae96": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Escudo_Escamas_Drag%C3%A3o",
+      "image": "assets/wiki-2d9bd883ae96.png"
+    },
+    "wiki-dbf8b9f91410": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Escudo_Tr%C3%AAs_Imp%C3%A9rios",
+      "image": "assets/wiki-dbf8b9f91410.png"
+    },
+    "wiki-02de75ab7cea": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Escudo_da_Condena%C3%A7%C3%A3o",
+      "image": "assets/wiki-02de75ab7cea.png"
+    },
+    "wiki-365314156dc4": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Sapatos_em_Pele",
+      "image": "assets/wiki-365314156dc4.png"
+    },
+    "wiki-4f1bac31c3fe": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Sapatos_de_Bambu",
+      "image": "assets/wiki-4f1bac31c3fe.png"
+    },
+    "wiki-0a67882217dd": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Sapatos_em_Madeira",
+      "image": "assets/wiki-0a67882217dd.png"
+    },
+    "wiki-b6e6ac98faad": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Sapatos_Fita_d%27Ouro",
+      "image": "assets/wiki-b6e6ac98faad.png"
+    },
+    "wiki-2a34f32e90da": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Botas_em_Pele",
+      "image": "assets/wiki-2a34f32e90da.png"
+    },
+    "wiki-8cbaa4013ba7": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Sapatos_Dourados",
+      "image": "assets/wiki-8cbaa4013ba7.png"
+    },
+    "wiki-f4af51207ea8": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Botas_em_Bronze",
+      "image": "assets/wiki-f4af51207ea8.png"
+    },
+    "wiki-7818857c2a67": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Sapatos_em_Jade",
+      "image": "assets/wiki-7818857c2a67.png"
+    },
+    "wiki-8c48c8c57b1a": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Sapatos_Est%C3%A1ticos",
+      "image": "assets/wiki-8c48c8c57b1a.png"
+    },
+    "wiki-21a2c63f07d5": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Botas_Nimbus",
+      "image": "assets/wiki-21a2c63f07d5.png"
+    },
+    "wiki-1ebb37663d7e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Sapatos_F%C3%A9nix",
+      "image": "assets/wiki-1ebb37663d7e.png"
+    },
+    "wiki-751cc9aea60a": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Sapatos_Ave_Ardente",
+      "image": "assets/wiki-751cc9aea60a.png"
+    },
+    "wiki-19122922d77d": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Sapatos_da_Euforia",
+      "image": "assets/wiki-19122922d77d.png"
+    },
+    "wiki-12f07625be6b": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Botas_da_Serpente",
+      "image": "assets/wiki-12f07625be6b.png"
+    },
+    "wiki-f34d2dc50d30": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Sapatos_do_Kirin",
+      "image": "assets/wiki-f34d2dc50d30.png"
+    },
+    "wiki-664f5971cf9d": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Sapatos_do_Imoogi",
+      "image": "assets/wiki-664f5971cf9d.png"
+    },
+    "wiki-9e8db5a14d75": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Sapatos_Oce%C3%A2nicos",
+      "image": "assets/wiki-9e8db5a14d75.png"
+    },
+    "wiki-a4f5044f837a": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Botas_do_Luar",
+      "image": "assets/wiki-a4f5044f837a.png"
+    },
+    "wiki-1ceee87c3249": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Cinto_de_Linho",
+      "image": "assets/wiki-1ceee87c3249.png"
+    },
+    "wiki-69565c087cd7": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Cinto_de_Couro",
+      "image": "assets/wiki-69565c087cd7.png"
+    },
+    "wiki-8999bc9a5ab7": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Cinto_Magn%C3%ADfico",
+      "image": "assets/wiki-8999bc9a5ab7.png"
+    },
+    "wiki-1b70e540879b": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Cinto_da_Sabedoria",
+      "image": "assets/wiki-1b70e540879b.png"
+    },
+    "wiki-d2999b5d630d": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Cinto_do_Rei",
+      "image": "assets/wiki-d2999b5d630d.png"
+    },
+    "wiki-dcccead71cb3": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Cinto_R%C3%BAnico",
+      "image": "assets/wiki-dcccead71cb3.png"
+    },
+    "wiki-cd7c9f3e253b": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Cinto_da_Sombra",
+      "image": "assets/wiki-cd7c9f3e253b.png"
+    },
+    "wiki-b018dd83b6a3": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Cinto_do_Grande_Urso",
+      "image": "assets/wiki-b018dd83b6a3.png"
+    },
+    "wiki-235e8ba74b3d": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Cinto_de_Turmalina",
+      "image": "assets/wiki-235e8ba74b3d.png"
+    },
+    "wiki-cbe7b7f168c6": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Cinto_de_Tit%C3%A2nio",
+      "image": "assets/wiki-cbe7b7f168c6.png"
+    },
+    "wiki-8626f7fd2494": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Talism%C3%A3_de_Fogo",
+      "image": "assets/wiki-8626f7fd2494.png"
+    },
+    "wiki-d5043124adad": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Talism%C3%A3_do_Trov%C3%A3o",
+      "image": "assets/wiki-d5043124adad.png"
+    },
+    "wiki-b86fd4f2e06b": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Talism%C3%A3_do_Gelo",
+      "image": "assets/wiki-b86fd4f2e06b.png"
+    },
+    "wiki-995652f303c6": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Talism%C3%A3_do_Vento",
+      "image": "assets/wiki-995652f303c6.png"
+    },
+    "wiki-dd50b37a7e84": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Talism%C3%A3_das_Trevas",
+      "image": "assets/wiki-dd50b37a7e84.png"
+    },
+    "wiki-e48ab06c2c64": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Talism%C3%A3_da_Vontade_INT",
+      "image": "assets/wiki-e48ab06c2c64.png"
+    },
+    "wiki-9ef85a82b608": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Talism%C3%A3_da_Vontade_FR%C3%87",
+      "image": "assets/wiki-9ef85a82b608.png"
+    },
+    "wiki-dd46778dcab5": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Talism%C3%A3_da_Vontade_VIT",
+      "image": "assets/wiki-dd46778dcab5.png"
+    },
+    "wiki-4b8df1df59d1": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Talism%C3%A3_da_Vontade_RES",
+      "image": "assets/wiki-4b8df1df59d1.png"
+    },
+    "wiki-1fbbb7488b14": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Talism%C3%A3_Misterioso",
+      "image": "assets/wiki-1fbbb7488b14.png"
+    },
+    "zodiac-blade": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/L%C3%A2mina_do_Zod%C3%ADaco",
+      "image": "assets/zodiac-blade.png"
+    },
+    "poison-sword": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Espada_Venenosa",
+      "image": "assets/poison-sword.png"
+    },
+    "devil-armor": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Armadura_Pata_do_Diabo",
+      "image": "assets/devil-armor.png"
+    },
+    "titan-shield": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Escudo_Tit%C3%A3",
+      "image": "assets/titan-shield.png"
+    },
+    "fire-shoes": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Sapatos_de_Fogo",
+      "image": "assets/fire-shoes.png"
+    },
+    "soul-belt": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Cinto_das_Almas",
+      "image": "assets/soul-belt.png"
+    },
+    "emerald-earrings": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_Esmeralda",
+      "image": "assets/emerald-earrings.png"
+    },
+    "dragon-helmet": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Elmo_Escama_de_Drag%C3%A3o",
+      "image": "assets/dragon-helmet.png"
+    },
+    "sapphire-bracelet": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Safira",
+      "image": "assets/sapphire-bracelet.png"
+    },
+    "sapphire-necklace": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Safira",
+      "image": "assets/sapphire-necklace.png"
+    },
+    "sapphire-earrings": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_Safira",
+      "image": "assets/sapphire-earrings.png"
+    },
+    "earth-talisman": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Talism%C3%A3_da_Terra",
+      "image": "assets/earth-talisman.png"
+    },
+    "wiki-9a305b0f09f8": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_de_Ombro",
+      "image": "assets/wiki-9a305b0f09f8.png"
+    },
+    "wiki-3bf2502d4c17": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_de_Lorde_(B%C3%A1sica)",
+      "image": "assets/wiki-3bf2502d4c17.png"
+    },
+    "wiki-05c29d72cfec": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_de_Lorde_(Fina)",
+      "image": "assets/wiki-05c29d72cfec.png"
+    },
+    "wiki-09f315f0c779": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_de_Lorde_(Nobre)",
+      "image": "assets/wiki-09f315f0c779.png"
+    },
+    "wiki-912b4d4ec544": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_de_Lorde_(Pessoal)",
+      "image": "assets/wiki-912b4d4ec544.png"
+    },
+    "wiki-ece87db8a409": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_de_Mestre_(B%C3%A1sica)",
+      "image": "assets/wiki-ece87db8a409.png"
+    },
+    "wiki-c2d7aa98e95d": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_de_Mestre_(Fina)",
+      "image": "assets/wiki-c2d7aa98e95d.png"
+    },
+    "wiki-dbc10b0072d6": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_de_Mestre_(Nobre)",
+      "image": "assets/wiki-dbc10b0072d6.png"
+    },
+    "wiki-c0ea02c8d8c7": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_de_Mestre_(Pessoal)",
+      "image": "assets/wiki-c0ea02c8d8c7.png"
+    },
+    "wiki-4138b8f180bd": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Real_(B%C3%A1sica)",
+      "image": "assets/wiki-4138b8f180bd.png"
+    },
+    "wiki-7f11c45afb04": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Real_(Fina)",
+      "image": "assets/wiki-7f11c45afb04.png"
+    },
+    "wiki-4ac6d920ec8e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Real_(Nobre)",
+      "image": "assets/wiki-4ac6d920ec8e.png"
+    },
+    "wiki-5765360a9b9a": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Real_(Pessoal)",
+      "image": "assets/wiki-5765360a9b9a.png"
+    },
+    "wiki-0a0ae3bc1da7": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Soberana_(B%C3%A1sica)",
+      "image": "assets/wiki-0a0ae3bc1da7.png"
+    },
+    "wiki-5be52d834b61": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Soberana_(Fina)",
+      "image": "assets/wiki-5be52d834b61.png"
+    },
+    "wiki-22860c1ab4d2": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Soberana_(Nobre)",
+      "image": "assets/wiki-22860c1ab4d2.png"
+    },
+    "wiki-89abc88b17c0": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Soberana_(Pessoal)",
+      "image": "assets/wiki-89abc88b17c0.png"
+    },
+    "wiki-6c0f2bbe78d1": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_de_Anivers%C3%A1rio_(B%C3%A1sica)",
+      "image": "assets/wiki-6c0f2bbe78d1.png"
+    },
+    "wiki-fc359db95a98": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_de_Anivers%C3%A1rio_(Fina)",
+      "image": "assets/wiki-fc359db95a98.png"
+    },
+    "wiki-2b2630b18f67": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_de_Anivers%C3%A1rio_(Nobre)",
+      "image": "assets/wiki-2b2630b18f67.png"
+    },
+    "wiki-811d949f436e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_de_Anivers%C3%A1rio_(Pessoal)",
+      "image": "assets/wiki-811d949f436e.png"
+    },
+    "wiki-27a7346c3f2e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Cora%C3%A7%C3%A3o_(B%C3%A1sica)",
+      "image": "assets/wiki-27a7346c3f2e.png"
+    },
+    "wiki-623b6857e841": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Cora%C3%A7%C3%A3o_(Fina)",
+      "image": "assets/wiki-623b6857e841.png"
+    },
+    "wiki-b06c35ae23ca": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Cora%C3%A7%C3%A3o_(Nobre)",
+      "image": "assets/wiki-b06c35ae23ca.png"
+    },
+    "wiki-095590775f18": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Cora%C3%A7%C3%A3o_(Pessoal)",
+      "image": "assets/wiki-095590775f18.png"
+    },
+    "wiki-bbc6f199a0e3": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Zi_(B%C3%A1sica)",
+      "image": "assets/wiki-bbc6f199a0e3.png"
+    },
+    "wiki-144d6a1c1ff6": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Zi_(Fina)",
+      "image": "assets/wiki-144d6a1c1ff6.png"
+    },
+    "wiki-be289f41e4bb": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Zi_(Nobre)",
+      "image": "assets/wiki-be289f41e4bb.png"
+    },
+    "wiki-235e804c91c4": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Zi_(Pessoal)",
+      "image": "assets/wiki-235e804c91c4.png"
+    },
+    "wiki-d07123df3178": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Mao_(B%C3%A1sica)",
+      "image": "assets/wiki-d07123df3178.png"
+    },
+    "wiki-8af89819cd82": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Mao_(Fina)",
+      "image": "assets/wiki-8af89819cd82.png"
+    },
+    "wiki-350b449f6ea1": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Mao_(Nobre)",
+      "image": "assets/wiki-350b449f6ea1.png"
+    },
+    "wiki-4f80d832822b": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Mao_(Pessoal)",
+      "image": "assets/wiki-4f80d832822b.png"
+    },
+    "wiki-bed873cb366c": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Xu_(B%C3%A1sica)",
+      "image": "assets/wiki-bed873cb366c.png"
+    },
+    "wiki-2cfc63403850": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Xu_(Fina)",
+      "image": "assets/wiki-2cfc63403850.png"
+    },
+    "wiki-2a508e910f97": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Xu_(Nobre)",
+      "image": "assets/wiki-2a508e910f97.png"
+    },
+    "wiki-22880460fb83": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Xu_(Pessoal)",
+      "image": "assets/wiki-22880460fb83.png"
+    },
+    "wiki-cb9f47099957": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Shen_(B%C3%A1sica)",
+      "image": "assets/wiki-cb9f47099957.png"
+    },
+    "wiki-b9c6b8a7bedc": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Shen_(Fina)",
+      "image": "assets/wiki-b9c6b8a7bedc.png"
+    },
+    "wiki-3863fbdd65c3": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Shen_(Nobre)",
+      "image": "assets/wiki-3863fbdd65c3.png"
+    },
+    "wiki-9fbac2da1b0e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Shen_(Pessoal)",
+      "image": "assets/wiki-9fbac2da1b0e.png"
+    },
+    "wiki-213888199585": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Wu_(B%C3%A1sica)",
+      "image": "assets/wiki-213888199585.png"
+    },
+    "wiki-c1c0aa4557a1": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Wu_(Fina)",
+      "image": "assets/wiki-c1c0aa4557a1.png"
+    },
+    "wiki-2bbf57c67836": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Wu_(Nobre)",
+      "image": "assets/wiki-2bbf57c67836.png"
+    },
+    "wiki-cc58d05d820f": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Wu_(Pessoal)",
+      "image": "assets/wiki-cc58d05d820f.png"
+    },
+    "wiki-a63a9bf058f5": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Chen_(B%C3%A1sica)",
+      "image": "assets/wiki-a63a9bf058f5.png"
+    },
+    "wiki-52e43ced5078": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Chen_(Fina)",
+      "image": "assets/wiki-52e43ced5078.png"
+    },
+    "wiki-3d516b043871": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Chen_(Nobre)",
+      "image": "assets/wiki-3d516b043871.png"
+    },
+    "wiki-cd67b6c86b17": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Chen_(Pessoal)",
+      "image": "assets/wiki-cd67b6c86b17.png"
+    },
+    "wiki-a35ee75a0342": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Yin_(B%C3%A1sica)",
+      "image": "assets/wiki-a35ee75a0342.png"
+    },
+    "wiki-3eb96288b2dc": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Yin_(Fina)",
+      "image": "assets/wiki-3eb96288b2dc.png"
+    },
+    "wiki-6dc1efcf12b5": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Yin_(Nobre)",
+      "image": "assets/wiki-6dc1efcf12b5.png"
+    },
+    "wiki-a71907ed48e2": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Yin_(Pessoal)",
+      "image": "assets/wiki-a71907ed48e2.png"
+    },
+    "wiki-8f3ff19c9d8c": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Chou_(B%C3%A1sica)",
+      "image": "assets/wiki-8f3ff19c9d8c.png"
+    },
+    "wiki-ef6c66f3c977": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Chou_(Fina)",
+      "image": "assets/wiki-ef6c66f3c977.png"
+    },
+    "wiki-8ed5a632f974": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Chou_(Nobre)",
+      "image": "assets/wiki-8ed5a632f974.png"
+    },
+    "wiki-a2844086e36e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Chou_(Pessoal)",
+      "image": "assets/wiki-a2844086e36e.png"
+    },
+    "wiki-6e8b98a6da16": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Si_(B%C3%A1sica)",
+      "image": "assets/wiki-6e8b98a6da16.png"
+    },
+    "wiki-3a5bb38e79c9": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Si_(Fina)",
+      "image": "assets/wiki-3a5bb38e79c9.png"
+    },
+    "wiki-783992778f32": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Si_(Nobre)",
+      "image": "assets/wiki-783992778f32.png"
+    },
+    "wiki-a5b7942ab27c": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Si_(Pessoal)",
+      "image": "assets/wiki-a5b7942ab27c.png"
+    },
+    "wiki-938999c319c9": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Wei_(B%C3%A1sica)",
+      "image": "assets/wiki-938999c319c9.png"
+    },
+    "wiki-53a155f627fd": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Wei_(Fina)",
+      "image": "assets/wiki-53a155f627fd.png"
+    },
+    "wiki-e63cf42787ea": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Wei_(Nobre)",
+      "image": "assets/wiki-e63cf42787ea.png"
+    },
+    "wiki-8f83734a3842": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Wei_(Pessoal)",
+      "image": "assets/wiki-8f83734a3842.png"
+    },
+    "wiki-8190466e8ba8": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_You_(B%C3%A1sica)",
+      "image": "assets/wiki-8190466e8ba8.png"
+    },
+    "wiki-dfd042e67698": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_You_(Fina)",
+      "image": "assets/wiki-dfd042e67698.png"
+    },
+    "wiki-45c5d08b4ca0": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_You_(Nobre)",
+      "image": "assets/wiki-45c5d08b4ca0.png"
+    },
+    "wiki-d736e1cc2db9": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_You_(Pessoal)",
+      "image": "assets/wiki-d736e1cc2db9.png"
+    },
+    "wiki-ef234498d5aa": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Hai_(B%C3%A1sica)",
+      "image": "assets/wiki-ef234498d5aa.png"
+    },
+    "wiki-d95600bdf869": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Hai_(Fina)",
+      "image": "assets/wiki-d95600bdf869.png"
+    },
+    "wiki-2c1d810ce026": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Hai_(Nobre)",
+      "image": "assets/wiki-2c1d810ce026.png"
+    },
+    "wiki-b3bf80f182d0": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Faixa_Hai_(Pessoal)",
+      "image": "assets/wiki-b3bf80f182d0.png"
+    },
+    "wiki-820247ef8f17": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Luvas_do_Poder",
+      "image": "assets/wiki-820247ef8f17.png"
+    },
+    "wiki-fad702e5ad64": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Luvas_da_Armadura",
+      "image": "assets/wiki-fad702e5ad64.png"
+    },
+    "wiki-86496b728261": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Luvas_da_Rapidez",
+      "image": "assets/wiki-86496b728261.png"
+    },
+    "wiki-3e3552741daa": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Luvas_da_Prote%C3%A7%C3%A3o",
+      "image": "assets/wiki-3e3552741daa.png"
+    },
+    "wiki-0f8d4bad29dd": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Luvas_Serpente_(FR%C3%87)",
+      "image": "assets/wiki-0f8d4bad29dd.png"
+    },
+    "wiki-d4957077bb77": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Luvas_Serpente_(VIT)",
+      "image": "assets/wiki-d4957077bb77.png"
+    },
+    "wiki-9e8a8e6047db": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Luvas_Serpente_(RES)",
+      "image": "assets/wiki-9e8a8e6047db.png"
+    },
+    "wiki-d0ebc074ae3e": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Luvas_Serpente_(INT)",
+      "image": "assets/wiki-d0ebc074ae3e.png"
+    },
+    "wiki-d689a99ff6e8": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Roupa_da_Aura_Normal",
+      "image": "assets/wiki-d689a99ff6e8.png"
+    },
+    "wiki-6882bab2b53d": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Roupa_da_Aura_Simples",
+      "image": "assets/wiki-6882bab2b53d.png"
+    },
+    "wiki-6ee0116917b1": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Roupa_da_Aura_Nobre",
+      "image": "assets/wiki-6ee0116917b1.png"
+    },
+    "wiki-01447c5dc282": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Roupa_da_Aura_Reluzente",
+      "image": "assets/wiki-01447c5dc282.png"
+    },
+    "wiki-20d02ab7b538": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Roupa_da_Aura_Magn%C3%ADfica",
+      "image": "assets/wiki-20d02ab7b538.png"
+    },
+    "wiki-84224c279406": {
+      "page": "https://pt-wiki.metin2.gameforge.com/index.php/Roupa_da_Aura_Radiante",
+      "image": "assets/wiki-84224c279406.png"
+    }
+  },
+  "bonus_catalog": "https://pt-wiki.metin2.gameforge.com/index.php/B%C3%B3nus",
+  "pet_abilities": "https://pt-wiki.metin2.gameforge.com/index.php/Pets_Evolu%C3%ADveis",
+  "refinements": {
+    "wiki-59f69bd2ebbf": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_Madeira",
+      "material": "Madeira",
+      "image": "assets/refined-9b9a260c69.png"
+    },
+    "wiki-6c0bcdf03b5c": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_Cobre",
+      "material": "Cobre",
+      "image": "assets/refined-6c38d296c7.png"
+    },
+    "wiki-d09cfd05e19a": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_Prata",
+      "material": "Prata",
+      "image": "assets/refined-a1b1205226.png"
+    },
+    "wiki-6690dd81aa38": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_Jade",
+      "material": "Jade",
+      "image": "assets/refined-f492b4d3a9.png"
+    },
+    "wiki-40ff69a12369": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_%C3%89bano",
+      "material": "Ébano",
+      "image": "assets/refined-706c0f06d4.png"
+    },
+    "wiki-4f73d8ebb17c": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_P%C3%A9rola",
+      "material": "Pérola",
+      "image": "assets/refined-54bccf53eb.png"
+    },
+    "wiki-58f936497c2a": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_Platina",
+      "material": "Platina",
+      "image": "assets/refined-1475ad2593.png"
+    },
+    "wiki-0bd01423c6c8": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_Cristal",
+      "material": "Cristal",
+      "image": "assets/refined-0e28789e9e.png"
+    },
+    "wiki-bd1a1998c77e": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_Ametista",
+      "material": "Ametista",
+      "image": "assets/refined-e1dc5f7db4.png"
+    },
+    "wiki-9f702fbfe554": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_Azurite",
+      "material": "Cristal da Alma",
+      "image": "assets/refined-a3905d0974.png"
+    },
+    "wiki-3f2e74c73f50": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_Rubi",
+      "material": "Rubi",
+      "image": "assets/refined-45609e14c7.png"
+    },
+    "wiki-01ec7731226c": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_Granada",
+      "material": "Granada",
+      "image": "assets/refined-3f7db958f1.png"
+    },
+    "wiki-e8ddb9b98ea8": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_Lazuli",
+      "material": "Lápis Lazuli",
+      "image": "assets/refined-b510466122.png"
+    },
+    "wiki-85d134559680": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_Jadite_N%C3%A9voa",
+      "material": "Jadite da Névoa",
+      "image": "assets/refined-a45fe6d20d.png"
+    },
+    "wiki-5ee389a40cb3": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_Jadite_do_Sol",
+      "material": "Jadite do Sol",
+      "image": "assets/refined-b016a4b512.png"
+    },
+    "wiki-c0eace9832c6": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_Jadite_Negra",
+      "material": "Jadite Negra",
+      "image": "assets/refined-991039d7a5.png"
+    },
+    "wiki-b0b5a0e4856e": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_Jadite_de_Fumo",
+      "material": "Jadite de Fumo",
+      "image": "assets/refined-32aa59c4d1.png"
+    },
+    "wiki-4d49fabd652a": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Madeira",
+      "material": "Madeira",
+      "image": "assets/refined-9b9a260c69.png"
+    },
+    "wiki-eba04bfc1c1c": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Cobre",
+      "material": "Cobre",
+      "image": "assets/refined-6c38d296c7.png"
+    },
+    "wiki-04f0dcff72ea": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Prata",
+      "material": "Prata",
+      "image": "assets/refined-a1b1205226.png"
+    },
+    "wiki-bb3e8d2bf0e3": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Jade",
+      "material": "Jade",
+      "image": "assets/refined-f492b4d3a9.png"
+    },
+    "wiki-b2e90ed08c1c": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_%C3%89bano",
+      "material": "Ébano",
+      "image": "assets/refined-706c0f06d4.png"
+    },
+    "wiki-26438ca1448e": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_P%C3%A9rolas",
+      "material": "Pérola",
+      "image": "assets/refined-54bccf53eb.png"
+    },
+    "wiki-feb063b6b6f1": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Platina",
+      "material": "Platina",
+      "image": "assets/refined-1475ad2593.png"
+    },
+    "wiki-003b58117e80": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Cristal",
+      "material": "Cristal",
+      "image": "assets/refined-0e28789e9e.png"
+    },
+    "wiki-7bfaf3040929": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Ametista",
+      "material": "Ametista",
+      "image": "assets/refined-e1dc5f7db4.png"
+    },
+    "wiki-61783f36c428": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Azurite",
+      "material": "Cristal da Alma",
+      "image": "assets/refined-a3905d0974.png"
+    },
+    "wiki-8956f6311b0d": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Rubi",
+      "material": "Rubi",
+      "image": "assets/refined-45609e14c7.png"
+    },
+    "wiki-bf1dc37e0912": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Granada",
+      "material": "Granada",
+      "image": "assets/refined-3f7db958f1.png"
+    },
+    "wiki-7f1cf3f3f15d": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Esmeralda",
+      "material": "Esmeralda",
+      "image": "assets/refined-34b5715e4a.png"
+    },
+    "wiki-270f8df4b408": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Turmalina",
+      "material": "Turmalina",
+      "image": "assets/refined-00f4cdad7a.png"
+    },
+    "wiki-bb1e6f447e22": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_Lazuli",
+      "material": "Lápis Lazuli",
+      "image": "assets/refined-b510466122.png"
+    },
+    "wiki-b8dbe9631471": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_Jadite_da_N%C3%A9voa",
+      "material": "Jadite da Névoa",
+      "image": "assets/refined-a45fe6d20d.png"
+    },
+    "wiki-48fc61a0f894": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_Jadite_do_Sol",
+      "material": "Jadite do Sol",
+      "image": "assets/refined-b016a4b512.png"
+    },
+    "wiki-b9a31a2d8d6e": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_Jadite_Negra",
+      "material": "Jadite Negra",
+      "image": "assets/refined-991039d7a5.png"
+    },
+    "wiki-9a7797a2a14f": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_Jadite_de_Fumo",
+      "material": "Jadite de Fumo",
+      "image": "assets/refined-32aa59c4d1.png"
+    },
+    "wiki-2a903ba5fb84": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Madeira",
+      "material": "Madeira",
+      "image": "assets/refined-9b9a260c69.png"
+    },
+    "wiki-ce73fda5e837": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Cobre",
+      "material": "Cobre",
+      "image": "assets/refined-6c38d296c7.png"
+    },
+    "wiki-d49a9fbd718d": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Prata",
+      "material": "Prata",
+      "image": "assets/refined-a1b1205226.png"
+    },
+    "wiki-54ad4a84fb0d": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Jade",
+      "material": "Jade",
+      "image": "assets/refined-f492b4d3a9.png"
+    },
+    "wiki-6b3bcda9e4fb": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_%C3%89bano",
+      "material": "Ébano",
+      "image": "assets/refined-706c0f06d4.png"
+    },
+    "wiki-c84e7a0c4ee0": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_P%C3%A9rolas",
+      "material": "Pérola",
+      "image": "assets/refined-54bccf53eb.png"
+    },
+    "wiki-6f86f729a119": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Platina",
+      "material": "Platina",
+      "image": "assets/refined-1475ad2593.png"
+    },
+    "wiki-4771ca4fe60b": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Cristal",
+      "material": "Cristal",
+      "image": "assets/refined-0e28789e9e.png"
+    },
+    "wiki-85400fe125d9": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Ametista",
+      "material": "Ametista",
+      "image": "assets/refined-e1dc5f7db4.png"
+    },
+    "wiki-1dcc5f70d0a7": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Azurite",
+      "material": "Cristal da Alma",
+      "image": "assets/refined-a3905d0974.png"
+    },
+    "wiki-9f14b17fc67b": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Rubi",
+      "material": "Rubi",
+      "image": "assets/refined-45609e14c7.png"
+    },
+    "wiki-5d5f41c440d5": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Granada",
+      "material": "Granada",
+      "image": "assets/refined-3f7db958f1.png"
+    },
+    "wiki-a0ea08e391dc": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Turmalina",
+      "material": "Turmalina",
+      "image": "assets/refined-00f4cdad7a.png"
+    },
+    "wiki-01415422a5b9": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Esmeralda",
+      "material": "Esmeralda",
+      "image": "assets/refined-34b5715e4a.png"
+    },
+    "wiki-6d4a7405c2e8": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_Lazuli",
+      "material": "Lápis Lazuli",
+      "image": "assets/refined-b510466122.png"
+    },
+    "wiki-c42c731e76d5": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_Jadite_N%C3%A9voa",
+      "material": "Jadite da Névoa",
+      "image": "assets/refined-a45fe6d20d.png"
+    },
+    "wiki-6e9a540b46f2": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_Jadite_do_Sol",
+      "material": "Jadite do Sol",
+      "image": "assets/refined-b016a4b512.png"
+    },
+    "wiki-198b3753a127": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_Jadite_Negra",
+      "material": "Jadite Negra",
+      "image": "assets/refined-991039d7a5.png"
+    },
+    "wiki-21a90515d969": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_Jadite_Fumo",
+      "material": "Jadite de Fumo",
+      "image": "assets/refined-32aa59c4d1.png"
+    },
+    "wiki-1ceee87c3249": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Cinto_de_Linho",
+      "material": "Pedra da Chama Vermelha",
+      "image": "assets/refined-7f0a323f1c.png"
+    },
+    "wiki-69565c087cd7": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Cinto_de_Couro",
+      "material": "Pedra da Chama Vermelha",
+      "image": "assets/refined-7f0a323f1c.png"
+    },
+    "wiki-8999bc9a5ab7": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Cinto_Magn%C3%ADfico",
+      "material": "Pedra da Chama Vermelha",
+      "image": "assets/refined-7f0a323f1c.png"
+    },
+    "wiki-1b70e540879b": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Cinto_da_Sabedoria",
+      "material": "Pedra da Chama Vermelha",
+      "image": "assets/refined-7f0a323f1c.png"
+    },
+    "wiki-d2999b5d630d": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Cinto_do_Rei",
+      "material": "Pedra da Chama Vermelha",
+      "image": "assets/refined-7f0a323f1c.png"
+    },
+    "wiki-dcccead71cb3": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Cinto_R%C3%BAnico",
+      "material": "Pedra da Chama Vermelha",
+      "image": "assets/refined-7f0a323f1c.png"
+    },
+    "wiki-cd7c9f3e253b": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Cinto_da_Sombra",
+      "material": "Pedra da Chama Vermelha",
+      "image": "assets/refined-7f0a323f1c.png"
+    },
+    "wiki-b018dd83b6a3": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Cinto_do_Grande_Urso",
+      "material": "Pedra da Chama Vermelha",
+      "image": "assets/refined-7f0a323f1c.png"
+    },
+    "wiki-235e8ba74b3d": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Cinto_de_Turmalina",
+      "material": "Pedra da Chama Vermelha",
+      "image": "assets/refined-7f0a323f1c.png"
+    },
+    "wiki-cbe7b7f168c6": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Cinto_de_Tit%C3%A2nio",
+      "material": "Pedra da Chama Vermelha",
+      "image": "assets/refined-7f0a323f1c.png"
+    },
+    "soul-belt": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Cinto_das_Almas",
+      "material": "Pedra da Chama Vermelha",
+      "image": "assets/refined-7f0a323f1c.png"
+    },
+    "emerald-earrings": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_Esmeralda",
+      "material": "Esmeralda",
+      "image": "assets/refined-34b5715e4a.png"
+    },
+    "sapphire-bracelet": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Pulseira_de_Safira",
+      "material": "Safira",
+      "image": "assets/refined-b448104efb.png"
+    },
+    "sapphire-necklace": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Colar_de_Safira",
+      "material": "Safira",
+      "image": "assets/refined-b448104efb.png"
+    },
+    "sapphire-earrings": {
+      "table": "https://pt-wiki.metin2.gameforge.com/index.php/Brincos_de_Safira",
+      "material": "Safira",
+      "image": "assets/refined-b448104efb.png"
+    }
+  },
+  "status": {
+    "attributes": "https://gameforge.com/en-GB/games/metin2-faq-leveling.html",
+    "hp": "https://it-wiki.metin2.gameforge.com/index.php/HP",
+    "attack": "https://it-wiki.metin2.gameforge.com/index.php/Attacco",
+    "defense": "https://it-wiki.metin2.gameforge.com/index.php/Difesa",
+    "biologist": "https://it-wiki.metin2.gameforge.com/index.php/Missioni_del_Biologo",
+    "stones": "https://pt-wiki.metin2.gameforge.com/index.php/Pedras_Esp%C3%ADritas"
+  }
+}
