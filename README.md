@@ -32,9 +32,3 @@ Trabalha numa branch para alterações maiores e integra em `main` quando estive
 As tabelas e fórmulas usam as wikis Metin2 da Gameforge; a interface apresenta fontes e dados que precisam de confirmação. Os status calculados não representam dano final contra um alvo. Lâmina e Armadura usam a INT atual do set; no jogo, conservam a INT do momento da ativação.
 
 As imagens do jogo e marcas pertencem aos respetivos titulares. Projeto de fã, sem afiliação à Gameforge. A publicação neste repositório não concede direitos sobre os recursos do jogo.
-
-## Backup da migração
-
-O alojamento original foi mantido sem alterações: https://metin2-armory.aglowokapi4.chatgpt.site
-
-Antes de mudar de endereço, exporta o perfil no original e importa-o no novo site. O armazenamento local é separado por endereço.
