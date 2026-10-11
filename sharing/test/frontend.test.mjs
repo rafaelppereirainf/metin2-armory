@@ -50,3 +50,30 @@ test('sharing includes only current character; management key stays out of publi
   assert.equal(JSON.parse(w.localStorage.getItem('metin-armory-shares-v1'))[0].ownerToken, ownerToken);
   dom.window.close();
 });
+test('viewer can simulate pet, alchemy and skills without persisting changes', async () => {
+  const initial = await page();
+  initial.w.eval(`const c=char();c.class='Sura';c.doctrine='Armas';c.level=120;c.statusProfile={attributes:{str:16,vit:90,int:90,dex:90},hpGrowth:5144,growthLevel:120};c.pet.hp=10;c.progress.skills={'Lâmina Encantada':'P','Receio':'P','Armadura Negra':'P'};c.sets[0].statusMode='auto';c.sets[0].statusEffects={petActive:false,alchemyActive:false,skillActive:{}};normalizeData(data);`);
+  const source = initial.w.eval('JSON.stringify(data)'); initial.dom.window.close();
+  const snapshot = JSON.parse(source);
+  for (const query of ['?build=abcdefghijklmnop', '#view=' + Buffer.from(source).toString('base64')]) {
+    const {w, dom} = await page({query, stored: source, fetch: async () => Response.json({snapshot})});
+    const hpBefore = w.eval('calculateStatus().stats.hp');
+    const toggle = selector => { const box = w.document.querySelector(selector); assert.ok(box); assert.equal(box.disabled, false); box.checked = !box.checked; box.dispatchEvent(new w.Event('change', {bubbles: true})); };
+    toggle('[data-status-effect="petActive"]');
+    assert.ok(w.eval('calculateStatus().stats.hp') > hpBefore);
+    toggle('[data-status-effect="petActive"]'); assert.equal(w.eval('calculateStatus().stats.hp'), hpBefore);
+    toggle('[data-status-effect="alchemyActive"]'); assert.equal(w.eval('set().statusEffects.alchemyActive'), true);
+    toggle('[data-status-effect="alchemyActive"]'); assert.equal(w.eval('set().statusEffects.alchemyActive'), false);
+    for (const name of ['Lâmina Encantada', 'Receio', 'Armadura Negra']) {
+      toggle('[data-skill-active="' + name + '"]');
+      assert.ok(w.eval('calculateStatus().records').some(r => r.source.startsWith(name)));
+      toggle('[data-skill-active="' + name + '"]');
+      assert.equal(w.eval('set().statusEffects.skillActive')[name], false);
+    }
+    assert.equal(w.localStorage.getItem('metin-armory-v1'), source);
+    assert.equal(w.document.body.classList.contains('readonly'), true);
+    assert.match(w.document.querySelector('.status-effects small').textContent, /Simulação nesta vista/);
+    w.eval('editStatus()'); assert.ok([...w.document.querySelectorAll('#fields input, #fields select')].every(x => x.disabled));
+    dom.window.close();
+  }
+});
