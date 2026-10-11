@@ -38,3 +38,6 @@ As imagens do jogo e marcas pertencem aos respetivos titulares. Projeto de fã n
 O alojamento original foi mantido sem alterações: https://metin2-armory.aglowokapi4.chatgpt.site
 
 Antes de mudar de endereço, exporta o perfil no original e importa-o no novo site. O armazenamento local é separado por endereço.
+# Links curtos de partilha
+
+A implementação Cloudflare Workers + D1 está em `sharing/`. Para ativar os links curtos, segue [o guia de configuração](sharing/README.md). Até preencher `dist/share-config.js`, os links completos antigos continuam disponíveis. Não coloques segredos Cloudflare ou a Secret Key Turnstile no repositório.

@@ -1,0 +1,8 @@
+{
+  "name": "metin2-armory-sharing",
+  "private": true,
+  "type": "module",
+  "scripts": {"test": "node --test test/*.test.mjs"},
+  "devDependencies": {"jsdom": "30.1.2"},
+  "engines": {"node": ">=24"}
+}

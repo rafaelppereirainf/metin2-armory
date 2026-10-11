@@ -1,0 +1,52 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {webcrypto} from 'node:crypto';
+import {runInContext} from 'node:vm';
+import {JSDOM} from 'jsdom';
+const dist = new URL('../../dist/', import.meta.url);
+const html = readFileSync(new URL('index.html', dist), 'utf8');
+const scripts = ['catalog.js', 'asset-index.js', 'bonus-catalog.js', 'pet-catalog.js', 'alchemy-catalog.js', 'refinement-catalog.js', 'mount-catalog.js', 'equipment.js', 'status.js', 'sharing.js', 'app.js'];
+const tick = () => new Promise(resolve => setImmediate(resolve));
+async function page({query = '', stored, fetch, configured = true} = {}) {
+  const dom = new JSDOM(html, {url: 'https://rafaelppereirainf.github.io/metin2-armory/' + query, runScripts: 'outside-only'});
+  const w = dom.window;
+  Object.assign(w, {TextEncoder, TextDecoder, structuredClone, AbortSignal, fetch, confirm: () => true, alert: () => {}});
+  Object.defineProperty(w, 'crypto', {value: webcrypto});
+  Object.defineProperty(w.navigator, 'clipboard', {value: {writeText: async text => {w.copied = text;}}});
+  w.HTMLDialogElement.prototype.showModal = function() {this.open = true;};
+  w.HTMLDialogElement.prototype.close = function() {this.open = false; this.dispatchEvent(new w.Event('close'));};
+  w.ARMORY_SHARE_CONFIG = configured ? {apiUrl: 'https://api.example.com', turnstileSiteKey: 'test'} : {};
+  w.turnstile = {render(_element, options) {queueMicrotask(() => options.callback('valid')); return 0;}, remove() {}, reset() {}};
+  if (stored) w.localStorage.setItem('metin-armory-v1', stored);
+  for (const file of scripts) runInContext(readFileSync(new URL(file, dist), 'utf8'), dom.getInternalVMContext());
+  await tick(); return {dom, w};
+}
+test('shared snapshot renders read-only; missing link and legacy link preserve local profile', async () => {
+  const initial = await page(); const source = initial.w.eval('JSON.stringify(data)'); initial.dom.window.close();
+  const snapshot = JSON.parse(source); snapshot.characters[0].name = 'Partilhado Árvore';
+  const shared = await page({query: '?build=abcdefghijklmnop', stored: source, fetch: async () => Response.json({snapshot})});
+  assert.equal(shared.w.document.querySelector('#name').textContent, 'Partilhado Árvore');
+  assert.equal(shared.w.document.body.classList.contains('readonly'), true);
+  assert.equal(shared.w.document.querySelector('#share'), null);
+  assert.equal(shared.w.localStorage.getItem('metin-armory-v1'), source); shared.dom.window.close();
+  const missing = await page({query: '?build=abcdefghijklmnop', stored: source, fetch: async () => Response.json({error: 'Esta partilha não existe ou foi removida.'}, {status: 404})});
+  assert.match(missing.w.document.querySelector('main>section').textContent, /não existe ou foi removida/);
+  assert.equal(missing.w.localStorage.getItem('metin-armory-v1'), source); missing.dom.window.close();
+  const legacy = await page({query: '#view=' + Buffer.from(JSON.stringify(snapshot)).toString('base64'), stored: source});
+  assert.equal(legacy.w.document.querySelector('#name').textContent, 'Partilhado Árvore');
+  assert.equal(legacy.w.localStorage.getItem('metin-armory-v1'), source); legacy.dom.window.close();
+});
+test('sharing includes only current character; management key stays out of public link and normal export', async () => {
+  let body; const id = 'abcdefghijklmnop', ownerToken = 'a'.repeat(43);
+  const {w, dom} = await page({fetch: async (_url, options) => {body = JSON.parse(options.body); return Response.json({id, ownerToken}, {status: 201});}});
+  w.eval("data.characters.push(makeChar('Outra personagem'));data.items.push({id:'unused',slot:'weapon',name:'Outro item'});");
+  await w.eval('share()'); await tick();
+  const button = w.document.querySelector('#shareDialog .primary'); assert.equal(button.disabled, false); button.click(); await tick();
+  assert.equal(body.snapshot.characters.length, 1); assert.equal(body.snapshot.items.some(i => i.id === 'unused'), false);
+  assert.equal(w.copied, 'https://rafaelppereirainf.github.io/metin2-armory/?build=' + id);
+  assert.equal(w.copied.includes(ownerToken), false);
+  assert.equal(w.eval('JSON.stringify(data)').includes(ownerToken), false);
+  assert.equal(JSON.parse(w.localStorage.getItem('metin-armory-shares-v1'))[0].ownerToken, ownerToken);
+  dom.window.close();
+});

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cloudflare/workers-sdk/main/packages/wrangler/config-schema.json",
+  "name": "metin2-armory-sharing",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-10-11",
+  "workers_dev": true,
+  "vars": {
+    "ALLOWED_ORIGIN": "https://rafaelppereirainf.github.io",
+    "TURNSTILE_HOSTNAME": "rafaelppereirainf.github.io"
+  },
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "metin2-armory-shares",
+    "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+    "migrations_dir": "migrations"
+  }]
+}
