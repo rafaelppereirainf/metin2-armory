@@ -48,15 +48,23 @@
       const result = await request('/builds/' + id);
       return result.snapshot;
     },
-    async create(snapshot, legacyUrl) {
+    async create(snapshot, legacyUrl, targetId) {
       show();
       if (!enabled()) {
         content.innerHTML = '<p>Os links curtos ainda estão em preparação. Por agora podes partilhar um link que inclui os dados da personagem.</p><button class="primary">Copiar link completo</button><p role="status" aria-live="polite"></p><textarea readonly aria-label="Link completo"></textarea>';
         content.querySelector('textarea').value = legacyUrl; content.querySelector('button').onclick = () => copy(legacyUrl); return;
       }
-      content.innerHTML = '<p>Será guardada online uma cópia desta personagem, com os seus sets, equipamentos e notas. Qualquer pessoa com o link poderá consultá-la.</p><p>As alterações posteriores ficam no teu navegador. Para as mostrar, cria uma nova partilha.</p><div class="share-verification"></div><button class="primary" disabled>Criar e copiar link curto</button><p role="status" aria-live="polite">A carregar a verificação…</p>';
       let active = true, token = ''; cancelLoad = () => { active = false; };
-      const button = content.querySelector('button');
+      content.innerHTML = '<p role="status" aria-live="polite">A verificar o serviço de partilha…</p>';
+      try { const health = await request('/health'); if (!health.permanentLinks) throw Error('Os links permanentes estão preparados no site, mas falta atualizar o serviço de partilha. As partilhas existentes continuam disponíveis.'); }
+      catch (error) { if(active) message(error.message); return; }
+      if (!active) return;
+      const existing = records().find(r => r.mode === 'permanent' && r.characterId === snapshot.characters[0].id && (!targetId || r.id === targetId));
+      content.innerHTML = existing
+        ? '<p>Já existe um link permanente para esta personagem. Publica os valores atuais para atualizar o mesmo link. Quem o recebeu verá a nova versão ao atualizar a página.</p><button class="share-copy">Copiar link atual</button><div class="share-verification"></div><button class="primary" disabled>Atualizar partilha</button><p role="status" aria-live="polite">A carregar a verificação…</p>'
+        : '<p>Será guardada online esta personagem, com os seus sets, equipamentos e notas. Qualquer pessoa com o link poderá consultá-la.</p><p>O link será permanente: depois de alterares a build, volta a Partilhar e seleciona Atualizar partilha. As alterações locais não são publicadas automaticamente.</p><div class="share-verification"></div><button class="primary" disabled>Criar e copiar link permanente</button><p role="status" aria-live="polite">A carregar a verificação…</p>';
+      content.querySelector('.share-copy')?.addEventListener('click', () => copy(new URL('?build=' + existing.id, location.href).href));
+      const button = content.querySelector('.primary');
       try {
         const test = key + '-check'; localStorage.setItem(test, '1'); localStorage.removeItem(test);
         const challenge = await turnstile(); if (!active) return;
@@ -64,18 +72,27 @@
         button.onclick = async () => {
           button.disabled = true; message('A guardar a cópia da personagem…');
           try {
-            const result = await request('/builds', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({snapshot, turnstileToken: token})});
+            if (existing) {
+              const current = await request('/builds/' + existing.id);
+              if (current.snapshot.shareRevision !== (existing.revision || 1)) {
+                if (!confirm('Esta partilha foi atualizada noutro navegador. Substituir a versão publicada pelos dados atuais deste navegador?')) { message('Atualização cancelada. A versão publicada foi preservada.'); challenge.reset(widget); return; }
+                existing.revision = current.snapshot.shareRevision;
+              }
+            }
+            const result = await request(existing ? '/builds/' + existing.id : '/builds', {method: existing ? 'PUT' : 'POST', headers: {'Content-Type': 'application/json', ...(existing ? {Authorization: 'Bearer ' + existing.ownerToken} : {})}, body: JSON.stringify({snapshot, turnstileToken: token, mode: 'permanent', ...(existing ? {revision: existing.revision || 1} : {})})});
+            if (existing) result.ownerToken = existing.ownerToken;
             if (!/^[\w-]{16}$/.test(result.id) || !/^[\w-]{43}$/.test(result.ownerToken)) throw Error('Resposta de partilha inválida.');
             const url = new URL(location.pathname, location.origin); url.searchParams.set('build', result.id);
-            const entry = {...result, url: url.href, name: snapshot.characters[0].name, createdAt: Date.now()};
-            try { localStorage.setItem(key, JSON.stringify([...records(), entry])); }
+            const entry = {...result, url: url.href, name: snapshot.characters[0].name, createdAt: existing?.createdAt || Date.now(), updatedAt: Date.now(), mode: 'permanent', characterId: snapshot.characters[0].id};
+            try { localStorage.setItem(key, JSON.stringify([...records().filter(r => r.id !== entry.id), entry])); }
             catch {
-              try { await request('/builds/' + result.id, {method: 'DELETE', headers: {Authorization: 'Bearer ' + result.ownerToken}}); throw Error('Não foi possível guardar a gestão da partilha neste navegador. A cópia foi removida.'); }
+              if (existing) { alert('A partilha foi atualizada, mas não foi possível guardar a revisão neste navegador. Mantém o backup privado das chaves de gestão.'); }
+              else try { await request('/builds/' + result.id, {method: 'DELETE', headers: {Authorization: 'Bearer ' + result.ownerToken}}); throw Error('Não foi possível guardar a gestão da partilha neste navegador. A cópia foi removida.'); }
               catch (error) {
                 if (error.message.includes('A cópia foi removida')) throw error;
                 const a = document.createElement('a'); const objectUrl = URL.createObjectURL(new Blob([JSON.stringify([entry])], {type: 'application/json'}));
                 a.href = objectUrl; a.download = 'armory-gestao-partilha-privada.json'; a.click(); setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
-                alert('Não foi possível guardar a gestão neste navegador. Guarda o ficheiro privado descarregado: contém a chave necessária para revogar esta partilha.');
+                alert('Não foi possível guardar a gestão neste navegador. Guarda o ficheiro privado descarregado: contém a chave necessária para atualizar ou revogar esta partilha.');
               }
             }
             if (widget !== undefined) challenge.remove(widget); widget = undefined;
@@ -92,7 +109,7 @@
         if (!all.length) list.textContent = 'Ainda não há partilhas guardadas neste navegador.';
         for (const entry of all) {
           const row = document.createElement('div'); row.className = 'share-record';
-          const name = document.createElement('strong'); name.textContent = entry.name || 'Personagem';
+          const name = document.createElement('strong'); name.textContent = (entry.name || 'Personagem') + (entry.mode === 'permanent' ? ' · Link permanente' : ' · Cópia fixa');
           const copyButton = document.createElement('button'); copyButton.textContent = 'Copiar link';
           const url = new URL(location.pathname, location.origin); url.searchParams.set('build', entry.id);
           copyButton.onclick = () => copy(url.href);
@@ -102,7 +119,13 @@
             remove.disabled = true;
             try { await request('/builds/' + entry.id, {method: 'DELETE', headers: {Authorization: 'Bearer ' + entry.ownerToken}}); localStorage.setItem(key, JSON.stringify(records().filter(r => r.id !== entry.id))); refresh(); message('Partilha removida.'); } catch (error) { message(error.message); remove.disabled = false; }
           };
-          row.append(name, copyButton, remove); list.append(row);
+          row.append(name, copyButton);
+          if (entry.mode === 'permanent') {
+            const update = document.createElement('button'); update.textContent = 'Atualizar partilha';
+            update.onclick = () => { if (!window.armoryShareCharacter?.(entry.characterId, entry.id)) message('Esta personagem não existe no perfil local. Importa o backup da personagem para a atualizar.'); };
+            row.append(update);
+          }
+          row.append(remove); list.append(row);
         }
       }; refresh();
       content.querySelector('.share-backup').onclick = () => {

@@ -39,7 +39,7 @@ test('shared snapshot renders read-only; missing link and legacy link preserve l
 });
 test('sharing includes only current character; management key stays out of public link and normal export', async () => {
   let body; const id = 'abcdefghijklmnop', ownerToken = 'a'.repeat(43);
-  const {w, dom} = await page({fetch: async (_url, options) => {body = JSON.parse(options.body); return Response.json({id, ownerToken}, {status: 201});}});
+  const {w, dom} = await page({fetch: async (_url, options) => {if(_url.endsWith('/health')) return Response.json({permanentLinks: true});body = JSON.parse(options.body); return Response.json({id, ownerToken}, {status: 201});}});
   w.eval("data.characters.push(makeChar('Outra personagem'));data.items.push({id:'unused',slot:'weapon',name:'Outro item'});");
   await w.eval('share()'); await tick();
   const button = w.document.querySelector('#shareDialog .primary'); assert.equal(button.disabled, false); button.click(); await tick();
@@ -76,4 +76,42 @@ test('viewer can simulate pet, alchemy and skills without persisting changes', a
     w.eval('editStatus()'); assert.ok([...w.document.querySelectorAll('#fields input, #fields select')].every(x => x.disabled));
     dom.window.close();
   }
+});
+
+test('permanent share reuses its URL and owner key and updates only the matching character', async () => {
+  const id = 'abcdefghijklmnop', ownerToken = 'a'.repeat(43); let saved, calls = [];
+  const {w, dom} = await page({fetch: async (url, options) => {
+    if(url.endsWith('/health')) return Response.json({permanentLinks: true});
+    calls.push({url, options});
+    if (!options.method) return Response.json({snapshot: saved});
+    const body = JSON.parse(options.body);
+    saved = {...body.snapshot, shareMode: 'permanent', shareRevision: options.method === 'PUT' ? 2 : 1};
+    return Response.json(options.method === 'PUT' ? {id, revision: 2} : {id, ownerToken, revision: 1}, {status: options.method === 'PUT' ? 200 : 201});
+  }});
+  await w.eval('share()'); await tick(); w.document.querySelector('#shareDialog .primary').click(); await tick();
+  const url = w.copied; w.document.querySelector('#shareDialog .paneltitle button').click();
+  w.eval("char().sets[0].stats.hp=15000;data.characters.push(makeChar('Outra'));ci=1;");
+  w.ArmorySharing.manage();
+  const update = [...w.document.querySelectorAll('.share-record button')].find(b => b.textContent === 'Atualizar partilha');
+  assert.ok(update); update.click(); await tick();
+  assert.equal(w.document.querySelector('#shareDialog .primary').textContent, 'Atualizar partilha');
+  w.document.querySelector('#shareDialog .primary').click(); await tick(); await tick();
+  const put = calls.find(c => c.options.method === 'PUT'); assert.ok(put);
+  assert.equal(put.options.headers.Authorization, 'Bearer ' + ownerToken);
+  assert.equal(saved.characters[0].sets[0].stats.hp, 15000);
+  assert.equal(w.copied, url); assert.equal(w.eval('ci'), 1);
+  const records = JSON.parse(w.localStorage.getItem('metin-armory-shares-v1'));
+  assert.equal(records.length, 1); assert.equal(records[0].revision, 2);
+  assert.equal(w.eval('JSON.stringify(data)').includes(ownerToken), false);
+  dom.window.close();
+});
+
+test('old Worker cannot create a falsely advertised permanent link', async () => {
+  let calls = 0;
+  const {w, dom} = await page({fetch: async url => {calls++; assert.ok(url.endsWith('/health')); return Response.json({ok: true});}});
+  await w.eval('share()'); await tick();
+  assert.match(w.document.querySelector('#shareDialog [role="status"]').textContent, /falta atualizar o serviço/);
+  assert.equal(w.document.querySelector('#shareDialog .primary'), null);
+  assert.equal(calls, 1); assert.equal(w.localStorage.getItem('metin-armory-shares-v1'), null);
+  dom.window.close();
 });

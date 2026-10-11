@@ -41,7 +41,7 @@ Estas duas configurações são públicas. Faz commit e push para `main`; o work
 
 1. Abre o site, clica **Partilhar** e confirma **Criar e copiar link curto**.
 2. Abre o link numa janela privada: deve aparecer a personagem em modo de consulta, sem login.
-3. Altera um item no perfil local: a cópia partilhada mantém os valores anteriores.
+3. Altera um item no perfil local: o link mantém os valores anteriores até selecionares **Partilhar → Atualizar partilha**. Abre o mesmo link de novo: deve mostrar a versão atualizada.
 4. Em **Partilhas**, revoga o link e volta a abri-lo: deve mostrar que foi removido.
 5. Os links antigos com `#view=` continuam a abrir.
 
@@ -69,3 +69,20 @@ npm test
 ```
 
 Os testes requerem Node.js 24+. Usam SQLite real em memória e simulam a resposta externa do Turnstile. Os testes do frontend usam jsdom para verificar a consulta, compatibilidade dos links antigos e preservação dos dados locais. Para testar com bindings Cloudflare locais: `npx wrangler@4 dev` dentro de `sharing`; a configuração de produção requer as migrations remotas indicadas acima.
+
+## Links permanentes
+
+As novas partilhas são links permanentes por personagem. **Partilhar** reutiliza o link guardado para essa personagem e permite publicar os dados locais atuais através de **Atualizar partilha**. Também podes atualizar em **Partilhas**, mesmo que outra personagem esteja selecionada. As alterações locais não são enviadas automaticamente; quem consulta deve atualizar a página para ver a última publicação. As cópias fixas anteriores continuam inalteráveis.
+
+A API aceita `PUT /builds/:id` com Bearer ownerToken, snapshot, turnstileToken e revision. Valida origem, Turnstile, tamanho e personagem original. A revisão e comparação atómica impedem sobrescritas concorrentes; se outro navegador publicou entretanto, o utilizador precisa de confirmar a substituição. O token não aparece no link público nem na exportação normal. O backup privado de gestão permite atualizar e revogar noutro navegador, mas também é necessário importar os dados da personagem: não existe sincronização de contas.
+
+Para ativar esta atualização num Worker existente, não são necessárias novas migrations:
+
+```powershell
+# Na pasta do projeto
+ git pull origin main
+ cd sharing
+ npx.cmd wrangler@4 deploy
+```
+
+Mantém o database_id real e a binding DB no wrangler.jsonc local. Não recries a base de dados nem o segredo. O frontend confirma a capacidade em /health antes de criar ou atualizar links permanentes, evitando anunciar uma funcionalidade ainda não publicada no Worker.
