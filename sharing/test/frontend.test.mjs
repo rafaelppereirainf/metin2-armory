@@ -6,7 +6,7 @@ import {runInContext} from 'node:vm';
 import {JSDOM} from 'jsdom';
 const dist = new URL('../../dist/', import.meta.url);
 const html = readFileSync(new URL('index.html', dist), 'utf8');
-const scripts = ['catalog.js', 'asset-index.js', 'bonus-catalog.js', 'pet-catalog.js', 'alchemy-catalog.js', 'refinement-catalog.js', 'mount-catalog.js', 'equipment.js', 'effects-catalog.js', 'effects.js', 'status.js', 'target-catalog.js', 'combat.js', 'sharing.js', 'inventory.js', 'item-ocr.js', 'app.js'];
+const scripts = ['catalog.js', 'asset-index.js', 'bonus-catalog.js', 'pet-catalog.js', 'alchemy-catalog.js', 'refinement-catalog.js', 'mount-catalog.js', 'equipment.js', 'effects-catalog.js', 'effects.js', 'status.js', 'target-catalog.js', 'combat.js', 'sharing.js', 'inventory-sizes.js', 'inventory.js', 'item-ocr.js', 'app.js'];
 const tick = () => new Promise(resolve => setImmediate(resolve));
 async function page({query = '', stored, fetch, configured = true} = {}) {
   const dom = new JSDOM(html, {url: 'https://rafaelppereirainf.github.io/metin2-armory/' + query, runScripts: 'outside-only'});
@@ -296,4 +296,20 @@ test('inventory editor creates unequipped items and current character sharing in
 test('viewer inventory supports drag and touch swaps without persisting simulated equipment',async()=>{
  const initial=await page();initial.w.eval("data.items.push({id:'spare-shoes',slot:'shoes',name:'Sapatos de Bambu',upgrade:'+9',bonuses:'Resistência contra Fogo: 15%',stones:''});normalizeData(data)");const source=initial.w.eval('JSON.stringify(data)');initial.dom.window.close();const {w,dom}=await page({query:'?build=abcdefghijklmnop',stored:source,fetch:async()=>Response.json({snapshot:JSON.parse(source)})});const inv=w.document.querySelector('[data-inventory-item="spare-shoes"]');inv.click();assert.match(w.document.querySelector('.inventory-inspector').textContent,/Sapatos de Bambu/);w.document.querySelector('[data-inventory-equip]').click();assert.equal(w.eval('set().items.shoes'),'spare-shoes');assert.equal(w.localStorage.getItem('metin-armory-v1'),source);
  w.eval("moveInventoryItem('spare-shoes',30)");const b=w.document.querySelector('[data-inventory-item="spare-shoes"]');b.dispatchEvent(new w.Event('dragstart',{bubbles:true,cancelable:true}));w.document.querySelector('[data-slot=shoes]').dispatchEvent(new w.Event('drop',{bubbles:true,cancelable:true}));assert.equal(w.eval('set().items.shoes'),'spare-shoes');assert.equal(w.localStorage.getItem('metin-armory-v1'),source);dom.window.close();
+});
+
+
+test('inventory uses native item footprints, migrates overlapping anchors and rejects page overflow',async()=>{
+ const {w,dom}=await page();
+ const found=height=>Object.entries(w.ITEM_CATALOG).find(([,e])=>e.slot==='weapon'&&w.ITEM_INVENTORY_SIZES[e.image]===height);
+ for(const height of [1,2,3]){const [catalogId,e]=found(height);w.footprint={id:'size-'+height,slot:'weapon',catalogId,name:e.label};assert.equal(w.eval('inventoryItemHeight(footprint)'),height);}
+ const [weaponId,weapon]=found(3),[armorId,armor]=Object.entries(w.ITEM_CATALOG).find(([,e])=>e.slot==='armor'&&w.ITEM_INVENTORY_SIZES[e.image]===2);
+ w.fixture=[{id:'multi-armor',slot:'armor',catalogId:armorId,name:armor.label,upgrade:'+9'},{id:'multi-weapon',slot:'weapon',catalogId:weaponId,name:weapon.label,upgrade:'+9'}];
+ w.eval("data.items=fixture;data.characters=[char()];ci=si=0;char().sets=[makeSet('Teste')];char().inventory=['multi-armor',null,null,null,null,'multi-weapon'];normalizeData(data);render();");
+ assert.equal(w.eval("char().inventory.indexOf('multi-armor')"),0);assert.equal(w.eval("char().inventory.indexOf('multi-weapon')"),1);
+ assert.equal(w.eval('inventoryOccupancy().size'),5);assert.match(w.document.querySelector('[data-inventory-item="multi-weapon"]').style.gridRow,/span 3/);
+ const before=w.eval('JSON.stringify(char().inventory)');assert.equal(w.eval("moveInventoryItem('multi-armor',40)"),false);assert.equal(w.eval("moveInventoryItem('multi-weapon',35)"),false);assert.equal(w.eval('JSON.stringify(char().inventory)'),before);
+ assert.equal(w.eval("moveInventoryItem('multi-armor',20)"),true);assert.equal(w.eval("moveInventoryItem('multi-weapon',25)"),true);
+ assert.equal(w.eval("char().inventory.indexOf('multi-armor')"),1);assert.equal(w.eval("char().inventory.indexOf('multi-weapon')"),25);assert.equal(w.eval('inventoryOccupancy().size'),5);
+ dom.window.close();
 });
