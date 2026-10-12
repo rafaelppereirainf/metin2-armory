@@ -313,3 +313,10 @@ test('inventory uses native item footprints, migrates overlapping anchors and re
  assert.equal(w.eval("char().inventory.indexOf('multi-armor')"),1);assert.equal(w.eval("char().inventory.indexOf('multi-weapon')"),25);assert.equal(w.eval('inventoryOccupancy().size'),5);
  dom.window.close();
 });
+
+
+test('lightning resistance labels migrate without changing lightning power or bonus values',async()=>{
+ const {w,dom}=await page();w.eval("data.items.push({id:'lightning-label',slot:'armor',name:'Armadura',bonuses:'Resistência Raios: +15%',bonus6:'Ganha Resistência Raios: +5%',base:'Poder dos Raios: 20%',absorptionSource:{normal:'Resistência contra Raios: +10%'}});normalizeData(data)");
+ assert.equal(w.eval("item('lightning-label').bonuses"),'Resistência a Relâmpagos: +15%');assert.equal(w.eval("item('lightning-label').bonus6"),'Ganha Resistência a Relâmpagos: +5%');assert.equal(w.eval("item('lightning-label').base"),'Poder dos Raios: 20%');assert.equal(w.eval("item('lightning-label').absorptionSource.normal"),'Resistência a Relâmpagos: +10%');
+ assert.equal(w.eval("statusLabel('Resistência a Relâmpagos')"),'lightning');assert.equal(w.eval("statusLabel('Resistência Raios')"),'lightning');assert.equal(w.eval("statusLabel('Poder dos Raios')"),'powerLightning');assert.ok(w.BONUS_CATALOG.normal.armor.some(e=>e.label==='Resistência a Relâmpagos'));dom.window.close();
+});
