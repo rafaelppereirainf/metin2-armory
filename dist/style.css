@@ -40,3 +40,9 @@ main{max-width:1800px;width:100%;grid-template-columns:210px minmax(0,1fr)}heade
 footer .fan-disclaimer{flex-basis:100%;width:100%;font-size:11px;line-height:1.7;color:#a8ad9f;margin:10px 0 0}footer{flex-wrap:wrap}
 
 #shareDialog{width:min(560px,calc(100vw - 32px))}#shareDialog .share-content{padding-top:12px}#shareDialog p{line-height:1.6}#shareDialog textarea{width:100%;min-height:84px;margin:12px 0;resize:vertical}#shareDialog button:disabled{opacity:.5;cursor:wait}.share-record{display:flex;align-items:center;gap:8px;padding:12px 0;border-bottom:1px solid var(--line,#444)}.share-record strong{flex:1;overflow-wrap:anywhere}.share-verification{margin:16px 0}.share-backup,.share-restore{margin-top:16px}@media(max-width:480px){.share-record{flex-wrap:wrap}.share-record strong{flex-basis:100%}}
+
+.game-tooltip.touch-tooltip:not([hidden]){display:block;pointer-events:auto;overflow-y:auto;overscroll-behavior:contain;max-height:calc(100dvh - 24px)}
+.tooltip-actions{display:flex;justify-content:center;gap:10px;margin-top:16px;padding-top:12px;border-top:1px solid var(--line)}
+.tooltip-actions button{min-height:44px;flex:1}
+.equipment-touch-hint{display:none}
+@media(hover:none),(pointer:coarse){.equipment-hover-hint{display:none}.equipment-touch-hint{display:inline}}

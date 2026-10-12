@@ -115,3 +115,26 @@ test('old Worker cannot create a falsely advertised permanent link', async () =>
   assert.equal(calls, 1); assert.equal(w.localStorage.getItem('metin-armory-shares-v1'), null);
   dom.window.close();
 });
+test('touch opens equipment details before editing, including read-only viewers', async () => {
+  const initial = await page();
+  const source = initial.w.eval('JSON.stringify(data)'); initial.dom.window.close();
+  for (const viewer of [false, true]) {
+    const {w, dom} = await page({stored: source, query: viewer ? '?build=abcdefghijklmnop' : '', fetch: async () => Response.json({snapshot: JSON.parse(source)})});
+    w.matchMedia = () => ({matches: true});
+    const slot = w.document.querySelector('.slot.filled'); assert.ok(slot);
+    slot.click();
+    const tooltip = w.document.querySelector('#itemTooltip');
+    assert.equal(tooltip.hidden, false); assert.equal(tooltip.classList.contains('touch-tooltip'), true);
+    assert.equal(w.document.querySelector('#modal').open, false);
+    const edit = tooltip.querySelector('[data-tooltip-edit]');
+    assert.equal(!!edit, !viewer);
+    tooltip.querySelector('h3').click(); assert.equal(tooltip.hidden, false);
+    tooltip.dispatchEvent(new w.Event('scroll')); assert.equal(tooltip.hidden, false);
+    if (edit) {edit.click(); assert.equal(w.document.querySelector('#modal').open, true); w.document.querySelector('#modal').close();}
+    else {tooltip.querySelector('[data-tooltip-close]').click(); assert.equal(tooltip.hidden, true);}
+    slot.click(); assert.equal(tooltip.hidden, false);
+    w.document.querySelector('#subtitle').click(); assert.equal(tooltip.hidden, true);
+    slot.click(); w.document.dispatchEvent(new w.KeyboardEvent('keydown', {key: 'Escape'})); assert.equal(tooltip.hidden, true);
+    dom.window.close();
+  }
+});
