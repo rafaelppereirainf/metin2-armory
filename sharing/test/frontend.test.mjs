@@ -6,7 +6,7 @@ import {runInContext} from 'node:vm';
 import {JSDOM} from 'jsdom';
 const dist = new URL('../../dist/', import.meta.url);
 const html = readFileSync(new URL('index.html', dist), 'utf8');
-const scripts = ['catalog.js', 'asset-index.js', 'bonus-catalog.js', 'pet-catalog.js', 'alchemy-catalog.js', 'refinement-catalog.js', 'mount-catalog.js', 'equipment.js', 'effects-catalog.js', 'effects.js', 'status.js', 'target-catalog.js', 'combat.js', 'sharing.js', 'inventory.js', 'app.js'];
+const scripts = ['catalog.js', 'asset-index.js', 'bonus-catalog.js', 'pet-catalog.js', 'alchemy-catalog.js', 'refinement-catalog.js', 'mount-catalog.js', 'equipment.js', 'effects-catalog.js', 'effects.js', 'status.js', 'target-catalog.js', 'combat.js', 'sharing.js', 'inventory.js', 'item-ocr.js', 'app.js'];
 const tick = () => new Promise(resolve => setImmediate(resolve));
 async function page({query = '', stored, fetch, configured = true} = {}) {
   const dom = new JSDOM(html, {url: 'https://rafaelppereirainf.github.io/metin2-armory/' + query, runScripts: 'outside-only'});
@@ -239,6 +239,39 @@ test('character and combat tabs partition content and retain the active tab afte
  assert.ok(d.querySelector('[data-consumable]').getAttribute('aria-label'));assert.ok(d.querySelector('.consumable-info summary'));
  d.querySelector('[data-special-choice="joy"][data-special-slot="0"]').click();assert.equal(w.eval('set().statusEffects.specials[0]'),'joy');assert.equal(d.querySelector('#combatView').hidden,false);assert.ok(d.querySelector('[data-special-choice="joy"][data-special-slot="1"]').disabled);
  d.querySelector('#tabCombat').dispatchEvent(new w.KeyboardEvent('keydown',{key:'Home',bubbles:true}));assert.equal(d.querySelector('#characterView').hidden,false);dom.window.close();
+});
+
+test('item screenshot review keeps the image out of saved data and adds only after editor confirmation',async()=>{
+ const {w,dom}=await page();
+ const d=w.document,before=w.eval('data.items.length');d.querySelector('#addInventoryItem').click();
+ assert.equal(d.querySelector('#form').dataset.itemOcr,'true');assert.ok(d.querySelector('#itemOcrDrop'));assert.equal(d.querySelector('#itemOcrRun').disabled,true);
+ d.querySelector('[name="inventorySlot"]').value='necklace';
+ d.querySelector('[name="ocrText"]').value=['Colar de Prata +9','Nível Mínimo: 15','Rapidez de Feitiço: +20%','Resistência ao Vento: +10%','Regeneração de MN: +20%','Max. VD: +1500','Defesa contra Punhais: 15%','Linha ilegível 39','Pode adicionar um bónus adicional.'].join('\n');
+ d.querySelector('[name="inventoryName"]').value='Colar de Prata';d.querySelector('[name="inventoryUpgrade"]').value='+9';
+ d.querySelector('#form').dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));await tick();
+ assert.equal(d.querySelector('#form').dataset.itemOcr,'false');assert.equal(w.eval('data.items.length'),before);assert.equal(d.querySelector('#form').dataset.itemOcrReview,'true');
+ assert.equal(d.querySelector('[name="catalogId"]').value,Object.keys(w.ITEM_CATALOG).find(k=>w.ITEM_CATALOG[k].label==='Colar de Prata'));
+ assert.equal(d.querySelector('[name="upgrade"]').value,'+9');assert.match(d.querySelector('[name="normal0_type"]').value,/Regeneração de MN/);
+ assert.equal(w.eval('data.items.length'),before);assert.match(d.querySelector('[name="notes"]').value,/Linha ilegível/);
+ d.querySelector('#form').dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));
+ assert.equal(w.eval('data.items.length'),before+1);assert.ok(w.eval('ownsInventoryItem(data.items.at(-1).id)'));assert.notEqual(w.eval('set().items.necklace'),w.eval('data.items.at(-1).id'));
+ assert.equal(JSON.stringify(w.eval('data')).includes('data:image/'),false);dom.window.close();
+});
+
+test('screenshot parser maps catalogue names, upgrades and valid bonuses while preserving uncertain lines',async()=>{
+ const {w,dom}=await page();const parsed=w.eval(`parseItemScreenshot(${JSON.stringify(['Colar de Prata +9','Rapidez de Feitiço: +20%','Resistência ao Vento: +10%','Regeneração de MN: +20%','Max. VD: +1500','Linha ilegível 39'].join('\n'))},'necklace')`);
+ assert.equal(parsed.slot,'necklace');assert.equal(parsed.name,'Colar de Prata');assert.equal(parsed.upgrade,'+9');assert.equal(parsed.catalogId,Object.keys(w.ITEM_CATALOG).find(k=>w.ITEM_CATALOG[k].label==='Colar de Prata'));
+ assert.doesNotMatch(parsed.bonuses,/Rapidez de Feitiço|Resistência ao Vento/);assert.match(parsed.bonuses,/Regeneração de MN/);assert.match(parsed.notes,/Linha ilegível 39/);dom.window.close();
+});
+
+test('paste starts local OCR, chooses the detected slot, and discards the screenshot on cancel',async()=>{
+ const {w,dom}=await page();const d=w.document;d.querySelector('#addInventoryItem').click();const input=d.querySelector('#itemOcrFile');let fileDialogOpens=0;input.click=()=>{fileDialogOpens++;};d.querySelector('#itemOcrDrop').click();assert.equal(fileDialogOpens,1);
+ w.URL.createObjectURL=()=> 'blob:temporary-item';w.URL.revokeObjectURL=()=>{};const file=new w.File(['image'], 'item.png',{type:'image/png'});const paste=new w.Event('paste',{bubbles:true,cancelable:true});Object.defineProperty(paste,'clipboardData',{value:{items:[{type:'image/png',getAsFile:()=>file}]}});d.dispatchEvent(paste);
+ assert.equal(d.querySelector('#itemOcrPreviewWrap').hidden,false);assert.equal(d.querySelector('#itemOcrRun').disabled,false);assert.equal(w.eval('itemOcrImage.size'),5);
+ w.eval(`prepareOcrImage=async()=>({});Tesseract={createWorker:async(langs)=>{window.ocrLanguage=langs;return {recognize:async()=>({data:{text:'Colar de Prata +9\\nRegeneração de MN: +20%'}}),terminate:async()=>{window.ocrTerminated=true;}};}}`);
+ d.querySelector('#itemOcrRun').click();await new Promise(resolve=>setTimeout(resolve,0));await new Promise(resolve=>setTimeout(resolve,0));
+ assert.equal(w.ocrLanguage,'por+eng');assert.equal(w.ocrTerminated,true);assert.equal(d.querySelector('[name="inventorySlot"]').value,'necklace');assert.match(d.querySelector('[name="ocrText"]').value,/Regeneração de MN/);
+ d.querySelector('#close').click();assert.equal(w.eval('itemOcrImage'),null);assert.equal(d.querySelector('#form').querySelector('[type="submit"]').textContent,'Guardar');dom.window.close();
 });
 test('six elemental contributions add at the same stage instead of compounding',async()=>{
  const {w,dom}=await page();w.input={issues:[],zero:[100,100],sashRange:[0,0],stat:100,upgrade:0,attack:0,attackMax:0,level:120,dex:90,totals:w.eval('statusAccumulator()')};w.target={dex:0,defense:0,weaponResist:0,averageResist:0,critResist:0,pierceResist:0,element:'fire',elementResist:-30,elementResists:{fire:-30},elementPowers:{fire:10}};
