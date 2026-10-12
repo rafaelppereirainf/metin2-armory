@@ -514,3 +514,8 @@ window.CONSUMABLE_EFFECTS=[
     "image": "assets/effect-ddIntelligence.png"
   }
 ];
+
+window.COMPANION_PETS=[
+ {id:'khan',name:'Khan',image:'assets/companion-khan.png',stats:{meleeMagic:15,hp:1500},source:'https://pt-wiki.metin2.gameforge.com/index.php/Khan'},
+ {id:'porky',name:'Porky',image:'assets/companion-porky.png',stats:{meleeMagic:15,hp:1500},source:'https://pt-wiki.metin2.gameforge.com/index.php/Porky'}
+];
