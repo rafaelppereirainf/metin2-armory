@@ -37,6 +37,14 @@ window.COMBAT_TARGETS=[
       "ice": 0,
       "earth": 0,
       "dark": 0
+    },
+    "elementPowers": {
+      "fire": 0,
+      "lightning": 0,
+      "wind": 0,
+      "ice": 0,
+      "earth": 0,
+      "dark": 0
     }
   },
   {
@@ -69,6 +77,14 @@ window.COMBAT_TARGETS=[
     "mountAllowed": true,
     "notes": "Perfil base do simulador da wiki FR; não simula invulnerabilidade, debuffs ou modificadores de fase. Resistências a críticos, furos e dano médio consideradas 0 no perfil base.",
     "elementResists": {
+      "fire": 0,
+      "lightning": 0,
+      "wind": 0,
+      "ice": 0,
+      "earth": 0,
+      "dark": 0
+    },
+    "elementPowers": {
       "fire": 0,
       "lightning": 0,
       "wind": 0,
@@ -113,6 +129,14 @@ window.COMBAT_TARGETS=[
       "ice": 0,
       "earth": 0,
       "dark": 0
+    },
+    "elementPowers": {
+      "fire": 0,
+      "lightning": 0,
+      "wind": 0,
+      "ice": 0,
+      "earth": 0,
+      "dark": 0
     }
   },
   {
@@ -145,6 +169,14 @@ window.COMBAT_TARGETS=[
     "mountAllowed": true,
     "notes": "Perfil base do simulador da wiki FR; não simula invulnerabilidade, debuffs ou modificadores de fase. Resistências a críticos, furos e dano médio consideradas 0 no perfil base.",
     "elementResists": {
+      "fire": 0,
+      "lightning": 0,
+      "wind": 0,
+      "ice": 0,
+      "earth": 0,
+      "dark": 0
+    },
+    "elementPowers": {
       "fire": 0,
       "lightning": 0,
       "wind": 0,
@@ -189,6 +221,14 @@ window.COMBAT_TARGETS=[
       "ice": 0,
       "earth": 0,
       "dark": 0
+    },
+    "elementPowers": {
+      "fire": 0,
+      "lightning": 0,
+      "wind": 0,
+      "ice": 0,
+      "earth": 0,
+      "dark": 0
     }
   },
   {
@@ -221,6 +261,14 @@ window.COMBAT_TARGETS=[
     "mountAllowed": true,
     "notes": "Perfil base do simulador da wiki FR; não simula invulnerabilidade, debuffs ou modificadores de fase. Resistências a críticos, furos e dano médio consideradas 0 no perfil base.",
     "elementResists": {
+      "fire": 0,
+      "lightning": 0,
+      "wind": 0,
+      "ice": 0,
+      "earth": 0,
+      "dark": 0
+    },
+    "elementPowers": {
       "fire": 0,
       "lightning": 0,
       "wind": 0,
@@ -265,6 +313,14 @@ window.COMBAT_TARGETS=[
       "ice": 0,
       "earth": 0,
       "dark": 0
+    },
+    "elementPowers": {
+      "fire": 0,
+      "lightning": 0,
+      "wind": 0,
+      "ice": 0,
+      "earth": 0,
+      "dark": 0
     }
   },
   {
@@ -303,6 +359,14 @@ window.COMBAT_TARGETS=[
       "ice": 0,
       "earth": 0,
       "dark": 0
+    },
+    "elementPowers": {
+      "fire": 10,
+      "lightning": 0,
+      "wind": 0,
+      "ice": 0,
+      "earth": 0,
+      "dark": 0
     }
   },
   {
@@ -335,6 +399,14 @@ window.COMBAT_TARGETS=[
     "mountAllowed": false,
     "notes": "Perfil base do simulador da wiki FR; não simula invulnerabilidade, debuffs ou modificadores de fase. Resistências a críticos, furos e dano médio consideradas 0 no perfil base. As estátuas contam como pedras Metin. Montadas não permitidas nesta masmorra.",
     "elementResists": {
+      "fire": 0,
+      "lightning": 0,
+      "wind": 0,
+      "ice": 0,
+      "earth": 0,
+      "dark": 0
+    },
+    "elementPowers": {
       "fire": 0,
       "lightning": 0,
       "wind": 0,
@@ -379,6 +451,14 @@ window.COMBAT_TARGETS=[
       "ice": 0,
       "earth": 0,
       "dark": 0
+    },
+    "elementPowers": {
+      "fire": 0,
+      "lightning": 0,
+      "wind": 0,
+      "ice": 0,
+      "earth": 0,
+      "dark": 0
     }
   },
   {
@@ -415,6 +495,14 @@ window.COMBAT_TARGETS=[
       "lightning": 0,
       "wind": 0,
       "ice": -10,
+      "earth": 0,
+      "dark": 0
+    },
+    "elementPowers": {
+      "fire": 0,
+      "lightning": 0,
+      "wind": 0,
+      "ice": 50,
       "earth": 0,
       "dark": 0
     }
@@ -455,6 +543,14 @@ window.COMBAT_TARGETS=[
       "ice": -10,
       "earth": 0,
       "dark": 0
+    },
+    "elementPowers": {
+      "fire": 0,
+      "lightning": 0,
+      "wind": 0,
+      "ice": 50,
+      "earth": 0,
+      "dark": 0
     }
   },
   {
@@ -491,6 +587,14 @@ window.COMBAT_TARGETS=[
       "lightning": 0,
       "wind": 0,
       "ice": -10,
+      "earth": 0,
+      "dark": 0
+    },
+    "elementPowers": {
+      "fire": 0,
+      "lightning": 0,
+      "wind": 0,
+      "ice": 50,
       "earth": 0,
       "dark": 0
     }
@@ -531,6 +635,14 @@ window.COMBAT_TARGETS=[
       "ice": 0,
       "earth": 0,
       "dark": 0
+    },
+    "elementPowers": {
+      "fire": 0,
+      "lightning": 100,
+      "wind": 0,
+      "ice": 0,
+      "earth": 0,
+      "dark": 0
     }
   },
   {
@@ -565,6 +677,14 @@ window.COMBAT_TARGETS=[
     "elementResists": {
       "fire": 0,
       "lightning": -50,
+      "wind": 0,
+      "ice": 0,
+      "earth": 0,
+      "dark": 0
+    },
+    "elementPowers": {
+      "fire": 0,
+      "lightning": 100,
       "wind": 0,
       "ice": 0,
       "earth": 0,

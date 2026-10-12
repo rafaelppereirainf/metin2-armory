@@ -1,3 +1,4 @@
+let activeView='character';
 const $=s=>document.querySelector(s), esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const slots=[['weapon','Arma','⚔',35,24],['helmet','Elmo','♜',112,24],['talisman','Talismã','◇',189,24],['armor','Armadura','♙',112,104],['shield','Escudo','◈',189,104],['earrings','Brincos','∞',266,104],['bracelet','Pulseira','◎',189,184],['necklace','Colar','♧',266,184],['shoes','Sapatos','♟',35,264],['belt','Cinto','▱',112,264],['gloves','Luvas','♜',189,264]];
 const extra=[['arrows','Flechas'],['costume','Traje'],['hair','Penteado'],['skin','Skin de arma'],['sash','Faixa'],['aura','Veste de aura'],['mount','Montada']];
@@ -136,7 +137,7 @@ function effectiveAbsorption(it){const src=it.absorptionSource;if(!src?.enabled)
 function updateAbsorptionPreview(){const box=$('#absorptionPreview');if(!box||!$('#modal').open)return;try{const v=Object.fromEntries(new FormData($('#form'))),src=readAbsorptionSource(v,$('#form').dataset.slot);box.innerHTML=src?bonusContent({name:'Resultado da absorção',slot:$('#form').dataset.slot,absorption:v.absorption,absorptionSource:src}):'Valores manuais preservados.';}catch(e){box.textContent=e.message;}}
 document.addEventListener('change',e=>{if(e.target.name==='absorbedCatalogId'){const select=$('[name="absorbedUpgrade"]');select.innerHTML=upgradeChoices(e.target.value).map(([n])=>`<option>${n}</option>`).join('');$('#absorptionSourceFields').innerHTML=absorptionSourceFields(e.target.value);$('#absorptionSourceFields').querySelectorAll('[data-roll]').forEach(row=>syncRollRow(row));}if(e.target.closest('#form')){syncAbsorptionMode();updateAbsorptionPreview();updateElementalPreview();}});
 document.addEventListener('input',e=>{if(e.target.closest('#form')){syncAbsorptionMode();updateAbsorptionPreview();updateElementalPreview();}});
-function render(){renderProfile();renderCalculatedStatus();renderSetEffects();renderCombat();}
+function render(){renderProfile();renderCalculatedStatus();renderSetEffects();renderCombat();renderView();}
 async function bootProfile(){
  if(!sharedBuildId){render();return;}
  document.body.classList.add('readonly');
@@ -158,3 +159,7 @@ document.addEventListener('change',e=>{const m=e.target.name?.match(/^petSkill(?
 document.addEventListener('change',e=>{if(['species','level','type'].includes(e.target.name)&&$('#form').querySelector('[data-pet-skill]')){$('#fields').querySelectorAll('[data-pet-skill]').forEach(row=>{row.querySelector('[name^="petSkillValue"]').value='';syncPetSkill(row);});}});
 
 window.armoryShareCharacter=(id,targetId)=>{if(readonly)return false;const c=data.characters.find(c=>c.id===id);if(!c)return false;share(c,targetId);return true;};
+
+function renderView(){for(const view of ['character','combat']){const panel=$('#'+view+'View'),button=$('#tab'+(view==='character'?'Character':'Combat'));if(!panel||!button)continue;const active=view===activeView;panel.hidden=!active;button.setAttribute('aria-selected',String(active));button.tabIndex=active?0:-1;}}
+document.addEventListener('click',e=>{const b=e.target.closest?.('[data-view]');if(!b)return;activeView=b.dataset.view;hideTooltip();renderView();});
+document.addEventListener('keydown',e=>{const b=e.target.closest?.('[data-view]');if(!b||!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();activeView=e.key==='Home'?'character':e.key==='End'?'combat':activeView==='character'?'combat':'character';renderView();$('#tab'+(activeView==='character'?'Character':'Combat')).focus();});

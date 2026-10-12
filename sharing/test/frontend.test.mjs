@@ -231,3 +231,16 @@ test('mounted model includes horse attack while viewer presets and mount choices
  w.eval("set().combatTarget={preset:'untrusted',source:'javascript:alert(1)'}");assert.equal(w.eval('resolvedCombatTarget(char(),set()).source'),undefined);
  dom.window.close();
 });
+test('character and combat tabs partition content and retain the active tab after simulation',async()=>{
+ const {w,dom}=await page();const d=w.document;
+ assert.ok(d.querySelector('#characterView #stats'));assert.ok(d.querySelector('#characterView #pet'));assert.ok(d.querySelector('#combatView #setEffects'));assert.ok(d.querySelector('#combatView #combat'));assert.equal(d.querySelector('#combatView').hidden,true);
+ d.querySelector('#tabCombat').click();assert.equal(d.querySelector('#characterView').hidden,true);assert.equal(d.querySelector('#combatView').hidden,false);
+ const pet=d.querySelector('#combatView [data-status-effect="petActive"]');pet.checked=true;pet.dispatchEvent(new w.Event('change',{bubbles:true}));assert.equal(w.eval('set().statusEffects.petActive'),true);assert.equal(d.querySelector('#combatView').hidden,false);assert.equal(d.querySelector('#characterView [data-status-effect="petActive"]').checked,true);
+ assert.ok(d.querySelector('[data-consumable]').getAttribute('aria-label'));assert.ok(d.querySelector('.consumable-info summary'));
+ d.querySelector('[data-special-choice="joy"][data-special-slot="0"]').click();assert.equal(w.eval('set().statusEffects.specials[0]'),'joy');assert.equal(d.querySelector('#combatView').hidden,false);assert.ok(d.querySelector('[data-special-choice="joy"][data-special-slot="1"]').disabled);
+ d.querySelector('#tabCombat').dispatchEvent(new w.KeyboardEvent('keydown',{key:'Home',bubbles:true}));assert.equal(d.querySelector('#characterView').hidden,false);dom.window.close();
+});
+test('six elemental contributions add at the same stage instead of compounding',async()=>{
+ const {w,dom}=await page();w.input={issues:[],zero:[100,100],sashRange:[0,0],stat:100,upgrade:0,attack:0,attackMax:0,level:120,dex:90,totals:w.eval('statusAccumulator()')};w.target={dex:0,defense:0,weaponResist:0,averageResist:0,critResist:0,pierceResist:0,element:'fire',elementResist:-30,elementResists:{fire:-30},elementPowers:{fire:10}};
+ const base=w.eval('physicalPvmModel(input,target)');w.input.totals.powerFire=10;w.input.totals.powerIce=100;const boosted=w.eval('physicalPvmModel(input,target)');assert.equal(boosted.outcomes[0].min,base.outcomes[0].min+Math.floor(base.outcomes[0].min*.2)+Math.floor(base.outcomes[0].min*.05));assert.equal(boosted.elemental.filter(e=>e.factor>0).length,2);dom.window.close();
+});

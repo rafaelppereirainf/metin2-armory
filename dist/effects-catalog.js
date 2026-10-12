@@ -366,7 +366,8 @@ window.CONSUMABLE_EFFECTS=[
     "source": "https://pt-wiki.metin2.gameforge.com/index.php/Orvalho_Laranja",
     "note": "",
     "min": 8,
-    "max": 20
+    "max": 20,
+    "image": "assets/effect-dewOrange.png"
   },
   {
     "id": "dewRed",
@@ -430,7 +431,8 @@ window.CONSUMABLE_EFFECTS=[
     "source": "https://pt-wiki.metin2.gameforge.com/index.php/Orvalho_Amarelo",
     "note": "",
     "min": 2,
-    "max": 8
+    "max": 8,
+    "image": "assets/effect-dewYellow.png"
   },
   {
     "id": "green",
@@ -447,7 +449,8 @@ window.CONSUMABLE_EFFECTS=[
       10,
       20,
       30
-    ]
+    ],
+    "image": "assets/effect-green.png"
   },
   {
     "id": "attackPotion",
@@ -463,7 +466,8 @@ window.CONSUMABLE_EFFECTS=[
     "values": [
       10,
       15
-    ]
+    ],
+    "image": "assets/effect-attackPotion.png"
   },
   {
     "id": "ddAttack",
@@ -473,7 +477,8 @@ window.CONSUMABLE_EFFECTS=[
     "group": "Deus Dragão",
     "level": 1,
     "source": "https://fr-wiki.metin2.gameforge.com/index.php/Attaque_du_Dieu_Dragon",
-    "note": "Wiki FR atual: +20% corpo a corpo/mágico. Wiki PT antiga descreve 12–15% de dano."
+    "note": "Wiki FR atual: +20% corpo a corpo/mágico. Wiki PT antiga descreve 12–15% de dano.",
+    "image": "assets/effect-ddAttack.png"
   },
   {
     "id": "ddLife",
@@ -494,7 +499,8 @@ window.CONSUMABLE_EFFECTS=[
     "group": "Deus Dragão",
     "level": 1,
     "source": "https://fr-wiki.metin2.gameforge.com/index.php/D%C3%A9fense_du_Dieu_Dragon",
-    "note": "Redução percentual de dano recebido; não acrescenta 20 pontos de defesa nem aumenta o dano causado."
+    "note": "Redução percentual de dano recebido; não acrescenta 20 pontos de defesa nem aumenta o dano causado.",
+    "image": "assets/effect-ddDefense.png"
   },
   {
     "id": "ddIntelligence",
@@ -504,6 +510,7 @@ window.CONSUMABLE_EFFECTS=[
     "group": "Deus Dragão",
     "level": 1,
     "source": "https://en-wiki.metin2.gameforge.com/index.php/Dragon_God_Intelligence",
-    "note": "Aumenta a mana máxima, não a INT. O total de mana ainda não é calculado pelo Armory."
+    "note": "Aumenta a mana máxima, não a INT. O total de mana ainda não é calculado pelo Armory.",
+    "image": "assets/effect-ddIntelligence.png"
   }
 ];
