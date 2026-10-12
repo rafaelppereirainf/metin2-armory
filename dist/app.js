@@ -136,7 +136,7 @@ function effectiveAbsorption(it){const src=it.absorptionSource;if(!src?.enabled)
 function updateAbsorptionPreview(){const box=$('#absorptionPreview');if(!box||!$('#modal').open)return;try{const v=Object.fromEntries(new FormData($('#form'))),src=readAbsorptionSource(v,$('#form').dataset.slot);box.innerHTML=src?bonusContent({name:'Resultado da absorção',slot:$('#form').dataset.slot,absorption:v.absorption,absorptionSource:src}):'Valores manuais preservados.';}catch(e){box.textContent=e.message;}}
 document.addEventListener('change',e=>{if(e.target.name==='absorbedCatalogId'){const select=$('[name="absorbedUpgrade"]');select.innerHTML=upgradeChoices(e.target.value).map(([n])=>`<option>${n}</option>`).join('');$('#absorptionSourceFields').innerHTML=absorptionSourceFields(e.target.value);$('#absorptionSourceFields').querySelectorAll('[data-roll]').forEach(row=>syncRollRow(row));}if(e.target.closest('#form')){syncAbsorptionMode();updateAbsorptionPreview();updateElementalPreview();}});
 document.addEventListener('input',e=>{if(e.target.closest('#form')){syncAbsorptionMode();updateAbsorptionPreview();updateElementalPreview();}});
-function render(){renderProfile();renderCalculatedStatus();}
+function render(){renderProfile();renderCalculatedStatus();renderSetEffects();renderCombat();}
 async function bootProfile(){
  if(!sharedBuildId){render();return;}
  document.body.classList.add('readonly');

@@ -41,3 +41,9 @@ Antes de mudar de endereço, exporta o perfil no original e importa-o no novo si
 # Links curtos de partilha
 
 A implementação Cloudflare Workers + D1 está em `sharing/`. Para ativar os links curtos, segue [o guia de configuração](sharing/README.md). Até preencher `dist/share-config.js`, os links completos antigos continuam disponíveis. Não coloques segredos Cloudflare ou a Secret Key Turnstile no repositório.
+
+## Efeitos por set e laboratório PvM
+
+`dist/effects-catalog.js` reúne itens especiais e consumíveis, com fontes individuais das wikis oficiais. `effects.js` valida compatibilidade, níveis e valores, e aplica os ticks por set. Estes campos seguem na exportação JSON e nas partilhas; em viewer são simulações temporárias. Ataque percentual de combate é distinto do ataque fixo mostrado no painel. Os bónus de HP percentual são aplicados à base natural, com o limite de +3500 documentado na wiki francesa.
+
+`dist/combat.js` contém a primeira estimativa de golpes físicos PvM a pé. Separa ataque principal/secundário da arma, usa atributos e fontes ativas, calcula quatro resultados (normal, crítico, furado e ambos) e compara ganhos isolados. Os dados do alvo são explícitos, não presets inventados de bosses. Requer tabelas +0 e bloqueia armas com progressões especiais, montado e Yohara. As fórmulas e limites estão visíveis na própria secção. Não modela habilidades ofensivas, PvP, transformação, DPS, bónus condicionais ou efeitos de sets de trajes; elementos são analisados um de cada vez. Valores devem ser calibrados contra golpes no jogo antes de decisões de investimento. As imagens dos novos efeitos provêm da wiki PT, mantendo os créditos gerais do projeto.

@@ -1,0 +1,89 @@
+// Primeira versão: golpes físicos PvM a pé, fórmulas da wiki FR. Nunca usa o ataque do painel como dano.
+const COMBAT_SOURCES={damage:'https://fr-wiki.metin2.gameforge.com/index.php/D%C3%A9g%C3%A2ts',attack:"https://fr-wiki.metin2.gameforge.com/index.php/Valeur_d%27attaque",weapon:"https://fr-wiki.metin2.gameforge.com/index.php/Valeur_d%27attaque_(armes)",pierce:'https://fr-wiki.metin2.gameforge.com/index.php/Coup_per%C3%A7ant_(effet)',element:"https://fr-wiki.metin2.gameforge.com/index.php/Syst%C3%A8me_d%27%C3%A9l%C3%A9ments"};
+function combatRange(it){const a=statusAccumulator();parseStatusText(fixedAttributes(it).text,a,'Arma',[],[]);return [a.attack,a.attackMax];}
+function combatInputs(c,s){
+ const calc=calculateStatus(c,s),issues=[],notes=[],t={...calc.totals},it=item(s.items.weapon),a=calc.attributes;
+ if(calc.totals.attack!==calc.totals.attackMax)issues.push('Ataque fixo com intervalo: decomposição ainda não suportada.');
+ if(!a)issues.push('Configura os atributos base da personagem.');
+ if(!it)issues.push('Equipa uma arma para simular.');
+ const id=it?.catalogId|| (it?catalogueId(it):''),entry=catalogue()[id];
+ let zero=[0,0],current=[0,0],upgrade=0;
+ if(it){
+  if(it.fixedMode==='Manual'||!entry?.upgrades?.['0'])issues.push('A arma precisa de uma tabela automática com os valores em +0.');
+  else{zero=combatRange({...it,upgrade:'+0',fixedManual:''});current=combatRange({...it,fixedManual:''});const d0=current[0]-zero[0],d1=current[1]-zero[1];upgrade=d0;if(!zero[0]||d0!==d1||d0<0)issues.push('Esta arma tem uma progressão especial ainda não modelada.');}
+  const name=normalized(it.name);if(/batalha|tritao|dragao (?:negro|escuro)|cianite|kyanite|sem alma|demonia|presa fantasma|leao|ave celeste|passaro celestial|trovao/.test(name))issues.push('Esta arma está entre as exceções à fórmula comum; cálculo ainda não validado.');
+  if(it.fixedManual?.trim())issues.push('Atributos fixos manuais da arma: confirma a sua decomposição antes de simular.');
+  if(it.slot==='weapon'&&/arco/.test(name))issues.push('Ataques de arco ainda não modelados.');
+ }
+ if(item(s.items.mount)?.mounted)issues.push('Combate montado ainda não modelado nesta versão. Desativa Montado para simular a pé.');
+ const sash=item(s.items.sash),sashRange=sash?absorbedStatusParts(effectiveAbsorption(sash)).weapon:[0,0];
+ if(sashRange.some(n=>!Number.isFinite(n)||n<0))issues.push('Confirma o ataque absorvido pela faixa.');
+ if(!['Guerreiro','Sura','Ninja','Xamã'].includes(c.class))issues.push('Fórmula física desta classe ainda não verificada.');
+ let stat=0;if(a)stat=c.class==='Ninja'?Math.floor((a.str+7*a.dex)/4):c.class==='Xamã'?Math.floor((5*a.int+a.dex)/3):2*a.str;
+ if(s.statusEffects?.petActive){for(const line of String(c.pet?.skills||'').split('\n')){const m=line.match(/^Enfurecido\s+(\d+)\s*$/);if(!m)continue;const value=petSkillEffect(c.pet,'Enfurecido',m[1]).value;if(value===null)issues.push('Confirma o valor de Enfurecido do pet.');else t.meleeMagic+=value;}}
+ // Biólogo 80: ataque percentual de combate; não altera a referência do painel.
+ if(c.bio.completed?.includes(80))t.damageAttackPct+=10;
+ if(t.attackPct){t.damageAttackPct+=t.attackPct;notes.push('Ataque % adicional interpretado como bónus de combate; confirma a origem.');}
+ if(t.meleeMagic>100)notes.push('Corpo a corpo/mágico limitado a 100% na fórmula.');
+ if(calc.unknown.length)notes.push('Existem dados a confirmar no painel de status; revê as fontes antes de comparar investimentos.');
+ const conditional=calc.unknown.filter(x=>/quando|durante|condicion|total|disfarce/i.test(x));notes.push(...conditional);
+ return {issues:[...new Set(issues)],notes:[...new Set(notes)],zero,sashRange,upgrade,stat,attack:t.attack,attackMax:t.attackMax,totals:t,level:+c.level,dex:a?.dex||0};
+}
+function physicalPvmModel(input,target,extra={}){
+ const required=['dex','defense','weaponResist','averageResist','critResist','pierceResist','elementResist'];
+ if(required.some(k=>target[k]===''||target[k]===undefined||!Number.isFinite(Number(target[k]))))return {error:'Preenche a DES, defesa e resistências do alvo (usa 0 quando confirmado).'};
+ if(input.issues?.length)return {error:input.issues.join(' ')};
+ if(target.yohara)return {error:'Sung Ma, precisão e penalizações de Yohara ainda não modelados; este perfil não produz uma estimativa.'};
+ if(required.some(k=>!Number.isInteger(Number(target[k]))||Number(target[k])<(k==='elementResist'?-100:0)||Number(target[k])>(['dex','defense'].includes(k)?100000:100)))return {error:'Os valores do alvo ultrapassam os limites permitidos.'};
+ const t={...input.totals};for(const [k,v] of Object.entries(extra))t[k]=(t[k]||0)+v;
+ const k1=Math.min(90,Math.floor((2*input.dex+input.level)/3)),k2=Math.min(90,Math.floor((2*Number(target.dex)+input.level)/3));
+ const factor=(k1+210)/300-(2*k2+5)/(k2+95)*.3;
+ const defense=Number(target.defense),crit=Math.max(0,Math.min(100,t.crit-Number(target.critResist)))/100,pierce=Math.max(0,Math.min(100,t.pierce-Number(target.pierceResist)))/100;
+ const element=target.element||'',power=element?t['power'+element[0].toUpperCase()+element.slice(1)]||0:0;
+ const er=Number(target.elementResist),elementFactor=power>0?(er===0?power/2000:Math.max(0,(power-er)/200)):0;
+ const offense=1+(Math.min(100,t.meleeMagic)+t.damageAttackPct)/100;
+ const type=target.type==='metin'?1+t.metin/100:1,race=target.race?t[target.race]||0:0;
+ const average=1+t.average/100;
+ const ranges=[input.zero,input.sashRange],lo=ranges[0][0]+ranges[1][0],hi=ranges[0][1]+ranges[1][1];
+ if(hi-lo>2000)return {error:'Intervalo de ataque demasiado amplo para esta versão.'};
+ const outcomes=[{name:'Normal',crit:false,pierce:false,p:(1-crit)*(1-pierce)},{name:'Crítico',crit:true,pierce:false,p:crit*(1-pierce)},{name:'Furado',crit:false,pierce:true,p:(1-crit)*pierce},{name:'Crítico + furado',crit:true,pierce:true,p:crit*pierce}];
+ const primary=2*(input.level+input.upgrade),n0=ranges[0][1]-ranges[0][0]+1,n1=ranges[1][1]-ranges[1][0]+1;
+ if(n0<=0||n1<=0)return {error:'Intervalos de ataque inválidos.'};
+ let expected=0;let minimumDamage=false;
+ for(const o of outcomes){o.min=Infinity;o.max=-Infinity;o.mean=0;}
+ for(let sum=lo;sum<=hi;sum++){
+  const count=Math.max(0,Math.min(ranges[0][1],sum-ranges[1][0])-Math.max(ranges[0][0],sum-ranges[1][1])+1),weight=count/(n0*n1);
+  let base=Math.floor(primary+factor*(2*sum+input.stat+input.attack+(extra.attack||0)));
+  // Attack gains are secondary; extra.attack is already in t only, input.attack deliberately unchanged.
+  let intermediate=Math.floor(base*offense);for(const m of [type,1+race/100,1+t.monster/100,1+elementFactor])intermediate=Math.floor(intermediate*m);
+  let after=intermediate-defense;const floors=after<=2?[1,2,3,4,5]:[after];if(after<=2)minimumDamage=true;
+  for(const o of outcomes){let localMean=0;for(const f of floors){let d=Math.floor(f*(1-Number(target.weaponResist)/100));if(o.crit)d*=2;if(o.pierce)d+=Math.min(defense,Math.max(0,intermediate))+Math.floor(Math.max(0,intermediate)*Math.max(0,t.pierce-100)/200);d=Math.floor(d*average);d=Math.floor(d*(1-Number(target.averageResist)/100));d=Math.max(0,d);o.min=Math.min(o.min,d);o.max=Math.max(o.max,d);localMean+=d/floors.length;}o.mean+=weight*localMean;}
+ }
+ for(const o of outcomes)expected+=o.p*o.mean;
+ return {expected,outcomes,factor,power,elementFactor,crit,pierce,primary,secondary:[2*lo+input.stat+input.attack,2*hi+input.stat+input.attackMax],minimumDamage};
+}
+function renderCombat(){
+ const host=$('#combat');if(!host)return;const s=set(),target=s.combatTarget||{},input=combatInputs(char(),s),fmt=n=>Number(n).toLocaleString('pt-PT',{maximumFractionDigits:1});
+ const configField=(key,label,type='number',options=null)=>`<label>${label}${options?`<select data-combat-field="${key}">${options.map(([v,n])=>`<option value="${v}" ${String(target[key]||'')===String(v)?'selected':''}>${n}</option>`).join('')}</select>`:`<input data-combat-field="${key}" type="${type}" value="${esc(target[key]??'')}" ${type==='number'?`min="${key==='elementResist'?-100:0}" max="${['dex','defense'].includes(key)?100000:100}" step="1"`:''}>`}</label>`;
+ const model=physicalPvmModel(input,target);
+ host.innerHTML=`<p class="hint">Estimativa de dano por golpe físico a pé. Configura um alvo confirmado na wiki ou no jogo; não presume stats de bosses. Escolhas guardadas por set${readonly?' · simulação temporária nesta vista':''}.</p><details class="combat-config" 
+${model.error?'open':''}><summary>Configurar alvo e resistências</summary><div class="combat-fields">
+${configField('name','Nome do alvo','text')}
+${configField('type','Tipo','select',[['monster','Monstro / boss'],['metin','Pedra Metin']])}
+${configField('race','Bónus eficaz','select',[['','Nenhum'],['demons','Demónios'],['undead','Mortos-vivos'],['animals','Animais'],['orcs','Orcs'],['esoteric','Esotéricos'],['insects','Insetos'],['desert','Deserto'],['human','Semi-humanos']])}
+${configField('dex','DES do alvo')}
+${configField('defense','Defesa do alvo')}
+${configField('weaponResist','Resistência à tua arma (%)')}
+${configField('averageResist','Resistência a dano médio (%)')}
+${configField('critResist','Resistência a críticos (%)')}
+${configField('pierceResist','Resistência a furos (%)')}
+${configField('element','Elemento a analisar','select',[['','Sem elemento'],...elements.map(([k,n])=>[k,n])])}
+${configField('elementResist','Resistência do alvo a este elemento (%)')}</div><label class="combat-yohara"><input type="checkbox" data-combat-field="yohara" ${target.yohara?'checked':''}> Conteúdo de Yohara (Sung Ma ainda não modelado)</label></details>
+${model.error?`<p class="combat-empty">${esc(model.error)}</p>`:`<div class="combat-result"><span>Dano médio por golpe · ${esc(target.name||'alvo personalizado')}</span><strong>${fmt(model.expected)}</strong><small>Inclui probabilidades de críticos e furos; não é DPS.</small></div><div class="combat-outcomes">
+${model.outcomes.map(o=>`<div><small>${o.name} · ${fmt(o.p*100)}%</small><strong>${fmt(o.min)}–${fmt(o.max)}</strong></div>`).join('')}</div><h3>O que teria mais impacto?</h3><p class="hint">Ganho isolado com este alvo e este set. Não altera os teus itens e não compara custos em won.</p><div class="combat-investments">
+${[['attack',50,'+50 ataque fixo'],['average',10,'+10 pontos de dano médio'],['monster',10,'+10 pontos contra monstros'],['crit',10,'+10 pontos de críticos'],['pierce',10,'+10 pontos de furos'],...(target.element?[['power'+target.element[0].toUpperCase()+target.element.slice(1),10,'+10 poder '+elements.find(e=>e[0]===target.element)?.[1]]]:[]),...(target.type==='metin'?[['metin',10,'+10 pontos contra Metins']]:[])].map(([key,value,label])=>{const next=physicalPvmModel(input,target,{[key]:value}),gain=next.expected-model.expected;return {label,gain,pct:model.expected?gain/model.expected*100:0};}).sort((a,b)=>b.gain-a.gain).map(e=>`<div><span>${esc(e.label)}</span><strong>+${fmt(e.gain)} <small>(${fmt(e.pct)}%)</small></strong></div>`).join('')}</div>`}<details class="combat-method"><summary>Modelo, fontes e limites</summary><p>Separação da arma em +0 e melhoramento, atributos, ataque fixo, bónus percentuais, tipo de alvo, monstros, elemento, defesa, resistência à arma, críticos, furos (incluindo acima de 100%), dano médio e resistência a dano médio. A distribuição considera separadamente a arma e a faixa.</p><p>Primeira versão: não calcula habilidades ofensivas, PvP, combate montado, transformação, Sung Ma, DPS, efeitos condicionais, bónus de conjunto de trajes ou modificadores próprios de bosses. Analisa apenas o elemento selecionado; poderes dos restantes elementos não entram. Arredondamentos e interações requerem validação com golpes observados no jogo. Rapidez de ataque altera a frequência, não o dano de um golpe.</p>
+${input.notes.length?`<ul>${input.notes.map(n=>`<li>${esc(n)}</li>`).join('')}</ul>`:''}
+${!model.error?`<p>Fator de ataque: ${fmt(model.factor)} · Ataque principal: ${fmt(model.primary)} · Ataque secundário: ${model.secondary.map(fmt).join('–')}${model.minimumDamage?' · Aplica-se o piso aleatório de dano 1–5.':''}</p>`:''}<p>${Object.entries(COMBAT_SOURCES).map(([key,url])=>`<a href="${url}" target="_blank" rel="noopener">${({damage:'Fórmula e ordem',attack:'Ataque',weapon:'Arma',pierce:'Furos',element:'Elementos'})[key]}</a>`).join(' · ')}</p></details>`;
+ if(!char().sets.length)host.querySelectorAll('input,select').forEach(e=>e.disabled=true);
+}
+document.addEventListener('change',e=>{const key=e.target.dataset?.combatField;if(!key||!char().sets.length)return;const allowed=['name','type','race','dex','defense','weaponResist','averageResist','critResist','pierceResist','element','elementResist','yohara'];if(!allowed.includes(key))return;if(e.target.type==='number'&&!e.target.checkValidity()){toast('Introduz um valor dentro dos limites indicados.');renderCombat();return;}set().combatTarget={...set().combatTarget,[key]:key==='yohara'?e.target.checked:e.target.value};save();});

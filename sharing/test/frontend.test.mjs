@@ -6,7 +6,7 @@ import {runInContext} from 'node:vm';
 import {JSDOM} from 'jsdom';
 const dist = new URL('../../dist/', import.meta.url);
 const html = readFileSync(new URL('index.html', dist), 'utf8');
-const scripts = ['catalog.js', 'asset-index.js', 'bonus-catalog.js', 'pet-catalog.js', 'alchemy-catalog.js', 'refinement-catalog.js', 'mount-catalog.js', 'equipment.js', 'status.js', 'sharing.js', 'app.js'];
+const scripts = ['catalog.js', 'asset-index.js', 'bonus-catalog.js', 'pet-catalog.js', 'alchemy-catalog.js', 'refinement-catalog.js', 'mount-catalog.js', 'equipment.js', 'effects-catalog.js', 'effects.js', 'status.js', 'combat.js', 'sharing.js', 'app.js'];
 const tick = () => new Promise(resolve => setImmediate(resolve));
 async function page({query = '', stored, fetch, configured = true} = {}) {
   const dom = new JSDOM(html, {url: 'https://rafaelppereirainf.github.io/metin2-armory/' + query, runScripts: 'outside-only'});
@@ -137,4 +137,52 @@ test('touch opens equipment details before editing, including read-only viewers'
     slot.click(); w.document.dispatchEvent(new w.KeyboardEvent('keydown', {key: 'Escape'})); assert.equal(tooltip.hidden, true);
     dom.window.close();
   }
+});
+test('set consumables affect status, respect level/value limits and keep special items compatible', async () => {
+  const {w, dom} = await page();
+  w.eval("char().level=120;char().statusProfile={attributes:{str:16,vit:90,int:90,dex:90},hpGrowth:5144,growthLevel:120};set().statusEffects={petActive:false,alchemyActive:false};set().statusMode='auto';render();");
+  const baseline=w.eval('calculateStatus().stats');
+  const change=(selector,value)=>{const el=w.document.querySelector(selector);assert.ok(el);if(el.type==='checkbox')el.checked=value;else el.value=value;el.dispatchEvent(new w.Event('change',{bubbles:true}));};
+  change('[data-consumable="critical"]',true);assert.equal(w.eval('calculateStatus().stats.crit'),baseline.crit+20);
+  change('[data-consumable="critical"]',false);assert.equal(w.eval('calculateStatus().stats.crit'),baseline.crit);
+  change('[data-consumable="dewBlue"]',true);assert.equal(w.eval('calculateStatus().stats.attack'),baseline.attack+120);
+  change('[data-consumable-value="dewBlue"]',80);assert.equal(w.eval('calculateStatus().stats.attack'),baseline.attack+80);
+  change('[data-consumable-value="dewBlue"]',999);assert.equal(w.eval('calculateStatus().stats.attack'),baseline.attack+80);
+  change('[data-special-index="0"]','nazar');assert.equal(w.eval('calculateStatus().totals.meleeMagic'),30);
+  assert.equal(w.document.querySelector('[data-special-index="1"] option[value="hero"]').disabled,true);
+  change('[data-special-index="1"]','hero');assert.equal(w.eval('set().statusEffects.specials[1]'),undefined);
+  change('[data-special-index="1"]','elementPower');assert.ok(w.eval('calculateStatus().totals.powerFire')>=10);
+  change('[data-special-index="0"]','');assert.equal(w.document.querySelector('[data-special-index="1"]').value,'elementPower');
+  change('[data-consumable="ddLife"]',true);const hp=w.eval('calculateStatus().hpParts');assert.equal(hp.percent,Math.min(3500,Math.floor(hp.natural*.2)));
+  w.eval("set().statusEffects.consumables.dewBlue={active:true,value:120};char().level=20;");assert.equal(w.eval('calculateStatus().totals.attack'),w.eval("(()=>{set().statusEffects.consumables.dewBlue.active=false;return calculateStatus().totals.attack;})()"));
+  dom.window.close();
+});
+test('viewer effects and combat target are temporary and included in shared source without private keys', async () => {
+  const initial=await page();initial.w.eval("char().level=120;char().statusProfile={attributes:{str:16,vit:90,int:90,dex:90},hpGrowth:5144,growthLevel:120};");
+  const source=initial.w.eval('JSON.stringify(data)');initial.dom.window.close();
+  const {w,dom}=await page({query:'?build=abcdefghijklmnop',stored:source,fetch:async()=>Response.json({snapshot:JSON.parse(source)})});
+  const box=w.document.querySelector('[data-consumable="piercing"]');assert.equal(box.disabled,false);box.checked=true;box.dispatchEvent(new w.Event('change',{bubbles:true}));
+  const input=w.document.querySelector('[data-combat-field="defense"]');input.value='800';input.dispatchEvent(new w.Event('change',{bubbles:true}));
+  assert.equal(w.eval('set().statusEffects.consumables.piercing.active'),true);assert.equal(w.eval('set().combatTarget.defense'),'800');
+  assert.equal(w.localStorage.getItem('metin-armory-v1'),source);dom.window.close();
+});
+test('physical PvM follows documented critical/piercing examples and never guesses missing target stats', async () => {
+ const {w,dom}=await page();
+ const input={issues:[],notes:[],zero:[0,0],sashRange:[0,0],upgrade:0,stat:0,attack:0,attackMax:0,level:2250,dex:0,totals:{...w.eval('statusAccumulator()'),meleeMagic:10,average:40}};
+ const target={dex:0,defense:880,weaponResist:35,averageResist:0,critResist:0,pierceResist:0,elementResist:0};
+ w.modelInput=input;w.modelTarget=target;
+ // Base 4500, +10% => 4950, -880, -35% weapon resist, +880 pierce, +40% average => 4935 (wiki FR).
+ let result=w.eval('physicalPvmModel(modelInput,modelTarget)');assert.equal(result.outcomes[2].min,4935);
+ // Same example with no weapon resistance: critical doubles after defense, before average.
+ w.modelTarget.weaponResist=0;w.modelTarget.defense=800;
+ result=w.eval('physicalPvmModel(modelInput,modelTarget)');assert.equal(result.outcomes[1].min,11620);
+ assert.ok(w.eval("physicalPvmModel(modelInput,{...modelTarget,defense:''}).error"));
+ assert.ok(w.eval("physicalPvmModel(modelInput,{...modelTarget,yohara:true}).error"));
+ // Overflow piercing adds intermediate*(PH-100)/200 at position 15, before average.
+ w.modelInput.totals.pierce=120;w.modelTarget.weaponResist=35;
+ result=w.eval('physicalPvmModel(modelInput,modelTarget)');assert.equal(result.outcomes[2].min,5588);
+ // Uniform two ranges: triangular sum distribution, not an equally likely combined range.
+ w.modelInput={...input,level:0,dex:0,zero:[0,1],sashRange:[0,1],attack:100,attackMax:100,totals:{...input.totals,meleeMagic:0,average:0,pierce:0,crit:0}};w.modelTarget={...target,defense:0,weaponResist:0};
+ result=w.eval('physicalPvmModel(modelInput,modelTarget)');const f=result.factor;assert.equal(result.expected,(Math.floor(f*100)+2*Math.floor(f*102)+Math.floor(f*104))/4);
+ dom.window.close();
 });
