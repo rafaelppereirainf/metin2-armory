@@ -1,5 +1,5 @@
 // Valores e compatibilidades das wikis oficiais; fontes individuais em cada entrada.
-window.EFFECT_LABELS={"hpPct": "HP máximo", "hp": "HP", "attackSpeed": "Rapidez de ataque", "attack": "Valor de ataque", "defense": "Defesa", "crit": "Críticos", "pierce": "Furos", "magicResist": "Resistência a magia", "monster": "Forte contra monstros", "metin": "Forte contra Metins", "meleeMagic": "Ataque corpo a corpo/mágico", "damageAttackPct": "Valor de ataque (dano)", "magicAttack": "Ataque mágico", "skillDamage": "Dano de habilidade", "powerAll": "Poder elemental", "dark": "Resistência a trevas", "skillResist": "Resistência a habilidades", "human": "Semi-humanos", "str": "FRÇ", "ddHp": "HP do Deus Dragão", "defensePct": "Defesa (redução de dano)"};
+window.EFFECT_LABELS={"hpPct": "HP máximo", "hp": "HP", "attackSpeed": "Rapidez de ataque", "attack": "Valor de ataque", "defense": "Defesa", "crit": "Críticos", "pierce": "Furos", "magicResist": "Resistência a magia", "monster": "Forte contra monstros", "metin": "Forte contra Metins", "meleeMagic": "Ataque corpo a corpo/mágico", "damageAttackPct": "Valor de ataque (dano)", "magicAttack": "Ataque mágico", "skillDamage": "Dano de habilidade", "powerAll": "Poder elemental", "dark": "Resistência a trevas", "skillResist": "Resistência a habilidades", "human": "Semi-humanos", "str": "FRÇ", "ddHp": "HP do Deus Dragão", "defensePct": "Redução de dano recebido", "manaPct": "Mana máxima"};
 window.SPECIAL_EFFECTS=[
   {
     "id": "nazar",
@@ -485,5 +485,25 @@ window.CONSUMABLE_EFFECTS=[
     "source": "https://pt-wiki.metin2.gameforge.com/index.php/Vida_do_Deus_Dragão",
     "note": "Aplica-se ao HP base; o conjunto dos bónus HP % tem um limite de +3500 HP (wiki FR).",
     "image": "assets/effect-ddLife.png"
+  },
+  {
+    "id": "ddDefense",
+    "name": "Defesa do Deus Dragão",
+    "key": "defensePct",
+    "value": 20,
+    "group": "Deus Dragão",
+    "level": 1,
+    "source": "https://fr-wiki.metin2.gameforge.com/index.php/D%C3%A9fense_du_Dieu_Dragon",
+    "note": "Redução percentual de dano recebido; não acrescenta 20 pontos de defesa nem aumenta o dano causado."
+  },
+  {
+    "id": "ddIntelligence",
+    "name": "Inteligência do Deus Dragão",
+    "key": "manaPct",
+    "value": 20,
+    "group": "Deus Dragão",
+    "level": 1,
+    "source": "https://en-wiki.metin2.gameforge.com/index.php/Dragon_God_Intelligence",
+    "note": "Aumenta a mana máxima, não a INT. O total de mana ainda não é calculado pelo Armory."
   }
 ];

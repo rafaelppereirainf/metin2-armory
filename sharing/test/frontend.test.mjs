@@ -6,7 +6,7 @@ import {runInContext} from 'node:vm';
 import {JSDOM} from 'jsdom';
 const dist = new URL('../../dist/', import.meta.url);
 const html = readFileSync(new URL('index.html', dist), 'utf8');
-const scripts = ['catalog.js', 'asset-index.js', 'bonus-catalog.js', 'pet-catalog.js', 'alchemy-catalog.js', 'refinement-catalog.js', 'mount-catalog.js', 'equipment.js', 'effects-catalog.js', 'effects.js', 'status.js', 'combat.js', 'sharing.js', 'app.js'];
+const scripts = ['catalog.js', 'asset-index.js', 'bonus-catalog.js', 'pet-catalog.js', 'alchemy-catalog.js', 'refinement-catalog.js', 'mount-catalog.js', 'equipment.js', 'effects-catalog.js', 'effects.js', 'status.js', 'target-catalog.js', 'combat.js', 'sharing.js', 'app.js'];
 const tick = () => new Promise(resolve => setImmediate(resolve));
 async function page({query = '', stored, fetch, configured = true} = {}) {
   const dom = new JSDOM(html, {url: 'https://rafaelppereirainf.github.io/metin2-armory/' + query, runScripts: 'outside-only'});
@@ -184,5 +184,50 @@ test('physical PvM follows documented critical/piercing examples and never guess
  // Uniform two ranges: triangular sum distribution, not an equally likely combined range.
  w.modelInput={...input,level:0,dex:0,zero:[0,1],sashRange:[0,1],attack:100,attackMax:100,totals:{...input.totals,meleeMagic:0,average:0,pierce:0,crit:0}};w.modelTarget={...target,defense:0,weaponResist:0};
  result=w.eval('physicalPvmModel(modelInput,modelTarget)');const f=result.factor;assert.equal(result.expected,(Math.floor(f*100)+2*Math.floor(f*102)+Math.floor(f*104))/4);
+ dom.window.close();
+});
+test('all four Dragon God powers are selectable; defense and mana do not raise outgoing damage or INT', async () => {
+ const {w,dom}=await page();
+ w.eval("char().level=120;char().statusProfile={attributes:{str:16,vit:90,int:90,dex:90},hpGrowth:5144,growthLevel:120};set().statusEffects={};render();");
+ const before=w.eval('calculateStatus()');
+ for(const id of ['ddAttack','ddLife','ddDefense','ddIntelligence'])assert.ok(w.document.querySelector('[data-consumable="'+id+'"]'));
+ for(const id of ['ddDefense','ddIntelligence']){const box=w.document.querySelector('[data-consumable="'+id+'"]');box.checked=true;box.dispatchEvent(new w.Event('change',{bubbles:true}));}
+ const after=w.eval('calculateStatus()');assert.equal(after.totals.defensePct,before.totals.defensePct+20);assert.equal(after.totals.manaPct,20);
+ assert.equal(after.attributes.int,before.attributes.int);assert.equal(after.stats.attack,before.stats.attack);assert.equal(after.stats.defense,before.stats.defense);
+ dom.window.close();
+});
+test('target presets apply real weapon/element resistances and final Zodiac stats; mounts stay separate from gear', async () => {
+ const {w,dom}=await page();
+ w.eval("char().class='Sura';char().doctrine='Armas';char().level=120;char().progress.horse='21';char().statusProfile={attributes:{str:16,vit:90,int:90,dex:90},hpGrowth:5144,growthLevel:120};set().statusEffects={};data.items.push({id:'test-mount',slot:'mount',name:'Javali de Guerra',mountId:'special-2',mounted:true});set().items.mount='test-mount';set().combatMount='foot';normalizeData(data);render();");
+ const itemsBefore=w.eval('JSON.stringify(data.items)'),mountId=w.eval('set().items.mount'),base=w.eval('combatInputs(char(),set())');
+ const change=(selector,value)=>{const el=w.document.querySelector(selector);assert.ok(el);el.value=value;el.dispatchEvent(new w.Event('change',{bubbles:true}));};
+ change('[data-combat-preset]','6091');assert.equal(w.eval('resolvedCombatTarget(char(),set()).defense'),497);assert.equal(w.eval('resolvedCombatTarget(char(),set()).elementResist'),-30);
+ change('[data-combat-field="weaponKind"]','twoHand');assert.equal(w.eval('resolvedCombatTarget(char(),set()).weaponResist'),35);
+ change('[data-combat-field="element"]','ice');assert.equal(w.eval('resolvedCombatTarget(char(),set()).elementResist'),0);
+ change('[data-combat-field="weaponResist"]',12);assert.equal(w.eval('Number(resolvedCombatTarget(char(),set()).weaponResist)'),12);
+ change('[data-combat-field="weaponKind"]','sword');assert.equal(w.eval('resolvedCombatTarget(char(),set()).weaponResist'),40);
+ change('[data-combat-mount]','special-33');const manny=w.eval('combatInputs(char(),set())');assert.equal(manny.totals.monster,base.totals.monster+15);assert.equal(manny.mounted,true);
+ assert.equal(manny.stat,106);assert.equal(manny.horseAttack,121);assert.ok(manny.horseAttack>0);
+ change('[data-combat-mount]','special-2');assert.equal(w.eval('combatInputs(char(),set()).totals.monster'),base.totals.monster+20);
+ change('[data-combat-horse]','40');assert.equal(w.eval('combatInputs(char(),set()).horseAttack'),249);
+ assert.equal(w.eval('JSON.stringify(data.items)'),itemsBefore);assert.equal(w.eval('set().items.mount'),mountId);assert.equal(w.eval('char().progress.horse'),'21');
+ change('[data-combat-preset]','2792');assert.equal(w.eval('resolvedCombatTarget(char(),set()).defense'),5336);assert.equal(w.eval('resolvedCombatTarget(char(),set()).race'),'zodiac');
+ change('[data-combat-preset]','6118');assert.equal(w.eval('resolvedCombatTarget(char(),set()).type'),'metin');assert.equal(w.eval('resolvedCombatTarget(char(),set()).defense'),516);
+ assert.match(w.eval('physicalPvmModel(combatInputs(char(),set()),resolvedCombatTarget(char(),set())).error'),/Montadas não são permitidas/);
+ change('[data-combat-preset]','3960');assert.equal(w.eval('resolvedCombatTarget(char(),set()).weaponResist'),50);assert.equal(w.eval('resolvedCombatTarget(char(),set()).elementResist'),-10);
+ change('[data-combat-mount]','foot');assert.equal(w.eval('combatInputs(char(),set()).horseAttack'),0);
+ dom.window.close();
+});
+test('mounted model includes horse attack while viewer presets and mount choices remain temporary', async () => {
+ const initial=await page();initial.w.eval("char().level=120;char().progress.horse='21';char().statusProfile={attributes:{str:16,vit:90,int:90,dex:90},hpGrowth:5144,growthLevel:120};");const source=initial.w.eval('JSON.stringify(data)');initial.dom.window.close();
+ const {w,dom}=await page({query:'?build=abcdefghijklmnop',stored:source,fetch:async()=>Response.json({snapshot:JSON.parse(source)})});
+ for(const [selector,value] of [['[data-combat-preset]','2792'],['[data-combat-mount]','special-33'],['[data-combat-horse]','30']]){const e=w.document.querySelector(selector);e.value=value;e.dispatchEvent(new w.Event('change',{bubbles:true}));}
+ assert.equal(w.eval('set().combatMount'),'special-33');assert.equal(w.localStorage.getItem('metin-armory-v1'),source);
+ w.testMounted={issues:[],notes:[],zero:[0,0],sashRange:[0,0],stat:135,upgrade:0,attack:0,attackMax:0,level:70,dex:70,horseAttack:192,mounted:true,totals:w.eval('statusAccumulator()')};
+ w.testTarget={dex:15,defense:0,weaponResist:0,averageResist:0,critResist:0,pierceResist:0,elementResist:0};
+ const mounted=w.eval('physicalPvmModel(testMounted,testTarget)'),foot=w.eval('physicalPvmModel({...testMounted,horseAttack:0,mounted:false},testTarget)');
+ assert.ok(mounted.expected>foot.expected);assert.equal(mounted.outcomes[0].min,Math.floor(140+mounted.factor*(135+192)));
+ w.testMounted.totals.bossDamage=10;const boss=w.eval("physicalPvmModel(testMounted,{...testTarget,type:'boss'})");assert.equal(boss.outcomes[0].min,Math.floor(mounted.outcomes[0].min*1.1));
+ w.eval("set().combatTarget={preset:'untrusted',source:'javascript:alert(1)'}");assert.equal(w.eval('resolvedCombatTarget(char(),set()).source'),undefined);
  dom.window.close();
 });
