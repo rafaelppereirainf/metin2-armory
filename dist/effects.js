@@ -1,3 +1,11 @@
+// Halloween 2024: these three equipped costume slots grant +3% monsters.
+// Do not count inventory items, appearance-only variants or unrelated costumes.
+function halloweenCostumeTrio(s){
+ const matches=(slot,pattern)=>{const it=item(s.items?.[slot]);return !!it&&pattern.test(normalized(it.name));};
+ return matches('skin',/^(espada|esp\. lg\.|adaga|arco|campain\.|leque|garras) porta-maldicao\+$/)
+  &&matches('costume',/^(incubo|sucubo) (de fogo|da meia-noite)\+$/)
+  &&matches('hair',/^chifres (de fogo|meia-noite)\+(?: \([mf]\))?$/);
+}
 function effectValue(entry,raw){const n=raw===undefined?entry.value:Number(raw);return Number.isFinite(n)&&(!entry.values||entry.values.includes(n))&&(entry.min===undefined||Number.isInteger(n)&&n>=entry.min&&n<=entry.max)?n:null;}
 function selectedSpecials(s){return (Array.isArray(s.statusEffects?.specials)?s.statusEffects.specials:[]).slice(0,2).map(id=>window.SPECIAL_EFFECTS.find(e=>e.id===id)).filter(Boolean);}
 function compatibleSpecials(list){return list.length<=2&&new Set(list.map(e=>e.id)).size===list.length&&list.filter(e=>e.group==='exclusive').length<=1;}
@@ -6,6 +14,7 @@ function applySetEffects(c,s,totals,unknown,records){
  const chosen=selectedSpecials(s),valid=compatibleSpecials(chosen);if((s.statusEffects?.specials||[]).filter(Boolean).length!==chosen.length)unknown.push('Item especial desconhecido ou excesso de itens; revê a seleção.');if(!valid)unknown.push('Itens especiais incompatíveis: revê a seleção.');
  const apply=(stats,source)=>{for(const [key,value] of Object.entries(stats)){if(!(key in totals))continue;totals[key]+=value;if(key==='attack')totals.attackMax+=value;records.push({source,label:window.EFFECT_LABELS[key]||key,value:'+'+value+(effectPercent(key)?'%':''),key});}};
  if(s.statusEffects?.companionPetActive){if(companion)apply(companion.stats,'Cria · '+companion.name);else unknown.push('Cria: seleciona um selo válido.');}
+ if(halloweenCostumeTrio(s))apply({monster:3},'Conjunto Halloween 2024 · 3 trajes');
  if(valid)for(const entry of chosen){apply(entry.stats,entry.name);if(entry.note)unknown.push(entry.name+' · '+entry.note);}
  for(const entry of window.CONSUMABLE_EFFECTS){const state=s.statusEffects?.consumables?.[entry.id];if(!state?.active)continue;if(+c.level<entry.level){unknown.push(entry.name+' · requer nível '+entry.level);continue;}const value=effectValue(entry,state.value);if(value===null){unknown.push(entry.name+' · valor inválido; efeito ignorado.');continue;}apply({[entry.key]:value},entry.name);}
 }

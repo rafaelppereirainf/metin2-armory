@@ -331,3 +331,26 @@ test('sets keep independent positions with shared ownership, blank sets and glob
  w.eval("deleteInventoryItem('shared-weapon');save()");assert.equal(w.eval("char().sets.every(s=>!s.inventory.includes('shared-weapon')&&!Object.values(s.items).includes('shared-weapon'))"),true);assert.equal(w.eval('data.items.length'),2);
  const stored=w.eval('JSON.stringify(data)'),layouts=w.eval('JSON.stringify(char().sets.map(s=>s.inventory))');dom.window.close();const restored=await page({stored});assert.equal(restored.w.eval('JSON.stringify(char().sets.map(s=>s.inventory))'),layouts);restored.dom.window.close();
 });
+
+
+test('Yut Nori is opt-in, adds ten monster points and restores the original damage when disabled', async () => {
+ const {w,dom}=await page();
+ const baseline=w.eval(`(()=>{const c=char(),s=set();s.statusEffects??={};s.statusEffects.consumables??={};delete s.statusEffects.consumables.yutNori;return calculateStatus().totals.monster;})()`);
+ w.eval(`set().statusEffects.consumables.yutNori={active:true,value:10}`);
+ assert.equal(w.eval('calculateStatus().totals.monster'),baseline+10);
+ w.eval(`set().statusEffects.consumables.yutNori.active=false`);
+ assert.equal(w.eval('calculateStatus().totals.monster'),baseline);
+ w.eval('renderSetEffects()');assert.ok(w.document.querySelector('[data-consumable="yutNori"]'));
+ dom.window.close();
+});
+
+test('Halloween trio needs all three equipped plus costumes and adds its set bonus only once', async () => {
+ const {w,dom}=await page();
+ w.eval(`for(const [slot,name] of [['skin','Espada Porta-Maldição+'],['costume','Íncubo de Fogo+'],['hair','Chifres de Fogo+ (M)']]){const id='halloween-test-'+slot;data.items.push({id,slot,name,bonuses:'',stones:'',fixedMode:'Automático'});set().items[slot]=id;}`);
+ const full=w.eval('calculateStatus().totals.monster');
+ assert.equal(w.eval(`calculateStatus().records.filter(r=>r.source==='Conjunto Halloween 2024 · 3 trajes').length`),1);
+ w.eval('delete set().items.hair');assert.equal(w.eval('calculateStatus().totals.monster'),full-3);
+ w.eval(`set().items.hair='halloween-test-hair';item('halloween-test-hair').name='Chifres de Fogo (M)'`);
+ assert.equal(w.eval('calculateStatus().totals.monster'),full-3);
+ dom.window.close();
+});

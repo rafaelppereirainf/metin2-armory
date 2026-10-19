@@ -269,6 +269,17 @@ window.SPECIAL_EFFECTS=[
 ];
 window.CONSUMABLE_EFFECTS=[
   {
+    "id": "yutNori",
+    "name": "Segredo de Yut Nori",
+    "key": "monster",
+    "value": 10,
+    "group": "Eventos",
+    "level": 1,
+    "source": "https://pt-wiki.metin2.gameforge.com/index.php/Segredo_de_Yut_Nori",
+    "note": "30 minutos. Também concede +20% EXP e +5% queda de itens; estes dois efeitos não alteram o dano.",
+    "image": "https://pt-wiki.metin2.gameforge.com/images/2/26/Segredo_de_Yut_Nori.png"
+  },
+  {
     "id": "critical",
     "name": "Golpe Crítico",
     "key": "crit",
