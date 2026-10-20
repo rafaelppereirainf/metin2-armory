@@ -43,7 +43,7 @@ function combatInputs(c,s){
  if(!['Guerreiro','Sura','Ninja','Xamã'].includes(c.class))issues.push('Fórmula física desta classe ainda não verificada.');
  let stat=0;if(a)stat=c.class==='Ninja'?Math.floor((a.str+7*a.dex)/4):c.class==='Xamã'?Math.floor((5*a.int+a.dex)/3):2*a.str;
  let horseAttack=0;if(riding.mount&&a){stat=Math.max(stat,2*a.str);const divisor=c.class==='Sura'&&/arm|weapon/.test(normalized(c.doctrine||''))?60:30;horseAttack=Math.floor((stat+2*Number(c.level))*Number(horseLevel)/divisor);}
- if(s.statusEffects?.petActive){for(const line of String(c.pet?.skills||'').split('\n')){const m=line.match(/^Enfurecido\s+(\d+)\s*$/);if(!m)continue;const value=petSkillEffect(c.pet,'Enfurecido',m[1]).value;if(value===null)issues.push('Confirma o valor de Enfurecido do pet.');else t.meleeMagic+=value;}}
+ if(s.statusEffects?.petActive){for(const line of String(c.pet?.skills||'').split('\n')){const m=line.match(/^Enfurecido\s+(\d+)\s*$/);if(!m)continue;const value=petSkillEffect(c.pet,'Enfurecido',m[1]).value;if(value===null)issues.push('Confirma o valor de Enfurecido do pet.');}}
  // Biólogo 80: ataque percentual de combate; não altera a referência do painel.
  if(c.bio.completed?.includes(80))t.damageAttackPct+=10;
  if(t.attackPct){t.damageAttackPct+=t.attackPct;notes.push('Ataque % adicional interpretado como bónus de combate; confirma a origem.');}

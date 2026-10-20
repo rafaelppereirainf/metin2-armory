@@ -459,3 +459,19 @@ test('secondary pets participate in their own confirmed costume families and con
  const off=w.eval('calculateStatus().totals.meleeMagic');w.eval(`set().statusEffects.companionConditionMet=true`);assert.equal(w.eval('calculateStatus().totals.meleeMagic'),off+15);
  dom.window.close();
 });
+
+test('Enfurecido adds melee/magic percentage once and never changes displayed attack',async()=>{
+ const {w,dom}=await page();
+ w.eval(`char().statusProfile={attributes:{str:16,vit:90,int:90,dex:90},growthLevel:Number(char().level),hpGrowth:5000,defenseBase:200};char().pet.hp=0;char().pet.defense=0;char().pet.skills='Enfurecido 20';char().pet.skillValues={'Enfurecido:20':12};char().pet.skillValueContext=petSkillContext(char().pet);set().statusEffects={petActive:false,alchemyActive:false,skillActive:{},specials:[]};`);
+ const off=w.eval('calculateStatus()'),combatOff=w.eval('combatInputs(char(),set())');
+ w.eval('set().statusEffects.petActive=true');
+ const on=w.eval('calculateStatus()'),combatOn=w.eval('combatInputs(char(),set())');
+ assert.equal(on.stats.attack,off.stats.attack);assert.equal(on.stats.attackMax,off.stats.attackMax);
+ assert.equal(on.totals.meleeMagic,off.totals.meleeMagic+12);
+ assert.equal(on.records.filter(r=>r.source==='Pet · Enfurecido 20'&&r.key==='meleeMagic').length,1);
+ assert.equal(on.unknown.some(x=>x.includes('Enfurecido aplicado ao ataque total')),false);
+ assert.equal(combatOn.totals.meleeMagic,combatOff.totals.meleeMagic+12);
+ w.eval(`delete char().pet.skillValues;char().pet.level=1`);
+ const missing=w.eval('calculateStatus()');assert.equal(missing.stats.attack,off.stats.attack);assert.ok(missing.unknown.some(x=>x.includes('Enfurecido')));
+ dom.window.close();
+});
