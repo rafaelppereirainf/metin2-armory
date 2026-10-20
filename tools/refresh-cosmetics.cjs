@@ -24,7 +24,7 @@ async function getPage(name){
  const url=base+'/index.php/'+encodeURIComponent(name.replace(/ /g,'_'));
  const res=await fetch(url,{headers:{'User-Agent':'Metin2Armory/1.0 (non-commercial fan catalogue; https://github.com/rafaelppereirainf/metin2-armory)'},signal:AbortSignal.timeout(25000)});
  if(!res.ok)throw Error(name+': HTTP '+res.status);
- return new JSDOM(await res.text(),{url}).window.document;
+ const html=await res.text();const debug=path.join(root,'catalogue-build/sources');fs.mkdirSync(debug,{recursive:true});fs.writeFileSync(path.join(debug,norm(name)+'.html'),html);return new JSDOM(html,{url}).window.document;
 }
 function enrichIcons(doc,entries){
  const anchors=[...doc.querySelectorAll('a[href]')];
