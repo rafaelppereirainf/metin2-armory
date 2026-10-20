@@ -5248,7 +5248,7 @@
     {
       "id": "shiver",
       "name": "Shiver",
-      "image": "https://pt-wiki.metin2.gameforge.com/images/d/d4/Cruella.png",
+      "image": "https://pt-wiki.metin2.gameforge.com/images/7/70/Shiver.png",
       "stats": {},
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Shiver"
     },
@@ -6253,7 +6253,10 @@
         ],
         "skin": [],
         "pet": [],
-        "mount": []
+        "mount": [
+          "Pavão Azul-Real",
+          "Pavão Rosa"
+        ]
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Doce_Mágico"
     },
@@ -6293,7 +6296,10 @@
         ],
         "skin": [],
         "pet": [],
-        "mount": []
+        "mount": [
+          "Touro de Guerra Ouro",
+          "Touro de Guerra Prata"
+        ]
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Doce_Mágico"
     },
@@ -6333,7 +6339,10 @@
         ],
         "skin": [],
         "pet": [],
-        "mount": []
+        "mount": [
+          "Coelho Apressado (Verm.)",
+          "Coelho Apressado (Preto)"
+        ]
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Doce_Mágico"
     },
@@ -6373,7 +6382,10 @@
         ],
         "skin": [],
         "pet": [],
-        "mount": []
+        "mount": [
+          "Cavalo Marinho do Luar",
+          "Cavalo Marinho do Sol"
+        ]
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Doce_Mágico"
     },
@@ -6413,7 +6425,10 @@
         ],
         "skin": [],
         "pet": [],
-        "mount": []
+        "mount": [
+          "Coelho Apressado (Rosa)",
+          "Coelho Apressado (Azul)"
+        ]
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Doce_Mágico"
     },
@@ -6453,7 +6468,10 @@
         ],
         "skin": [],
         "pet": [],
-        "mount": []
+        "mount": [
+          "Touro Preto",
+          "Touro Castanho"
+        ]
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Doce_Mágico"
     },
@@ -6493,7 +6511,10 @@
         ],
         "skin": [],
         "pet": [],
-        "mount": []
+        "mount": [
+          "Carro Antigo Azul",
+          "Carro Antigo Verde"
+        ]
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Doce_Mágico"
     },
@@ -6532,7 +6553,10 @@
           "Elmo Lamia Sangue+(Verm)"
         ],
         "skin": [],
-        "pet": [],
+        "pet": [
+          "Sra. Jiangshi+",
+          "Sr. Jiangshi+"
+        ],
         "mount": []
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Doce_Mágico"
@@ -6572,7 +6596,10 @@
           "Chifres do Horror+(Azul) (F)"
         ],
         "skin": [],
-        "pet": [],
+        "pet": [
+          "Shiver",
+          "Snivel"
+        ],
         "mount": []
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Doce_Mágico"
@@ -6612,7 +6639,10 @@
           "Chapéu Lobo Cinz.+ (F)"
         ],
         "skin": [],
-        "pet": [],
+        "pet": [
+          "Astrabell",
+          "Helexna"
+        ],
         "mount": []
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Doce_Mágico"
@@ -6652,7 +6682,10 @@
           "Olho Vidente Verde+ (F)"
         ],
         "skin": [],
-        "pet": [],
+        "pet": [
+          "Gato das Chamas Vidente",
+          "Gato do Gelo Vidente"
+        ],
         "mount": []
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Doce_Mágico"
@@ -6692,7 +6725,10 @@
           "Penteado Outro Mundo+(F)"
         ],
         "skin": [],
-        "pet": [],
+        "pet": [
+          "Múmia Tremente",
+          "Múmia Oscilante"
+        ],
         "mount": []
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Doce_Mágico"
@@ -6735,15 +6771,18 @@
           "Chifres Dokkaebi Az.+(F)"
         ],
         "skin": [
-          "Espada Dokkaebi+",
           "Glava Dokkaebi+",
+          "Espada Dokkaebi+",
           "Adaga Dokkaebi+",
           "Arco Dokkaebi+",
           "Campainha Dokkaebi+",
           "Leque Dokkaebi+",
           "Garras Dokkaebi+"
         ],
-        "pet": [],
+        "pet": [
+          "Ameaça Gelada",
+          "Ameaça Venenosa"
+        ],
         "mount": []
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Doce_Mágico"
@@ -6784,7 +6823,10 @@
           "Cabelo Vampira Cinza+(F)"
         ],
         "skin": [],
-        "pet": [],
+        "pet": [
+          "Sarcófago Gelado",
+          "Sarcófago Carmesim"
+        ],
         "mount": []
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Doce_Mágico"
@@ -6830,8 +6872,14 @@
           "Coroa Curandeira Vm.+(F)"
         ],
         "skin": [],
-        "pet": [],
-        "mount": []
+        "pet": [
+          "Tiki do Terror Temeroso",
+          "Tiki do Terror Corajoso"
+        ],
+        "mount": [
+          "Vassoura Enfeitiçada",
+          "Vassoura Maldita"
+        ]
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Doce_Mágico"
     },
@@ -6883,21 +6931,21 @@
           "Chifres Meia-noite+ (F)"
         ],
         "skin": [
-          "Espada Porta-Maldição+",
           "Esp. Lg. Porta-Maldição+",
-          "Adaga Porta-Maldição+",
+          "Espada Porta-Maldição+",
           "Arco Porta-Maldição+",
+          "Adaga Porta-Maldição+",
           "Campain. Porta-Maldição+",
           "Leque Porta-Maldição+",
           "Garras Porta-Maldição+"
         ],
         "pet": [
-          "Helena",
-          "Lilith"
+          "Lilith",
+          "Helena"
         ],
         "mount": [
-          "Corcel do Inferno Sinistro",
-          "Corcel do Inferno Horrível"
+          "Corcel Inferno Horrível",
+          "Corcel Inferno Sinistro"
         ]
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Doce_Mágico",
@@ -6949,8 +6997,14 @@
           "Elmo Samurai Neve+ (F)"
         ],
         "skin": [],
-        "pet": [],
-        "mount": []
+        "pet": [
+          "Abóbora Negra Vassoura",
+          "Abóbora Branca Vassoura"
+        ],
+        "mount": [
+          "Tigre da Selva",
+          "Tigre das Neves"
+        ]
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Doce_Mágico"
     },
@@ -6989,7 +7043,10 @@
           "Diadema Solene+ (F)"
         ],
         "skin": [],
-        "pet": [],
+        "pet": [
+          "Pavo",
+          "Gallus"
+        ],
         "mount": []
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Doce_Mágico"
@@ -7028,7 +7085,10 @@
           "Barrete Natal+ (Verde)"
         ],
         "skin": [],
-        "pet": [],
+        "pet": [
+          "Elfo Vermelho",
+          "Elfo Verde"
+        ],
         "mount": []
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Anel_da_Alegria"
@@ -7067,7 +7127,10 @@
           "Elmo Avalon+ (Verm.) (F)"
         ],
         "skin": [],
-        "pet": [],
+        "pet": [
+          "Sir Oswald",
+          "Sir Cobblepot"
+        ],
         "mount": []
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Anel_da_Alegria"
@@ -7106,7 +7169,10 @@
           "Elmo Guarda Dragão Gelo+ (F)"
         ],
         "skin": [],
-        "pet": [],
+        "pet": [
+          "Harry Avelã",
+          "Willy Noz"
+        ],
         "mount": []
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Anel_da_Alegria"
@@ -7145,7 +7211,10 @@
           "Elmo Astro Prata+ (F)"
         ],
         "skin": [],
-        "pet": [],
+        "pet": [
+          "Gnomo Tomte+ (Verde)",
+          "Gnomo Tomte+ (Vermelho)"
+        ],
         "mount": []
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Anel_da_Alegria"
@@ -7184,7 +7253,10 @@
           "Gorro Natal Vermelho+(F)"
         ],
         "skin": [],
-        "pet": [],
+        "pet": [
+          "Ent de Natal Verde",
+          "Ent de Natal Nodoso"
+        ],
         "mount": []
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Anel_da_Alegria"
@@ -7228,8 +7300,14 @@
           "Chapéu Neve Luxuoso+ (F)"
         ],
         "skin": [],
-        "pet": [],
-        "mount": []
+        "pet": [
+          "Queda de Neve",
+          "Bola de Neve"
+        ],
+        "mount": [
+          "Lobo Ártico Azul",
+          "Lobo Ártico Vermelho"
+        ]
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Anel_da_Alegria"
     },
@@ -7272,8 +7350,14 @@
           "Elmo Hastes Branco+ (F)"
         ],
         "skin": [],
-        "pet": [],
-        "mount": []
+        "pet": [
+          "Corredora de Gengibre",
+          "Rodolfo de Gengibre"
+        ],
+        "mount": [
+          "Rena Tempestade de Neve",
+          "Rena do Inverno"
+        ]
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Anel_da_Alegria"
     },
@@ -7317,8 +7401,14 @@
           "Elmo Legion. Negra+ (F)"
         ],
         "skin": [],
-        "pet": [],
-        "mount": []
+        "pet": [
+          "Krampus da Neve",
+          "Krampus do Carvão"
+        ],
+        "mount": [
+          "Cavalo da Legião Nobre",
+          "Cavalo da Legião Negra"
+        ]
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Anel_da_Alegria"
     },
@@ -7363,8 +7453,14 @@
           "Coroa Lunar Wukong+(F)"
         ],
         "skin": [],
-        "pet": [],
-        "mount": []
+        "pet": [
+          "Loong Dourado",
+          "Loong Prateado"
+        ],
+        "mount": [
+          "Tempestade de Wukong",
+          "Trovão de Wukong"
+        ]
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Anel_da_Alegria"
     },
@@ -7416,15 +7512,18 @@
           "Chapéu Natal Luxo+ (F)"
         ],
         "skin": [
-          "Espada Espinho Invernal+",
           "Esp. L. Espinho Invern.+",
+          "Espada Espinho Invernal+",
           "Adaga Espinho Invernal+",
           "Arco Espinho Invernal+",
           "Camp. Espinho Invernal+",
           "Leque Espinho Invernal+",
           "Garra Espinho Invernal+"
         ],
-        "pet": [],
+        "pet": [
+          "Fada de Inverno Azul",
+          "Fada de Inverno Rosa"
+        ],
         "mount": []
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Anel_da_Alegria"
@@ -7463,7 +7562,10 @@
         ],
         "skin": [],
         "pet": [],
-        "mount": []
+        "mount": [
+          "Camelonhão",
+          "Camelobum"
+        ]
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Amuleto_de_Nazar"
     },
@@ -7501,7 +7603,10 @@
         ],
         "skin": [],
         "pet": [],
-        "mount": []
+        "mount": [
+          "Esfinge Branca",
+          "Esfinge de Pedra"
+        ]
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Amuleto_de_Nazar"
     },
@@ -7539,7 +7644,10 @@
           "Adereço Faraó Verde+ (F)"
         ],
         "skin": [],
-        "pet": [],
+        "pet": [
+          "Anúbis Vermelho Sangue",
+          "Anúbis Azul Noturno"
+        ],
         "mount": []
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Amuleto_de_Nazar"
@@ -7578,7 +7686,10 @@
           "Turbante Azul e Dou.+(F)"
         ],
         "skin": [],
-        "pet": [],
+        "pet": [
+          "Gato Angorá Branco",
+          "Gato Angorá Castanho"
+        ],
         "mount": []
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Amuleto_de_Nazar"
@@ -7618,7 +7729,10 @@
         ],
         "skin": [],
         "pet": [],
-        "mount": []
+        "mount": [
+          "Halia",
+          "Aquilos"
+        ]
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Amuleto_de_Nazar"
     },
@@ -7659,7 +7773,10 @@
         ],
         "skin": [],
         "pet": [],
-        "mount": []
+        "mount": [
+          "Fénix do Crepúsculo",
+          "Fénix da Alvorada"
+        ]
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Amuleto_de_Nazar"
     },
@@ -7697,7 +7814,9 @@
           "Chapéu Marinha Az.+(F)"
         ],
         "skin": [],
-        "pet": [],
+        "pet": [
+          "Orca de Gelo Poderosa"
+        ],
         "mount": []
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Medalha_do_Herói"
@@ -7736,7 +7855,9 @@
           "Chapéu Praia Arejado+(F)"
         ],
         "skin": [],
-        "pet": [],
+        "pet": [
+          "Mini Guerreiro Carangue."
+        ],
         "mount": []
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Medalha_do_Herói"
@@ -7775,14 +7896,18 @@
           "Nadador-salvador Vm.+(F)"
         ],
         "hair": [
-          "Chapéu de Praia Vm.+ (M)",
-          "Chapéu de Praia Vm.+ (F)",
           "Chapéu de Praia Br.+ (M)",
-          "Chapéu de Praia Br.+ (F)"
+          "Chapéu de Praia Br.+ (F)",
+          "Chapéu de Praia Vm.+ (M)",
+          "Chapéu de Praia Vm.+ (F)"
         ],
         "skin": [],
-        "pet": [],
-        "mount": []
+        "pet": [
+          "Orca do Gelo Leal"
+        ],
+        "mount": [
+          "Turboprancha de Surf"
+        ]
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Medalha_do_Herói"
     },
@@ -7821,7 +7946,9 @@
           "Coroa da Atlântida+ (F)"
         ],
         "skin": [],
-        "pet": [],
+        "pet": [
+          "Beliscador"
+        ],
         "mount": []
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Medalha_do_Herói"
@@ -7862,7 +7989,9 @@
           "Máscara Mergulho Br.+(F)"
         ],
         "skin": [],
-        "pet": [],
+        "pet": [
+          "Pebble"
+        ],
         "mount": []
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Medalha_do_Herói"
@@ -7914,9 +8043,23 @@
           "Elmo de Viking da Noite+",
           "Elmo Valquíria da Noite+"
         ],
-        "skin": [],
-        "pet": [],
-        "mount": []
+        "skin": [
+          "Espada Dragão do Norte+",
+          "Esp. L. Dragão do Norte+",
+          "Adaga Dragão do Norte+",
+          "Arco Dragão do Norte+",
+          "Camp. Dragão do Norte+",
+          "Leque Dragão do Norte+",
+          "Garras Dragão do Norte+"
+        ],
+        "pet": [
+          "Hati",
+          "Sköll"
+        ],
+        "mount": [
+          "Drakkar Azul",
+          "Drakkar Vermelho"
+        ]
       },
       "source": "https://pt-wiki.metin2.gameforge.com/index.php/Medalha_do_Herói"
     }

@@ -441,10 +441,21 @@ test('mixed costume families share one candy, apply independent tiers once, and 
 });
 
 test('cosmetic and companion library offers broad searchable catalogues with item-specific bonuses',async()=>{
- const {w,dom}=await page();assert.ok(w.eval('Object.keys(window.COSMETIC_LIBRARY).length')>=460);assert.ok(w.eval('window.COMPANION_PETS.length')>=150);
+ const {w,dom}=await page();assert.ok(w.eval('Object.keys(window.COSMETIC_LIBRARY).length')>=460);assert.ok(w.eval('window.COMPANION_PETS.length')>=150);assert.equal(w.eval(`window.COMPANION_PETS.some(e=>e.name==='Image')`),false);assert.ok(w.eval(`Object.values(window.COSMETIC_LIBRARY).every(e=>e.image.startsWith('https://pt-wiki.metin2.gameforge.com/images/'))`));
  w.eval(`set().statusEffects={companionPet:window.COMPANION_PETS.find(e=>e.name==='Pebble').id,companionPetActive:true};renderPet();`);
  assert.equal(w.eval('calculateStatus().totals.metin'),15+w.eval(`(()=>{const x=calculateStatus();return x.records.filter(r=>r.key==='metin'&&!r.source.startsWith('Cria')).reduce((a,r)=>a+parseFloat(r.value),0);})()`));
  const search=w.document.querySelector('[data-companion-search]');assert.ok(search);search.value='Helena';search.dispatchEvent(new w.Event('input',{bubbles:true}));assert.ok([...w.document.querySelector('[data-companion-pet]').options].some(o=>o.textContent.includes('Helena')&&!o.hidden));
  w.eval("editSlot('hair')");assert.ok(w.document.querySelector('#fixedPreview'));assert.ok([...w.document.querySelector('[name="catalogId"]').options].some(o=>o.textContent.includes('Montera Azul')));
+ dom.window.close();
+});
+
+test('secondary pets participate in their own confirmed costume families and conditional Azrael is opt-in',async()=>{
+ const {w,dom}=await page();
+ w.eval(`set().items={};data.items.push({id:'vampire',slot:'costume',name:'Lorde Vampiro Noturno+',bonuses:'',stones:''});set().items.costume='vampire';set().statusEffects={companionPet:window.COMPANION_PETS.find(e=>e.name==='Sarcófago Gelado').id,companionPetActive:true};`);
+ assert.equal(w.eval("costumeSetInfos(set()).find(f=>f.id==='halloween2022').count"),2);assert.equal(w.eval('calculateStatus().totals.exp'),50);assert.equal(w.eval('calculateStatus().totals.hpAbsorb'),5);
+ w.eval(`set().statusEffects.companionPetActive=false`);assert.equal(w.eval('calculateStatus().totals.exp'),0);
+ assert.ok(w.eval(`window.COSTUME_SETS.ramadao2022.members.costume.includes('Guer. Lua Deserto V.+(M)')`));
+ w.eval(`set().statusEffects={companionPet:window.COMPANION_PETS.find(e=>e.name==='Azrael Bebé').id,companionPetActive:true};`);
+ const off=w.eval('calculateStatus().totals.meleeMagic');w.eval(`set().statusEffects.companionConditionMet=true`);assert.equal(w.eval('calculateStatus().totals.meleeMagic'),off+15);
  dom.window.close();
 });

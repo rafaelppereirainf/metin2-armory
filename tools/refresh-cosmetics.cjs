@@ -21,10 +21,11 @@ function urls(node){
 }
 function linkIcon(a){return urls(a)[0]||urls(a.closest('.item-icon,.item-image,figure,td,li'))[0]||'';}
 async function getPage(name){
+ const cached=process.argv.find(a=>a.startsWith('--sources='))?.slice(10);if(cached)return new JSDOM(fs.readFileSync(path.join(cached,norm(name)+'.html'),'utf8'),{url:base}).window.document;
  const url=base+'/index.php/'+encodeURIComponent(name.replace(/ /g,'_'));
  const res=await fetch(url,{headers:{'User-Agent':'Metin2Armory/1.0 (non-commercial fan catalogue; https://github.com/rafaelppereirainf/metin2-armory)'},signal:AbortSignal.timeout(25000)});
  if(!res.ok)throw Error(name+': HTTP '+res.status);
- const html=await res.text();const debug=path.join(root,'catalogue-build/sources');fs.mkdirSync(debug,{recursive:true});fs.writeFileSync(path.join(debug,norm(name)+'.html'),html);return new JSDOM(html,{url}).window.document;
+ return new JSDOM(await res.text(),{url}).window.document;
 }
 function enrichIcons(doc,entries){
  const anchors=[...doc.querySelectorAll('a[href]')];
@@ -39,27 +40,24 @@ function enrichIcons(doc,entries){
  }
 }
 function enrichSets(doc){
- // Each wiki set is introduced by an event/year paragraph, followed by its own table.
- const blocks=[...doc.querySelectorAll('.mw-parser-output p,.mw-parser-output table')];let family;
- for(const block of blocks){
-  if(block.tagName==='P'){
-   const text=block.textContent.replace(/\s+/g,' '),m=text.match(/O próximo conjunto.*?Evento\s+(?:d[aeo]\s+)?(Páscoa|Ramadão|Verão|Halloween|Natal)\s*\((\d{4})\)/i);
-   if(m)family=db.sets[norm(m[1])+m[2]];continue;
+ // Modern wiki layouts use flex cards rather than HTML tables.
+ const cards=[...doc.querySelectorAll('.mw-parser-output .fondfenetre')].filter(el=>el.textContent.trim()==='Lista de Itens').map(el=>el.parentElement);
+ let count=0;
+ for(const card of cards){
+  const range=doc.createRange();range.setStart(doc.body,0);range.setEndBefore(card);
+  const before=range.toString().replace(/\s+/g,' '),matches=[...before.matchAll(/O próximo conjunto.*?Evento\s+(?:d[aeo]\s+)?([^()]+?)\s*\((\d{4})\)/gi)],m=matches.at(-1);
+  const family=m&&db.sets[norm(m[1])+m[2]];if(!family)continue;
+  const columns=[...card.children[1].children],members={costume:[],hair:[],skin:[],pet:[],mount:[]};
+  for(const col of columns){
+   const heading=col.children[0]?.textContent.trim(),slot=({'Disfarces':'costume','Penteados':'hair','Skins de Arma':'skin','Pets':'pet','Montadas':'mount'})[heading];if(!slot)continue;
+   const content=col.children[1];if(!content)continue;
+   members[slot]=[...new Set([...content.querySelectorAll('a[title]')].map(title).filter(n=>n&&!/^(?:Ficheiro|File|Image|Categoria):/i.test(n)))];
+   enrichIcons(content,slot==='pet'?db.pets:Object.values(db.items).filter(e=>e.slot===slot));
   }
-  if(!family||!block.textContent.includes('Bónus de Conjunto'))continue;
-  const rows=[...block.querySelectorAll('tr')];
-  const headers=rows.find(row=>/Disfarces/.test(row.textContent)&&/Penteados/.test(row.textContent));if(!headers)continue;
-  const columns=[...headers.children].map(cell=>{const t=cell.textContent;return /Skins/.test(t)?'skin':/Disfarces/.test(t)?'costume':/Penteados/.test(t)?'hair':/Pets/.test(t)?'pet':/Montadas/.test(t)?'mount':null;});
-  const row=rows[rows.indexOf(headers)+1];if(!row)continue;
-  [...row.children].forEach((cell,i)=>{
-   const slot=columns[i];if(!slot)return;
-   const names=[...cell.querySelectorAll('a[href]')].map(title).filter(n=>n&&!/^(?:Ficheiro|File|Image|Categoria):/i.test(n)&&n!=='+'&&!['Disfarces','Penteados','Pets','Montadas','Skins de Arma'].includes(n));
-   if(names.length){family.members[slot]=[...new Set([...family.members[slot],...names])];}
-   const pool=slot==='pet'?db.pets:Object.values(db.items).filter(e=>e.slot===slot);
-   enrichIcons(cell,pool);
-  });
-  family=undefined;
+  if(!members.costume.length||!members.hair.length)throw Error('Incomplete participant card: '+family.name);
+  family.members=members;count++;
  }
+ console.log('Verified '+count+' set participant cards.');
 }
 async function main(){
  if(!process.argv.includes('--offline')){
