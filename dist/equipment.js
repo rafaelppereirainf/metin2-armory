@@ -16,3 +16,58 @@ document.addEventListener('change',e=>{if(e.target.name==='mountId')updateMountP
 // A weapon's absorbed base range participates in the weapon formula; elemental
 // enchantment attack and rolled attack bonuses remain flat additions.
 function absorbedStatusParts(it){const weapon=[0,0],lines=[];for(const line of String(it.absorbed||'').split('\n')){const m=it.slot==='sash'&&line.match(/^Valor de Ataque\s*:?\s*(\d+)\s*[-–]\s*(\d+)(?:\s*\(\+(\d+)\))?\s*$/i);if(m){weapon[0]+=Number(m[1]);weapon[1]+=Number(m[2]);if(m[3])lines.push('Valor de Ataque: '+m[3]);}else lines.push(line);}return {weapon,text:lines.filter(Boolean).join('\n')};}
+
+function sungTalismanKind(it){
+ if(it?.slot!=='talisman')return '';
+ const name=normalized(catalogue()[it.catalogId]?.label||it.name);
+ const match=name.match(/talisma da vontade (int|frc|vit|res)/);
+ return match?.[1]||(/talisma misterioso/.test(name)?'any':'');
+}
+function sungTalismanRanges(upgrade){
+ const n=Number(String(upgrade||'+0').replace('+',''));
+ const sung=[[1,2],[1,3],[3,4],[5,6],[7,8],[9,10],[11,13],[14,16],[17,19],[21,24]];
+ const power=[[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8],[8,9],[9,10],[15,17]];
+ return sung[n]?{sung:sung[n],power:power[n]}:null;
+}
+function normalizeSungTalisman(it){
+ const kind=sungTalismanKind(it);if(!kind)return;
+ // Only migrate explicit full-line values in notes, never prose or guessed maxima.
+ if(!it.sungMa){const line=String(it.notes||'').split('\n').map(l=>l.trim()).find(l=>/^(?:\d+\s+Vontade de Sung Ma|Vontade de Sung Ma)/i.test(l));
+  const m=line?.match(/^(?:(\d+)\s+)?Vontade de Sung Ma\s*\((FRÇ|FRC|VIT|INT|RES)\)\s*(?::?\s*\+?(\d+))?$/i);
+  if(m&&(m[1]||m[3])){const attribute=normalized(m[2]);if(kind==='any'||kind===attribute)it.sungMa={attribute,value:Number(m[1]||m[3])};}
+ }
+ if(!it.elemental){const m=String(it.notes||'').split('\n').map(l=>l.trim()).map(l=>l.match(/^Poder\s+(?:do|da|dos|das)\s+(Fogo|Gelo|Vento|Terra|Raios|Relâmpagos|Trevas)\s*:?\s*\+?(\d+)\s*%$/i)).find(Boolean);
+  if(m){const element=Object.keys(elementKinds()).find(e=>normalized(e)===normalized(m[1]))||(normalized(m[1])==='relampagos'?'Raios':'');if(element)it.elemental={element,power:Number(m[2]),attack:''};}
+ }
+}
+function sungTalismanText(it){
+ const kind=sungTalismanKind(it),s=it?.sungMa;if(!kind||!s)return '';
+ if(s.value===''||s.value===undefined||s.value===null)return '';const attribute=String(s.attribute||'').toLowerCase(),value=Number(s.value);
+ if(!['frc','vit','int','res'].includes(attribute)||kind!=='any'&&kind!==attribute||!Number.isInteger(value)||value<0)return '';
+ return 'Vontade de Sung Ma ('+(attribute==='frc'?'FRÇ':attribute.toUpperCase())+'): +'+value;
+}
+function sungTalismanFields(it){
+ const kind=sungTalismanKind(it);if(!kind)return '<p class="hint full">O poder dos talismãs elementais normais é obtido da tabela de melhoramento.</p>';
+ const e=elementConfig(it),s=it.sungMa||{},range=sungTalismanRanges(it.upgrade),fixed=kind==='any'?'':kind;
+ return `<div class="editor-section full"><h3>Atributos adicionais · talismã Sung Ma</h3><p>Introduz os valores do teu item. Variam mesmo entre talismãs com o mesmo melhoramento e não ocupam os cinco bónus normais.</p></div>`
+ +selectPairs('sungMaAttribute','Vontade de Sung Ma',fixed||s.attribute||'',[['','Por preencher'],...['frc','vit','int','res'].filter(k=>!fixed||k===fixed).map(k=>[k,k==='frc'?'FRÇ':k.toUpperCase()])])
+ +field('sungMaValue','Valor Sung Ma'+(range&&kind!=='any'?' · '+range.sung.join('–'):''),s.value??'','number')
+ +selectPairs('talismanElement','Elemento',e.element||'',[['','Por preencher'],...Object.keys(elementKinds()).map(k=>[k,k])])
+ +field('talismanPower','Poder elemental (%)'+(range&&kind!=='any'?' · '+range.power.join('–'):''),e.power??'','number')
+ +'<p class="hint full">O poder elemental entra no dano PvM. Sung Ma é separado de INT/VIT/FRÇ/DES normais; as penalizações de dano de Yohara ainda não são simuladas.</p>';
+}
+function syncTalismanFields(){
+ const box=$('#talismanFields');if(!box)return;
+ const v=Object.fromEntries(new FormData($('#form'))),it={slot:'talisman',catalogId:v.catalogId,name:v.name,upgrade:v.upgrade,sungMa:{attribute:v.sungMaAttribute,value:v.sungMaValue},elemental:{element:v.talismanElement,power:v.talismanPower}};
+ box.innerHTML=sungTalismanFields(it);
+}
+function saveSungTalisman(v,it,old){
+ const kind=sungTalismanKind(it);if(!kind){if(sungTalismanKind(old)){delete it.sungMa;delete it.elemental;}return;}
+ const attribute=v.sungMaAttribute||'',value=v.sungMaValue??'',element=v.talismanElement||'',power=v.talismanPower??'',range=sungTalismanRanges(it.upgrade);
+ if(attribute&&(!['frc','vit','int','res'].includes(attribute)||kind!=='any'&&attribute!==kind))throw Error('A vontade Sung Ma não corresponde a este talismã.');
+ for(const [n,label,bounds]of [[value,'Sung Ma',range?.sung],[power,'Poder elemental',range?.power]])if(n!==''&&(!Number.isInteger(Number(n))||Number(n)<0||Number(n)>200||kind!=='any'&&bounds&&(Number(n)<bounds[0]||Number(n)>bounds[1])))throw Error(label+' inválido para este melhoramento'+(bounds?' ('+bounds.join('–')+')':'.'));
+ if(element&&!elementKinds()[element])throw Error('Elemento inválido.');
+ if(power!==''&&!element)throw Error('Seleciona o elemento do talismã.');
+ it.sungMa={attribute:kind==='any'?attribute:kind,value:value===''?'':Number(value)};
+ it.elemental={element,power:power===''?'':Number(power),attack:''};
+}

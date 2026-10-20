@@ -348,9 +348,65 @@ test('Halloween trio needs all three equipped plus costumes and adds its set bon
  const {w,dom}=await page();
  w.eval(`for(const [slot,name] of [['skin','Espada Porta-Maldição+'],['costume','Íncubo de Fogo+'],['hair','Chifres de Fogo+ (M)']]){const id='halloween-test-'+slot;data.items.push({id,slot,name,bonuses:'',stones:'',fixedMode:'Automático'});set().items[slot]=id;}`);
  const full=w.eval('calculateStatus().totals.monster');
- assert.equal(w.eval(`calculateStatus().records.filter(r=>r.source==='Conjunto Halloween 2024 · 3 trajes').length`),1);
+ assert.equal(w.eval(`calculateStatus().records.filter(r=>r.source==='Conjunto Halloween 2024 · 3 trajes'&&r.key==='monster').length`),1);
  w.eval('delete set().items.hair');assert.equal(w.eval('calculateStatus().totals.monster'),full-3);
  w.eval(`set().items.hair='halloween-test-hair';item('halloween-test-hair').name='Chifres de Fogo (M)'`);
  assert.equal(w.eval('calculateStatus().totals.monster'),full-3);
+ dom.window.close();
+});
+
+
+test('Helena changes costume tier once, stacks with the evolving pet and can be disabled in viewers', async () => {
+ const {w,dom}=await page();
+ w.eval(`for(const [slot,name]of [['skin','Espada Porta-Maldição+'],['costume','íncubo da Meia-Noite+'],['hair','Chifres Meia-noite+ (M)']]){const id='h-'+slot;data.items.push({id,slot,name,bonuses:'',stones:''});set().items[slot]=id;}set().statusEffects??={};set().statusEffects.companionPet='helena';set().statusEffects.companionPetActive=false;`);
+ const before=w.eval('calculateStatus().totals');
+ w.eval(`set().statusEffects.companionPetActive=true`);
+ const after=w.eval('calculateStatus().totals');
+ assert.equal(after.monster-before.monster,2);assert.equal(after.metin-before.metin,2);assert.equal(after.meleeMagic-before.meleeMagic,15);assert.equal(after.hp-before.hp,1500);
+ assert.equal(w.eval('costumeSetInfo(set()).count'),4);
+ w.eval(`set().statusEffects.specials=['magicCandy'];set().items.mount='hell-horse';data.items.push({id:'hell-horse',slot:'mount',name:'Corcel Inferno Horrível',mountId:'special-82',mounted:true});`);
+ assert.equal(w.eval('costumeSetInfo(set()).count'),6);
+ assert.equal(w.eval('costumeSetInfo(set()).stats.monster'),7);
+ assert.equal(w.eval('costumeSetInfo(set()).stats.hpAbsorb'),5);
+ assert.equal(w.eval('costumeSetInfo(set(),{mount:null}).count'),5);
+ w.eval(`set().statusEffects.companionPet='lilith'`);
+ assert.equal(w.eval('calculateStatus().totals.meleeMagic'),before.meleeMagic+w.eval("window.SPECIAL_EFFECTS.find(e=>e.id==='magicCandy').stats.meleeMagic||0"));
+ const source=w.eval('JSON.stringify(data)');dom.window.close();
+ const viewer=await page({query:'?build=abcdefghijklmnop',stored:source,fetch:async()=>Response.json({snapshot:JSON.parse(source)})});
+ const box=viewer.w.document.querySelector('[data-companion-active]');assert.ok(box);assert.equal(box.disabled,false);box.checked=false;box.dispatchEvent(new viewer.w.Event('change',{bubbles:true}));
+ assert.equal(viewer.w.eval('set().statusEffects.companionPetActive'),false);assert.equal(viewer.w.localStorage.getItem('metin-armory-v1'),source);viewer.dom.window.close();
+});
+
+test('skin attributes use dropdowns and preserve vitality and valid costume rolls on save', async () => {
+ const {w,dom}=await page();
+ w.eval(`char().statusProfile={attributes:{str:16,vit:90,int:90,dex:90},growthLevel:105,hpGrowth:5000};data.items.push({id:'skin-vit',slot:'skin',name:'Espada Porta-Maldição+',bonuses:'Probabilidade de Golpes Perfurantes: +5%\\nVitalidade +6\\nProbabilidade de Golpes Críticos: +10%',stones:'',fixedMode:'Automático'});set().items.skin='skin-vit';editSlot('skin');`);
+ const types=[...w.document.querySelectorAll('[name$="_type"]')];assert.ok(types.some(s=>s.value==='Vitalidade'));
+ assert.equal(w.document.querySelector('[name="upgrade"]').type,'hidden');
+ assert.equal(w.document.querySelector('[name="weaponElement"]'),null);
+ const before=w.eval('calculateStatus().attributes.vit');
+ w.document.querySelector('#form').dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));
+ assert.match(w.eval("item('skin-vit').bonuses"),/Vitalidade.*6/);assert.equal(w.eval('calculateStatus().attributes.vit'),before);
+ for(const label of ['Inteligência','Força','Destreza','Vitalidade'])assert.ok(w.eval(`window.BONUS_CATALOG.normal.skin.some(e=>e.label===${JSON.stringify(label)})`));
+ dom.window.close();
+});
+
+test('Sung talisman migrates explicit notes idempotently, keeps Sung stats separate, and saves variable power', async () => {
+ const {w,dom}=await page();
+ w.eval(`char().statusProfile={attributes:{str:16,vit:90,int:90,dex:90},growthLevel:105,hpGrowth:5000};data.items.push({id:'sung-test',slot:'talisman',catalogId:'wiki-4b8df1df59d1',name:'Talismã da Vontade RES',upgrade:'+3',notes:'6 Vontade de Sung Ma (RES)\\nPoder do Fogo +4%',bonuses:'Defesa: +5%',fixedMode:'Automático'});set().items.talisman='sung-test';normalizeData(data);`);
+ assert.equal(w.eval("item('sung-test').sungMa.value"),6);assert.equal(w.eval("item('sung-test').elemental.power"),4);
+ const before=w.eval('calculateStatus()');w.eval('normalizeData(data)');
+ assert.equal(w.eval('calculateStatus().totals.powerFire'),before.totals.powerFire);
+ assert.equal(w.eval('calculateStatus().totals.sungRes'),6);
+ assert.equal(w.eval('calculateStatus().totals.defensePct'),before.totals.defensePct);
+ assert.equal(w.eval("calculateStatus().records.filter(r=>r.key==='sungRes').length"),1);
+ w.eval("editSlot('talisman')");
+ assert.equal(w.document.querySelector('[name="sungMaValue"]').value,'6');assert.equal(w.document.querySelector('[name="talismanPower"]').value,'4');
+ w.document.querySelector('[name="talismanPower"]').value='5';w.document.querySelector('#form').dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));
+ assert.equal(w.eval("item('sung-test').elemental.power"),5);assert.equal(w.eval('calculateStatus().totals.powerFire'),before.totals.powerFire+1);
+ assert.equal(w.eval('calculateStatus().attributes.int'),before.attributes.int);
+ const damages=w.eval(`(()=>{const p=window.COMBAT_TARGETS.find(t=>t.id==='6091');set().combatTarget={...p,preset:p.id};const target=resolvedCombatTarget(char(),set()),high=physicalPvmModel(combatInputs(char(),set()),target);item('sung-test').elemental.power=4;const low=physicalPvmModel(combatInputs(char(),set()),target);item('sung-test').elemental.power=5;return {high:high.expected,low:low.expected,error:high.error};})()`);
+ assert.equal(damages.error,undefined);assert.ok(damages.high>damages.low);
+
+ assert.throws(()=>w.eval(`saveSungTalisman({sungMaAttribute:'res',sungMaValue:'99',talismanElement:'Fogo',talismanPower:'4'},item('sung-test'),item('sung-test'))`),/inválido/);
  dom.window.close();
 });
