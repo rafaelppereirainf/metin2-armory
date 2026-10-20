@@ -29,7 +29,13 @@ jobs:
       - name: Test sharing
         run: |
           npm ci --prefix sharing
+          node tools/refresh-cosmetics.cjs
+          node --check dist/cosmetic-catalog.js
           npm test --prefix sharing
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cosmetic-catalogue
+          path: catalogue-build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:

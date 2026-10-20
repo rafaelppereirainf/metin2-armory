@@ -30,18 +30,18 @@ function sungTalismanRanges(upgrade){
  return sung[n]?{sung:sung[n],power:power[n]}:null;
 }
 function normalizeSungTalisman(it){
- const kind=sungTalismanKind(it);if(!kind)return;
+ const kind=sungEquipmentKind(it);if(!kind)return;
  // Only migrate explicit full-line values in notes, never prose or guessed maxima.
  if(!it.sungMa){const line=String(it.notes||'').split('\n').map(l=>l.trim()).find(l=>/^(?:\d+\s+Vontade de Sung Ma|Vontade de Sung Ma)/i.test(l));
   const m=line?.match(/^(?:(\d+)\s+)?Vontade de Sung Ma\s*\((FRÇ|FRC|VIT|INT|RES)\)\s*(?::?\s*\+?(\d+))?$/i);
   if(m&&(m[1]||m[3])){const attribute=normalized(m[2]);if(kind==='any'||kind===attribute)it.sungMa={attribute,value:Number(m[1]||m[3])};}
  }
- if(!it.elemental){const m=String(it.notes||'').split('\n').map(l=>l.trim()).map(l=>l.match(/^Poder\s+(?:do|da|dos|das)\s+(Fogo|Gelo|Vento|Terra|Raios|Relâmpagos|Trevas)\s*:?\s*\+?(\d+)\s*%$/i)).find(Boolean);
+ if(it.slot==='talisman'&&!it.elemental){const m=String(it.notes||'').split('\n').map(l=>l.trim()).map(l=>l.match(/^Poder\s+(?:do|da|dos|das)\s+(Fogo|Gelo|Vento|Terra|Raios|Relâmpagos|Trevas)\s*:?\s*\+?(\d+)\s*%$/i)).find(Boolean);
   if(m){const element=Object.keys(elementKinds()).find(e=>normalized(e)===normalized(m[1]))||(normalized(m[1])==='relampagos'?'Raios':'');if(element)it.elemental={element,power:Number(m[2]),attack:''};}
  }
 }
 function sungTalismanText(it){
- const kind=sungTalismanKind(it),s=it?.sungMa;if(!kind||!s)return '';
+ const kind=sungEquipmentKind(it),s=it?.sungMa;if(!kind||!s)return '';
  if(s.value===''||s.value===undefined||s.value===null)return '';const attribute=String(s.attribute||'').toLowerCase(),value=Number(s.value);
  if(!['frc','vit','int','res'].includes(attribute)||kind!=='any'&&kind!==attribute||!Number.isInteger(value)||value<0)return '';
  return 'Vontade de Sung Ma ('+(attribute==='frc'?'FRÇ':attribute.toUpperCase())+'): +'+value;
@@ -70,4 +70,30 @@ function saveSungTalisman(v,it,old){
  if(power!==''&&!element)throw Error('Seleciona o elemento do talismã.');
  it.sungMa={attribute:kind==='any'?attribute:kind,value:value===''?'':Number(value)};
  it.elemental={element,power:power===''?'':Number(power),attack:''};
+}
+
+// Additional glove attributes are variable rolls, independent of the five normal bonuses.
+function sungGloveKind(it){
+ if(it?.slot!=='gloves')return '';
+ const n=normalized(catalogue()[it.catalogId]?.label||it.name);
+ return n.match(/luvas serpente \(?\s*(frc|vit|int|res)\s*\)?/)?.[1]||({'luvas do poder':'frc','luvas da armadura':'vit','luvas da rapidez':'res','luvas da protecao':'int'}[n])||'';
+}
+function sungEquipmentKind(it){return sungTalismanKind(it)||sungGloveKind(it);}
+function sungGloveRange(it){
+ const n=Number(String(it.upgrade||'+0').replace('+','')),serpent=normalized(catalogue()[it.catalogId]?.label||it.name).includes('serpente');
+ return (serpent?[[6,9],[10,13],[14,19],[19,25],[24,31],[30,38],[36,44],[42,50],[49,58],[69,78]]:[[3,7],[5,11],[9,17],[14,22],[19,28],[24,34],[29,40],[34,46],[39,52],[58,63]])[n];
+}
+function sungGloveFields(it){
+ const kind=sungGloveKind(it);if(!kind)return '<p class="hint full">Seleciona uma luva do catálogo para indicar o seu atributo Sung Ma.</p>';
+ const bounds=sungGloveRange(it),value=it.sungMa?.attribute===kind?it.sungMa.value:'';
+ return `<div class="editor-section full"><h3>Atributo adicional · luva</h3><p>Este valor varia entre luvas do mesmo melhoramento e não ocupa um bónus normal.</p></div>`+hiddenField('sungMaAttribute',kind)+field('sungMaValue','Vontade de Sung Ma ('+(kind==='frc'?'FRÇ':kind.toUpperCase())+')'+(bounds?' · '+bounds.join('–'):''),value??'','number')+'<p class="hint full">Sung Ma é separado dos atributos normais. As penalizações de Yohara ainda não são simuladas.</p>';
+}
+function syncGloveFields(){
+ const box=$('#gloveFields');if(!box)return;const v=Object.fromEntries(new FormData($('#form')));box.innerHTML=sungGloveFields({slot:'gloves',catalogId:v.catalogId,name:v.name,upgrade:v.upgrade,sungMa:{attribute:v.sungMaAttribute,value:v.sungMaValue}});
+}
+function saveSungGlove(v,it){
+ const kind=sungGloveKind(it);if(!kind){delete it.sungMa;return;}
+ const value=v.sungMaValue??'',bounds=sungGloveRange(it);
+ if(value!==''&&(!Number.isInteger(Number(value))||!bounds||Number(value)<bounds[0]||Number(value)>bounds[1]))throw Error('Valor Sung Ma inválido para esta luva'+(bounds?' ('+bounds.join('–')+')':'.'));
+ it.sungMa={attribute:kind,value:value===''?'':Number(value)};
 }

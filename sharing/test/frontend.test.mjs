@@ -6,7 +6,7 @@ import {runInContext} from 'node:vm';
 import {JSDOM} from 'jsdom';
 const dist = new URL('../../dist/', import.meta.url);
 const html = readFileSync(new URL('index.html', dist), 'utf8');
-const scripts = ['catalog.js', 'asset-index.js', 'bonus-catalog.js', 'pet-catalog.js', 'alchemy-catalog.js', 'refinement-catalog.js', 'mount-catalog.js', 'equipment.js', 'effects-catalog.js', 'effects.js', 'status.js', 'target-catalog.js', 'combat.js', 'sharing.js', 'inventory-sizes.js', 'inventory.js', 'item-ocr.js', 'app.js'];
+const scripts = ['catalog.js', 'asset-index.js', 'bonus-catalog.js', 'pet-catalog.js', 'alchemy-catalog.js', 'refinement-catalog.js', 'mount-catalog.js', 'equipment.js', 'effects-catalog.js', 'cosmetic-catalog.js', 'effects.js', 'status.js', 'target-catalog.js', 'combat.js', 'sharing.js', 'inventory-sizes.js', 'inventory.js', 'item-ocr.js', 'app.js'];
 const tick = () => new Promise(resolve => setImmediate(resolve));
 async function page({query = '', stored, fetch, configured = true} = {}) {
   const dom = new JSDOM(html, {url: 'https://rafaelppereirainf.github.io/metin2-armory/' + query, runScripts: 'outside-only'});
@@ -408,5 +408,43 @@ test('Sung talisman migrates explicit notes idempotently, keeps Sung stats separ
  assert.equal(damages.error,undefined);assert.ok(damages.high>damages.low);
 
  assert.throws(()=>w.eval(`saveSungTalisman({sungMaAttribute:'res',sungMaValue:'99',talismanElement:'Fogo',talismanPower:'4'},item('sung-test'),item('sung-test'))`),/inválido/);
+ dom.window.close();
+});
+
+test('glove additional Sung roll migrates once, validates its own range and leaves normal STR unchanged', async()=>{
+ const {w,dom}=await page();
+ w.eval(`data.items.push({id:'glove-sung',slot:'gloves',catalogId:'wiki-820247ef8f17',name:'Luvas do Poder',upgrade:'+0',notes:'3 Vontade de Sung Ma (FRÇ)',bonuses:'Inteligência: +8',bonus6:'Forte contra Pedras Metin: +8%',stones:'',fixedMode:'Automático'});set().items.gloves='glove-sung';normalizeData(data);`);
+ const before=w.eval('calculateStatus()');assert.equal(w.eval("item('glove-sung').sungMa.value"),3);
+ w.eval('normalizeData(data)');assert.equal(w.eval('calculateStatus().totals.sungStr'),3);
+ assert.equal(w.eval("calculateStatus().records.filter(r=>r.key==='sungStr').length"),1);
+ w.eval("editSlot('gloves')");assert.equal(w.document.querySelector('[name="sungMaValue"]').value,'3');assert.match(w.document.querySelector('#gloveFields').textContent,/3–7/);
+ w.document.querySelector('[name="sungMaValue"]').value='7';w.document.querySelector('#form').dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));
+ assert.equal(w.eval('calculateStatus().totals.sungStr'),7);assert.equal(w.eval('calculateStatus().totals.str'),before.totals.str);assert.match(w.eval("item('glove-sung').bonus6"),/Metin/);
+ assert.throws(()=>w.eval(`saveSungGlove({sungMaValue:8},item('glove-sung'))`),/inválido/);
+ w.eval("item('glove-sung').sungMa.value='';normalizeData(data)");assert.equal(w.eval("item('glove-sung').sungMa.value"),'');
+ assert.equal(w.eval(`sungGloveKind({slot:'gloves',name:'Luvas da Proteção'})`),'int');
+ assert.equal(w.eval(`sungGloveKind({slot:'gloves',name:'Luvas Serpente (RES)'})`),'res');
+ dom.window.close();
+});
+
+test('mixed costume families share one candy, apply independent tiers once, and preserve the plus distinction',async()=>{
+ const {w,dom}=await page();
+ w.eval(`set().items={};set().statusEffects={specials:['strongCandy']};for(const [slot,name]of [['costume','Armadura de Éolo+ (M)'],['hair','Elmo Garra Negra+ (M)'],['skin','Espada Dokkaebi+']]){const id='mix-'+slot;data.items.push({id,slot,name,bonuses:'',stones:''});set().items[slot]=id;}`);
+ const infos=w.eval('costumeSetInfos(set())');assert.equal(infos.length,3);assert.deepEqual(Array.from(infos,x=>x.count),[2,2,2]);
+ const calc=w.eval('calculateStatus()');assert.equal(calc.records.filter(r=>r.source.startsWith('Conjunto Páscoa 2019')&&r.key==='monster').length,1);assert.equal(calc.totals.exp,75);assert.equal(calc.totals.monster,3);assert.equal(calc.totals.meleeMagic,w.eval("window.SPECIAL_EFFECTS.find(e=>e.id==='strongCandy').stats.meleeMagic||0")+3);
+ w.eval(`item('mix-hair').name='Elmo de Éolo+ (M)'`);
+ assert.equal(w.eval("costumeSetInfos(set()).find(f=>f.id==='pascoa2019').tier"),3);
+ assert.equal(w.eval("calculateStatus().records.filter(r=>r.source.startsWith('Conjunto Páscoa 2019')&&r.key==='monster').length"),1);
+ w.eval(`item('mix-skin').name='Espada Dokkaebi'`);assert.equal(w.eval("costumeSetIdentities(item('mix-skin')).length"),0);
+ w.eval(`set().statusEffects.specials=['nazar']`);assert.equal(w.eval("costumeSetInfos(set()).some(f=>f.pieces.includes('amulet'))"),false);
+ dom.window.close();
+});
+
+test('cosmetic and companion library offers broad searchable catalogues with item-specific bonuses',async()=>{
+ const {w,dom}=await page();assert.ok(w.eval('Object.keys(window.COSMETIC_LIBRARY).length')>=460);assert.ok(w.eval('window.COMPANION_PETS.length')>=150);
+ w.eval(`set().statusEffects={companionPet:window.COMPANION_PETS.find(e=>e.name==='Pebble').id,companionPetActive:true};renderPet();`);
+ assert.equal(w.eval('calculateStatus().totals.metin'),15+w.eval(`(()=>{const x=calculateStatus();return x.records.filter(r=>r.key==='metin'&&!r.source.startsWith('Cria')).reduce((a,r)=>a+parseFloat(r.value),0);})()`));
+ const search=w.document.querySelector('[data-companion-search]');assert.ok(search);search.value='Helena';search.dispatchEvent(new w.Event('input',{bubbles:true}));assert.ok([...w.document.querySelector('[data-companion-pet]').options].some(o=>o.textContent.includes('Helena')&&!o.hidden));
+ w.eval("editSlot('hair')");assert.ok(w.document.querySelector('#fixedPreview'));assert.ok([...w.document.querySelector('[name="catalogId"]').options].some(o=>o.textContent.includes('Montera Azul')));
  dom.window.close();
 });

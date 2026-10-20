@@ -1,25 +1,32 @@
-function costumeSetIdentity(it){
- if(!it)return '';
- const entry=catalogue()[it.catalogId];if(entry?.costumeSet)return entry.costumeSet;
- const n=normalized(it.name).replace(/\s+/g,' ').trim();
- const patterns={skin:/^(espada|esp\. lg\.|espada larga|adaga|arco|campain\.|campainha|leque|garras) porta-maldicao\+$/,costume:/^(incubo|sucubo) (de fogo|da meia-noite)\+(?: \([mf]\))?$/,hair:/^chifres (de fogo|meia-noite|da meia-noite)\+(?: \([mf]\))?$/};
- return patterns[it.slot]?.test(n)?'halloween2024':'';
+function costumeNameKey(name){return String(name||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9+]/g,'');}
+function costumeSetIdentities(it){
+ if(!it)return [];
+ const entry=catalogue()[it.catalogId],name=entry?.label||it.name,key=costumeNameKey(name);
+ return Object.values(window.COSTUME_SETS).filter(f=>(f.members[it.slot]||[]).some(n=>costumeNameKey(n)===key)||entry?.costumeSet===f.id).map(f=>f.id);
 }
-function costumeSetInfo(s,options={}){
- const pieces=['skin','costume','hair'].filter(slot=>costumeSetIdentity(item(s.items?.[slot]))==='halloween2024');
- const companion=window.COMPANION_PETS.find(e=>e.id===s.statusEffects?.companionPet);
- if(s.statusEffects?.companionPetActive&&companion?.costumeSet==='halloween2024')pieces.push('pet');
- if(compatibleSpecials(selectedSpecials(s))&&selectedSpecials(s).some(e=>['magicCandy','strongCandy'].includes(e.id)))pieces.push('amulet');
- const mount=Object.prototype.hasOwnProperty.call(options,'mount')?options.mount:item(s.items?.mount);
- if(mount?.mounted&&['special-81','special-82'].includes(mount.mountId))pieces.push('mount');
- const count=pieces.length,stats=window.COSTUME_SET_TIERS[Math.min(6,count)]||{};
- return {id:'halloween2024',name:'Halloween 2024',count,pieces,stats,source:window.COSTUME_SET_SOURCE};
+function costumeSetIdentity(it){return costumeSetIdentities(it)[0]||'';}
+function costumeSetInfos(s,options={}){
+ const companion=window.COMPANION_PETS.find(e=>e.id===s.statusEffects?.companionPet),specials=selectedSpecials(s),valid=compatibleSpecials(specials);
+ const mount=Object.prototype.hasOwnProperty.call(options,'mount')?options.mount:item(s.items?.mount),mountName=mountEntry(mount)?.label||mount?.name;
+ return Object.values(window.COSTUME_SETS).map(f=>{
+  const pieces=['skin','costume','hair'].filter(slot=>costumeSetIdentities(item(s.items?.[slot])).includes(f.id));
+  if(s.statusEffects?.companionPetActive&&companion&&((f.members.pet||[]).some(n=>costumeNameKey(n)===costumeNameKey(companion.name))||companion.costumeSet===f.id))pieces.push('pet');
+  if(mount?.mounted&&((f.mountIds||[]).includes(mount.mountId)||(f.members.mount||[]).some(n=>costumeNameKey(n)===costumeNameKey(mountName))))pieces.push('mount');
+  const relevant=pieces.length>0;
+  if(valid&&specials.some(e=>f.specials.includes(e.id)))pieces.push('amulet');
+  const count=pieces.length,tier=Math.max(0,...Object.keys(f.tiers).map(Number).filter(n=>n<=count));
+  return {...f,count,pieces,tier,max:Math.max(...Object.keys(f.tiers).map(Number)),stats:f.tiers[tier]||{},relevant};
+ }).filter(f=>f.relevant);
 }
-// Backwards-compatible helper for existing integrations.
-function halloweenCostumeTrio(s){return ['skin','costume','hair'].every(slot=>costumeSetIdentity(item(s.items?.[slot]))==='halloween2024');}
+// Retain the original single-family helper for integrations using Halloween 2024.
+function costumeSetInfo(s,options={}){return costumeSetInfos(s,options).find(f=>f.id==='halloween2024')||{...window.COSTUME_SETS.halloween2024,count:0,pieces:[],stats:{},max:6,tier:0};}
+function halloweenCostumeTrio(s){return ['skin','costume','hair'].every(slot=>costumeSetIdentities(item(s.items?.[slot])).includes('halloween2024'));}
+function cosmeticMembershipMarkup(it){
+ const ids=costumeSetIdentities(it);return ids.length?`<div class="costume-memberships">${ids.map(id=>{const f=window.COSTUME_SETS[id];return `<span>${esc(f.name)}</span>`;}).join('')}</div>`:'<p class="hint">Sem regra de conjunto confirmada nesta biblioteca.</p>';
+}
 function renderCostumeSetSummary(s,options={}){
- const info=costumeSetInfo(s,options);if(!info.count)return '';
- return `<div class="costume-set-summary"><strong>Conjunto ${info.name} · ${info.count}/6 peças</strong><p>${Object.keys(info.stats).length?esc(effectSummary(info.stats)):'São necessárias pelo menos duas peças compatíveis.'}</p><small>Conta uma peça por categoria. Os patamares substituem-se; não são somados.</small> <a href="${info.source}" target="_blank" rel="noopener">Wiki ↗</a></div>`;
+ const infos=costumeSetInfos(s,options);if(!infos.length)return '';
+ return `<div class="costume-set-list">${infos.map(info=>`<div class="costume-set-summary ${info.tier?'is-active':''}"><strong>Conjunto ${esc(info.name)} · ${info.count}/${info.max} peças</strong><p>${Object.keys(info.stats).length?esc(effectSummary(info.stats)):'São necessárias pelo menos duas peças compatíveis.'}</p><small>${info.pieces.map(k=>({skin:'arma',hair:'cabelo',costume:'traje',pet:'pet',amulet:'amuleto',mount:'montada'}[k])).join(' · ')}</small> <a href="${esc(info.source)}" target="_blank" rel="noopener">Wiki ↗</a></div>`).join('')}<p class="hint">Conta o patamar mais alto de cada conjunto. Conjuntos diferentes somam-se; o mesmo amuleto pode participar em vários.</p></div>`;
 }
 function effectValue(entry,raw){const n=raw===undefined?entry.value:Number(raw);return Number.isFinite(n)&&(!entry.values||entry.values.includes(n))&&(entry.min===undefined||Number.isInteger(n)&&n>=entry.min&&n<=entry.max)?n:null;}
 function selectedSpecials(s){return (Array.isArray(s.statusEffects?.specials)?s.statusEffects.specials:[]).slice(0,2).map(id=>window.SPECIAL_EFFECTS.find(e=>e.id===id)).filter(Boolean);}
@@ -28,12 +35,12 @@ function applySetEffects(c,s,totals,unknown,records,activeMount){
  const companion=window.COMPANION_PETS.find(e=>e.id===s.statusEffects?.companionPet);
  const chosen=selectedSpecials(s),valid=compatibleSpecials(chosen);if((s.statusEffects?.specials||[]).filter(Boolean).length!==chosen.length)unknown.push('Item especial desconhecido ou excesso de itens; revê a seleção.');if(!valid)unknown.push('Itens especiais incompatíveis: revê a seleção.');
  const apply=(stats,source)=>{for(const [key,value] of Object.entries(stats)){if(!(key in totals))continue;totals[key]+=value;if(key==='attack')totals.attackMax+=value;records.push({source,label:window.EFFECT_LABELS[key]||key,value:'+'+value+(effectPercent(key)?'%':''),key});}};
- if(s.statusEffects?.companionPetActive){if(companion)apply(companion.stats,'Cria · '+companion.name);else unknown.push('Cria: seleciona um selo válido.');}
- const costumeSet=costumeSetInfo(s,{mount:activeMount});if(costumeSet.count>=2)apply(costumeSet.stats,'Conjunto '+costumeSet.name+' · '+costumeSet.count+(costumeSet.count===3?' trajes':' peças'));
+ if(s.statusEffects?.companionPetActive){if(companion){if(!companion.condition||s.statusEffects?.companionConditionMet)apply(companion.stats,'Cria · '+companion.name);else unknown.push(companion.name+' · condição não assinalada: '+companion.condition);if(companion.note)unknown.push(companion.name+' · '+companion.note);}else unknown.push('Cria: seleciona um selo válido.');}
+ for(const costumeSet of costumeSetInfos(s,{mount:activeMount}))if(costumeSet.tier)apply(costumeSet.stats,'Conjunto '+costumeSet.name+' · '+costumeSet.count+(costumeSet.id==='halloween2024'&&costumeSet.count===3?' trajes':' peças'));
  if(valid)for(const entry of chosen){apply(entry.stats,entry.name);if(entry.note)unknown.push(entry.name+' · '+entry.note);}
  for(const entry of window.CONSUMABLE_EFFECTS){const state=s.statusEffects?.consumables?.[entry.id];if(!state?.active)continue;if(+c.level<entry.level){unknown.push(entry.name+' · requer nível '+entry.level);continue;}const value=effectValue(entry,state.value);if(value===null){unknown.push(entry.name+' · valor inválido; efeito ignorado.');continue;}apply({[entry.key]:value},entry.name);}
 }
-function effectPercent(key){return !['hp','attack','defense','str','vit','int','dex','sungStr','sungVit','sungRes','sungInt'].includes(key);}
+function effectPercent(key){return !['hp','attack','defense','str','vit','int','dex','sungStr','sungVit','sungRes','sungInt','precision','magicAttackFlat'].includes(key);}
 function effectSummary(stats){return Object.entries(stats).map(([k,v])=>'+'+v+(effectPercent(k)?'%':'')+' '+(window.EFFECT_LABELS[k]||elements.find(e=>e[0]===k)?.[1]||k)).join(' · ');}
 function renderSetEffects(){
  const host=$('#setEffects');if(!host)return;const c=char(),s=set(),ids=(s.statusEffects?.specials||[]).slice(0,2),noSet=!c.sets.length;
@@ -49,5 +56,7 @@ document.addEventListener('change',e=>{
 
 document.addEventListener('click',e=>{const choice=e.target.closest?.('[data-special-choice]');if(!choice)return;const select=document.querySelector('[data-special-index="'+choice.dataset.specialSlot+'"]');select.value=choice.dataset.specialChoice;select.dispatchEvent(new Event('change',{bubbles:true}));});
 
-function renderCompanionControls(){const s=set(),entry=window.COMPANION_PETS.find(e=>e.id===s.statusEffects?.companionPet);return `<div class="companion-control">${entry?.image?`<img src="${esc(entry.image)}" alt="">`:''}<label>Pet adicional · selo<select data-companion-pet><option value="">Nenhum</option>${window.COMPANION_PETS.map(e=>`<option value="${e.id}" ${entry?.id===e.id?'selected':''}>${esc(e.name)} · ${esc(effectSummary(e.stats))}</option>`).join('')}</select></label><label><input type="checkbox" data-companion-active ${s.statusEffects?.companionPetActive?'checked':''} ${!entry?'disabled':''}>Invocada</label><small>Independente do pet evoluível e dos dois itens especiais. Helena e Lilith contam para o conjunto Halloween 2024. Só conta enquanto invocada; a duração não é acompanhada.</small>${entry?`<a href="${esc(entry.source)}" target="_blank" rel="noopener">Wiki ↗</a>`:''}</div>`;}
-document.addEventListener('change',e=>{if(!e.target.matches('[data-companion-pet],[data-companion-active]')||!char().sets.length)return;const s=set();s.statusEffects??={};if(e.target.matches('[data-companion-pet]')){const id=e.target.value;if(id&&!window.COMPANION_PETS.some(x=>x.id===id))return;s.statusEffects.companionPet=id;s.statusEffects.companionPetActive=!!id;}else s.statusEffects.companionPetActive=!!e.target.checked;s.statusMode='auto';save();});
+function renderCompanionControls(){const s=set(),entry=window.COMPANION_PETS.find(e=>e.id===s.statusEffects?.companionPet);return `<div class="companion-control">${entry?.image?`<img src="${esc(entry.image)}" alt="">`:''}<label>Pet adicional · selo<input type="search" data-companion-search placeholder="Pesquisar na biblioteca de pets" aria-label="Pesquisar pet adicional"><select data-companion-pet><option value="">Nenhum</option>${window.COMPANION_PETS.map(e=>`<option value="${e.id}" ${entry?.id===e.id?'selected':''}>${esc(e.name)} · ${esc(effectSummary(e.stats)||'Sem bónus de status')}</option>`).join('')}</select></label><label><input type="checkbox" data-companion-active ${s.statusEffects?.companionPetActive?'checked':''} ${!entry?'disabled':''}>Invocada</label>${entry?.condition?`<label><input type="checkbox" data-companion-condition ${s.statusEffects?.companionConditionMet?'checked':''}>Condição cumprida: ${esc(entry.condition)}</label>`:''}<small>Independente do pet evoluível e dos dois itens especiais. Só conta enquanto invocada; a duração não é acompanhada.</small>${entry?.note?`<small>${esc(entry.note)}</small>`:''}${entry?`<a href="${esc(entry.source)}" target="_blank" rel="noopener">Wiki ↗</a>`:''}</div>`;}
+document.addEventListener('change',e=>{if(!e.target.matches('[data-companion-pet],[data-companion-active],[data-companion-condition]')||!char().sets.length)return;const s=set();s.statusEffects??={};if(e.target.matches('[data-companion-pet]')){const id=e.target.value;if(id&&!window.COMPANION_PETS.some(x=>x.id===id))return;s.statusEffects.companionPet=id;s.statusEffects.companionPetActive=!!id;s.statusEffects.companionConditionMet=false;}else if(e.target.matches('[data-companion-condition]'))s.statusEffects.companionConditionMet=!!e.target.checked;else s.statusEffects.companionPetActive=!!e.target.checked;s.statusMode='auto';save();});
+
+document.addEventListener('input',e=>{if(!e.target.matches('[data-companion-search]'))return;const q=normalized(e.target.value),select=e.target.closest('.companion-control').querySelector('[data-companion-pet]');for(const option of select.options)option.hidden=!!option.value&&option.value!==select.value&&!normalized(option.textContent).includes(q);});
