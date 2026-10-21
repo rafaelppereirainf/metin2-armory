@@ -504,7 +504,7 @@ test('Jadite variable attributes persist independently of normal rolls and enter
  assert.match(w.document.querySelector('#yoharaFields').textContent,/5–6/);
  w.document.querySelector('[name="yohara_precision"]').value='6';w.document.querySelector('[name="yohara_sung"]').value='10';
  w.document.querySelector('#form').dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));assert.equal(w.document.querySelector('#modal').open,false);
- const after=w.eval('calculateStatus()');assert.equal(after.totals.precision-before.totals.precision,6);assert.equal(after.totals.sungStr-before.totals.sungStr,10);assert.equal(after.totals.fire,before.totals.fire);
+ const after=w.eval('calculateStatus()');assert.equal(after.totals.precision-before.totals.precision,6);assert.equal(after.totals.sungStr-before.totals.sungStr,10);assert.equal(after.totals.fire,before.totals.fire);assert.equal(w.eval("(()=>{const a=statusAccumulator();parseStatusText('10% dos danos serão absorvidos pela VD',a,'teste',[],[]);return a.hpAbsorb;})()"),10);
  w.eval("editSlot('bracelet')");assert.equal(w.document.querySelector('[name="yohara_sung"]').value,'10');
  w.document.querySelector('[name="yohara_precision"]').value='14';w.document.querySelector('#form').dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));assert.equal(w.document.querySelector('#modal').open,true);assert.equal(w.eval("item('variable-jadite').yohara.values.precision.value"),6);
  const saved=w.eval('JSON.stringify(data)');dom.window.close();const reloaded=await page({stored:saved});assert.equal(reloaded.w.eval("item('variable-jadite').yohara.values.sung.value"),10);reloaded.dom.window.close();
