@@ -495,3 +495,43 @@ test('glove stones select independent Sung attributes, persist, and count once w
  assert.equal(w.eval("spiritValue(spiritMatch('Pedra Demoníaca +4'))"),'');
  dom.window.close();
 });
+
+test('Jadite variable attributes persist independently of normal rolls and enter status once',async()=>{
+ const {w,dom}=await page();
+ w.eval(`data.items.push({id:'variable-jadite',slot:'bracelet',catalogId:'wiki-21a90515d969',name:'Pulseira Jadite Fumo',upgrade:'+4',bonuses:'Resistência Fogo: +15%',stones:''});set().items.bracelet='variable-jadite';normalizeData(data);`);
+ const before=w.eval('calculateStatus()');w.eval("editSlot('bracelet')");
+ assert.equal(w.document.querySelector('[name="yohara_precision"]').value,'');
+ assert.match(w.document.querySelector('#yoharaFields').textContent,/5–6/);
+ w.document.querySelector('[name="yohara_precision"]').value='6';w.document.querySelector('[name="yohara_sung"]').value='10';
+ w.document.querySelector('#form').dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));assert.equal(w.document.querySelector('#modal').open,false);
+ const after=w.eval('calculateStatus()');assert.equal(after.totals.precision-before.totals.precision,6);assert.equal(after.totals.sungStr-before.totals.sungStr,10);assert.equal(after.totals.fire,before.totals.fire);
+ w.eval("editSlot('bracelet')");assert.equal(w.document.querySelector('[name="yohara_sung"]').value,'10');
+ w.document.querySelector('[name="yohara_precision"]').value='14';w.document.querySelector('#form').dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));assert.equal(w.document.querySelector('#modal').open,true);assert.equal(w.eval("item('variable-jadite').yohara.values.precision.value"),6);
+ const saved=w.eval('JSON.stringify(data)');dom.window.close();const reloaded=await page({stored:saved});assert.equal(reloaded.w.eval("item('variable-jadite').yohara.values.sung.value"),10);reloaded.dom.window.close();
+});
+
+test('Serpent separates inherent groups and attack range from five normal bonuses',async()=>{
+ const {w,dom}=await page();
+ w.eval(`const entry=Object.entries(catalogue()).find(([id,e])=>e.slot==='weapon'&&/Espada.*Serpente/i.test(e.label));data.items.push({id:'serpent-test',slot:'weapon',catalogId:entry[0],name:entry[1].label,upgrade:'+9',bonuses:'Probabilidade de Golpes Críticos: +10%',stones:''});set().items.weapon='serpent-test';normalizeData(data);editSlot('weapon');`);
+ assert.ok([...w.document.querySelector('[name="upgrade"]').options].some(o=>o.value==='+15'));
+ for(const [name,value] of Object.entries({yohara_attack:'450',yohara_attack_max:'550',yohara_magicAttack:'0',yohara_magicAttack_max:'0',yoharaRoll0:'Dano Médio',yoharaRollValue0:'19',yoharaRoll2:'Precisão',yoharaRollValue2:'9'}))w.document.querySelector(`[name="${name}"]`).value=value;
+ w.document.querySelector('#form').dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));assert.equal(w.document.querySelector('#modal').open,false);
+ assert.equal(w.eval("item('serpent-test').bonuses.includes('Críticos')"),true);
+ assert.match(w.eval("fixedAttributes(item('serpent-test')).text"),/Valor de Ataque: 450–550/);
+ const calc=w.eval('calculateStatus()');assert.equal(calc.records.filter(r=>r.source===w.eval("item('serpent-test').name")&&r.key==='average').length,1);
+ w.eval("editSlot('weapon')");assert.equal(w.document.querySelector('[name="yoharaRoll1"]').value,'');assert.equal(w.document.querySelector('[name="yoharaRoll2"]').value,'Precisão');
+ const select=w.document.querySelector('[name="catalogId"]');select.value='__custom';select.dispatchEvent(new w.Event('change',{bubbles:true}));assert.equal(w.document.querySelector('[name="yohara_attack"]').value,'');
+ dom.window.close();
+});
+
+test('Yohara editor covers every current additional-attribute family without guessing missing rolls',async()=>{
+ const {w,dom}=await page();
+ for(const [slot,name] of [['shield','Escudo da Condenação'],['belt','Cinto de Titânio'],['helmet','Capuz de Serpente'],['shoes','Botas do Luar'],['weapon','Espada do Luar'],['armor','Casaco Serpente Mal']]){
+  const result=w.eval(`(()=>{const e=Object.entries(catalogue()).find(([id,e])=>e.slot===${JSON.stringify(slot)}&&normalized(e.label)===normalized(${JSON.stringify(name)}));if(!e)return null;const it={slot:${JSON.stringify(slot)},catalogId:e[0],name:e[1].label,upgrade:'+0'};return {fields:yoharaFields(it),text:fixedAttributes(it).text,groups:yoharaRollGroups(it).length};})()`);
+  assert.ok(result,name);assert.match(result.fields,/Atributos variáveis/);assert.match(result.text,/por confirmar/);assert.ok(result.groups>=1);
+ }
+ assert.equal(w.eval(`yoharaKind({slot:'shoes',name:'Botas da Serpente'})`),'');
+ assert.equal(w.eval(`sungGloveRange({slot:'gloves',catalogId:'wiki-0f8d4bad29dd',upgrade:'+9'}).join('–')`),'69–83');
+ assert.equal(w.eval(`yoharaRollGroups({slot:'helmet',name:'Capuz Serpente'})[0].includes('Forte contra Monstros')`),false);
+ dom.window.close();
+});
