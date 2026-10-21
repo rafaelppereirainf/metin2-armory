@@ -475,3 +475,23 @@ test('Enfurecido adds melee/magic percentage once and never changes displayed at
  const missing=w.eval('calculateStatus()');assert.equal(missing.stats.attack,off.stats.attack);assert.ok(missing.unknown.some(x=>x.includes('Enfurecido')));
  dom.window.close();
 });
+
+
+test('glove stones select independent Sung attributes, persist, and count once without normal INT/HP',async()=>{
+ const {w,dom}=await page();
+ w.eval(`data.items.push({id:'glove-stones',slot:'gloves',catalogId:'wiki-820247ef8f17',name:'Luvas do Poder',upgrade:'+4',sungMa:{attribute:'frc',value:19},bonuses:'Inteligência: +8',bonus6:'Forte contra Pedras Metin: +8%',stones:''});set().items.gloves='glove-stones';normalizeData(data);`);
+ const before=w.eval('calculateStatus()');w.eval("editSlot('gloves')");
+ for(const [i,attribute] of ['FRÇ','VIT','INT'].entries()){
+  for(const [name,value] of [['stone'+i,'Pedra Demoníaca Poder'],['stoneLevel'+i,'4'],['stoneAttribute'+i,attribute],['stoneMode'+i,'normal']]){const select=w.document.querySelector(`[name="${name}"]`);select.value=value;select.dispatchEvent(new w.Event('change',{bubbles:true}));}
+ }
+ assert.match(w.document.querySelector('.glove-stone-preview').textContent,/FRÇ.*15/);
+ w.document.querySelector('#form').dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));
+ assert.equal(w.document.querySelector('#modal').open,false);
+ const after=w.eval('calculateStatus()');assert.equal(after.totals.sungStr-before.totals.sungStr,15);assert.equal(after.totals.sungVit-before.totals.sungVit,15);assert.equal(after.totals.sungInt-before.totals.sungInt,15);assert.equal(after.totals.int,before.totals.int);assert.equal(after.totals.vit,before.totals.vit);assert.equal(after.totals.hp,before.totals.hp);
+ assert.equal(after.records.filter(r=>r.source.includes('Pedra Demoníaca Poder')).length,3);
+ const stones=w.eval("item('glove-stones').stones");w.eval("editSlot('gloves')");assert.equal(w.document.querySelector('[name="stoneAttribute1"]').value,'VIT');w.document.querySelector('#form').dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));assert.equal(w.eval("item('glove-stones').stones"),stones);
+ w.eval("editSlot('gloves')");w.document.querySelector('[name="stoneAttribute1"]').value='FRÇ';w.document.querySelector('#form').dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));assert.equal(w.document.querySelector('#modal').open,true);assert.equal(w.eval("item('glove-stones').stones"),stones);
+ assert.equal(w.eval("spiritValue(spiritMatch('Pedra Demoníaca Poder +4 · RES · duplo'))"),'Vontade de Sung Ma (RES): +30');
+ assert.equal(w.eval("spiritValue(spiritMatch('Pedra Demoníaca +4'))"),'');
+ dom.window.close();
+});
