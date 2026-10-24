@@ -563,3 +563,22 @@ test('legacy names resolve, unknown values survive, and all doctrines offer six 
  w.eval(`char().class='Shaman';char().doctrine='Shaman Dragao';normalizeData(data);render();`);assert.equal(w.eval('char().class'),'Xamã');assert.equal(w.eval('char().doctrine'),'Dragão');assert.match(w.document.querySelector('#progress').textContent,/Ajuda do Dragão/);
  w.eval(`char().doctrine='Especialização antiga';editCharacter();`);assert.equal(w.document.querySelector('[name="doctrine"]').value,'Especialização antiga');w.document.querySelector('#form').dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));assert.equal(w.eval('char().doctrine'),'Especialização antiga');dom.window.close();
 });
+
+test('Shaman physical and magical panel ranges match measured client values and react to INT',async()=>{
+ const {w,dom}=await page();
+ w.eval(`char().class='Xamã';char().doctrine='Dragão';char().level=120;char().statusProfile={attributes:{str:16,vit:90,int:90,dex:90},growthLevel:120,hpGrowth:4733};char().bio.completed=[30];set().statusEffects={};set().items={};for(const it of [{id:'magic-bell',slot:'weapon',name:'Campainha Mágica',catalogId:'wiki-9e634e4e9dd9',upgrade:'+0',bonuses:'Inteligência: +8'},{id:'int-shield',slot:'shield',name:'Escudo',fixedMode:'Manual',fixedManual:'Defesa: 65',bonuses:'Inteligência: +12'},{id:'sapphire-int',slot:'earrings',name:'Brincos de Safira',catalogId:'sapphire-earrings',upgrade:'+7'},{id:'attack-robe',slot:'armor',name:'Robe',fixedMode:'Manual',fixedManual:'Defesa: 101',bonuses:'Valor de Ataque: +10'}]){data.items.push(it);set().items[it.slot]=it.id;}normalizeData(data);render();`);
+ const calc=w.eval('calculateStatus()');assert.equal(calc.attributes.int,122);assert.equal(calc.stats.attack,601);assert.equal(calc.stats.attackMax,661);assert.equal(calc.stats.magicAttackValue,527);assert.equal(calc.stats.magicAttackValueMax,551);assert.equal(calc.totals.magicAttack,0);
+ assert.ok([...w.document.querySelectorAll('.stat')].some(e=>e.textContent==='Valor de ataque mágico527–551'));
+ w.eval(`item('magic-bell').bonuses='Inteligência: +12';`);const upgraded=w.eval('calculateStatus()');assert.equal(upgraded.stats.attack,608);assert.equal(upgraded.stats.attackMax,668);assert.equal(upgraded.stats.magicAttackValue,535);assert.equal(upgraded.stats.magicAttackValueMax,559);
+ w.eval(`item('attack-robe').bonus6='Valor de Ataque Mágico: +25';`);const rare=w.eval('calculateStatus()');assert.equal(rare.stats.attack,upgraded.stats.attack);assert.equal(rare.stats.magicAttackValue,560);assert.equal(rare.stats.magicAttackValueMax,584);
+ w.eval(`set().statusEffects.extra='Ataque Mágico/Corpo-a-Corpo: 12%';`);assert.equal(w.eval('calculateStatus().stats.magicAttackValue'),560);assert.equal(w.eval('calculateStatus().totals.meleeMagic'),12);
+ dom.window.close();
+});
+
+test('magical ranges parse independently, include sash absorption once, and manual reference supports min/max',async()=>{
+ const {w,dom}=await page();
+ const parsed=w.eval(`(()=>{const a=statusAccumulator();parseStatusText('Valor de Ataque Mágico: 43–67\\nValor de Ataque Mágico: +25\\nAtaque Mágico: +30%',a,'teste',[],[]);return a;})()`);assert.equal(parsed.magicAttackFlat,68);assert.equal(parsed.magicAttackSpread,24);assert.equal(parsed.magicAttack,30);assert.equal(parsed.attack,0);
+ w.eval(`char().statusProfile={attributes:{str:16,vit:90,int:90,dex:90},growthLevel:105,hpGrowth:5000};set().items={};set().statusEffects={};data.items.push({id:'magic-sash',slot:'sash',name:'Faixa',absorbed:'Valor de Ataque Mágico: 10–20',fixedMode:'Automático'});set().items.sash='magic-sash';normalizeData(data);`);
+ assert.equal(w.eval('calculateStatus().stats.magicAttackValue'),400);assert.equal(w.eval('calculateStatus().stats.magicAttackValueMax'),410);
+ w.eval('editManualStats()');w.document.querySelector('[name="magicAttackValue"]').value='527';w.document.querySelector('[name="magicAttackValueMax"]').value='551';w.document.querySelector('#form').dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));assert.equal(w.eval('set().stats.magicAttackValue'),527);assert.equal(w.eval('set().stats.magicAttackValueMax'),551);assert.ok([...w.document.querySelectorAll('.stat')].some(e=>e.textContent==='Valor de ataque mágico527–551'));dom.window.close();
+});
