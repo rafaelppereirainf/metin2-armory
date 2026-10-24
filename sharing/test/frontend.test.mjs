@@ -535,3 +535,31 @@ test('Yohara editor covers every current additional-attribute family without gue
  assert.equal(w.eval(`yoharaRollGroups({slot:'helmet',name:'Capuz Serpente'})[0].includes('Forte contra Monstros')`),false);
  dom.window.close();
 });
+
+test('Dragon Shaman doctrine, skill editing, reload and shared viewer work together',async()=>{
+ const {w,dom}=await page();w.document.querySelector('#editChar').click();
+ const cl=w.document.querySelector('[name="class"]');cl.value='Xamã';cl.dispatchEvent(new w.Event('change',{bubbles:true}));
+ const doctrine=w.document.querySelector('[name="doctrine"]');assert.deepEqual(Array.from(doctrine.options,o=>o.value),['','Dragão','Cura']);doctrine.value='Dragão';
+ const submit=()=>w.document.querySelector('#form').dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));submit();assert.equal(w.document.querySelector('#modal').open,false);
+ w.document.querySelector('[data-edit="progress"]').click();assert.match(w.document.querySelector('#fields').textContent,/Bênção/);assert.doesNotMatch(w.document.querySelector('#fields').textContent,/Aura da Espada/);
+ w.document.querySelector('[name="skill_3"]').value='P';w.document.querySelector('[name="skill_5"]').value='M5';submit();
+ const saved=w.localStorage.getItem('metin-armory-v1');assert.equal(JSON.parse(saved).characters[0].progress.skills['Bênção'],'P');dom.window.close();
+ const reload=await page({stored:saved});assert.match(reload.w.document.querySelector('#progress').textContent,/BênçãoP/);assert.equal(reload.w.eval('char().progress.skills["Ajuda do Dragão"]'),'M5');reload.dom.window.close();
+ const shared=await page({query:'?build=abcdefghijklmnop',fetch:async()=>Response.json({snapshot:JSON.parse(saved)})});assert.match(shared.w.document.querySelector('#subtitle').textContent,/Xamã · Dragão/);assert.match(shared.w.document.querySelector('#progress').textContent,/BênçãoP/);shared.dom.window.close();
+});
+
+test('changing class preserves levels but excludes skills and buffs of other doctrines',async()=>{
+ const {w,dom}=await page();
+ w.eval(`char().class='Sura';char().doctrine='Armas';char().progress.skills={'Lâmina Encantada':'P','Receio':'P','Armadura Negra':'P','Personalizada':'M3'};set().statusEffects={skillActive:{'Lâmina Encantada':true,'Receio':true,'Armadura Negra':true}};normalizeData(data);`);
+ w.document.querySelector('#editChar').click();const cl=w.document.querySelector('[name="class"]');cl.value='Xamã';cl.dispatchEvent(new w.Event('change',{bubbles:true}));w.document.querySelector('[name="doctrine"]').value='Dragão';w.document.querySelector('#form').dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));
+ assert.equal(w.eval('char().progress.skills["Lâmina Encantada"]'),'P');assert.equal(w.document.querySelector('#progress').textContent.includes('Lâmina Encantada'),false);assert.ok(w.document.querySelector('#progress').textContent.includes('Personalizada'));assert.equal(Object.keys(w.eval('calculateStatus().skillEffects')).length,0);assert.equal(w.eval('calculateStatus().records.some(r=>r.source.startsWith("Lâmina Encantada"))'),false);
+ w.eval(`char().class='Sura';char().doctrine='Armas';save();`);assert.match(w.document.querySelector('#progress').textContent,/Lâmina EncantadaP/);
+ w.eval(`char().class='Ninja';char().doctrine='Adagas';save();editProgress();`);assert.match(w.document.querySelector('#fields').textContent,/Emboscar/);assert.doesNotMatch(w.document.querySelector('#fields').textContent,/Lâmina Encantada/);dom.window.close();
+});
+
+test('legacy names resolve, unknown values survive, and all doctrines offer six initial skills',async()=>{
+ const {w,dom}=await page();
+ for(const [cl,doctrine]of [['Guerreiro','Corpo'],['Guerreiro','Mental'],['Ninja','Adagas'],['Ninja','Arco'],['Sura','Armas'],['Sura','Magias'],['Xamã','Dragão'],['Xamã','Cura'],['Lycan','Instinto']])assert.equal(w.eval(`skillNames({class:${JSON.stringify(cl)},doctrine:${JSON.stringify(doctrine)}}).length`),6);
+ w.eval(`char().class='Shaman';char().doctrine='Shaman Dragao';normalizeData(data);render();`);assert.equal(w.eval('char().class'),'Xamã');assert.equal(w.eval('char().doctrine'),'Dragão');assert.match(w.document.querySelector('#progress').textContent,/Ajuda do Dragão/);
+ w.eval(`char().doctrine='Especialização antiga';editCharacter();`);assert.equal(w.document.querySelector('[name="doctrine"]').value,'Especialização antiga');w.document.querySelector('#form').dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));assert.equal(w.eval('char().doctrine'),'Especialização antiga');dom.window.close();
+});
